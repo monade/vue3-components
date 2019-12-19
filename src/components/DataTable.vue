@@ -64,7 +64,7 @@ export default {
       required: true,
     },
 
-    table: {
+    tableClasses: {
       type: String,
       default: 'table-sm table-hover'
     },

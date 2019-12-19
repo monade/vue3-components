@@ -7,9 +7,21 @@ A collection of vue components by @monade
 ### DataTable
 A simple data table component, with loading
 
+#### Usage
+```html
+<data-table :columns="['id', 'name']" :values="data" :loading="loading" @sorted="onSorted" @selected="onSelected"></data-table>
+```
+
+#### Parameters
 TODO
 
-Dependencies:
+#### Events
+TODO
+
+#### Slots
+TODO
+
+### Dependencies:
 - Bootstrap 4
 
 ### Paginator
@@ -47,6 +59,13 @@ Meta:
 ### Select2
 A select2 wrapper
 
+#### Parameters
+TODO
+
+#### Events
+TODO
+
+#### Slots
 TODO
 
 #### Dependencies:
