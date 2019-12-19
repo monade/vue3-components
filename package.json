@@ -1,6 +1,6 @@
 {
   "name": "@monade/vue-components",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A set of utility components from monade.",
   "main": "dist/monade-components.cjs.js",
   "module": "dist/monade-components.es.js",
