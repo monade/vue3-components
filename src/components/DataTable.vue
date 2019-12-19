@@ -48,7 +48,7 @@
           </template>
         </tbody>
       </table>
-      <div class="spinner-full">
+      <div class="loading-label" v-if="loading">
         <slot name="loading">Loading...</slot>
       </div>
     </div>
