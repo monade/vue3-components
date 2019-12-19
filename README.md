@@ -3,76 +3,9 @@
 A collection of vue components by @monade
 
 ## List of components
-
-### DataTable
-A simple data table component, with loading
-
-#### Usage
-```html
-<data-table :columns="['id', 'name']" :values="data" :loading="loading" @sorted="onSorted" @selected="onSelected"></data-table>
-```
-
-#### Parameters
-TODO
-
-#### Events
-TODO
-
-#### Slots
-TODO
-
-### Dependencies:
-- Bootstrap 4
-
-### Paginator
-A paginator component.
-
-#### Usage
-```html
-<paginator :meta="metaObject" :range="5" :loading="true|false" @change="onPageChange"></paginator>
-```
-
-#### Parameters
-
-Meta:
-```javascript
-{
-  totalPages: number,
-  lastPage: number,
-  previousPage: number|undefined,
-  nextPage: number|undefined,
-  currentPage: number,
-}
-```
-
-#### Events
-
-* change: `(page) => {}`
-
-#### Slots
-* right-arrow: overrides the right icon
-* left-arrow: overrides the left icon
-
-#### Dependencies
-- Bootstrap 4
-
-### Select2
-A select2 wrapper
-
-#### Parameters
-TODO
-
-#### Events
-TODO
-
-#### Slots
-TODO
-
-#### Dependencies:
-- Bootstrap 4
-- Select2
-- JQuery
-
+- [DataTable](tree/master/src/DataTable.md)
+- [Select2](tree/master/src/Select2.md)
+- [Paginator](tree/master/src/Paginator.md)
 
 ## TODO:
 - Documentation
