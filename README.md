@@ -3,9 +3,9 @@
 A collection of vue components by @monade
 
 ## List of components
-- [DataTable](tree/master/src/DataTable.md)
-- [Select2](tree/master/src/Select2.md)
-- [Paginator](tree/master/src/Paginator.md)
+- [DataTable](docs/components/DataTable.md)
+- [Select2](docs/components/Select2.md)
+- [Paginator](docs/components/Paginator.md)
 
 ## TODO:
 - Documentation
