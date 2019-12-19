@@ -1,0 +1,33 @@
+{
+  "name": "@monade/vue-components",
+  "version": "0.1.0",
+  "description": "A set of utility components from monade.",
+  "main": "dist/monade-components.cjs.js",
+  "module": "dist/monade-components.es.js",
+  "unpkg": "dist/monade-components.js",
+  "modules.root": "src",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "rm -rf ./dist && bili --format cjs,es,umd,umd-min --plugins.vue --module-name monade-components --file-name monade-components[min].[format].js",
+    "test": "mocha  --require test/setup.js test/**/*.spec.js"
+  },
+  "repository": "monade/vue-components",
+  "keywords": [
+    "vuejs"
+  ],
+  "author": "monade",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/monade/vue-components/issues"
+  },
+  "homepage": "https://github.com/monade/vue-components#readme",
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "bili": "^4.8.1",
+    "rollup-plugin-vue": "^5.1.4",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
