@@ -1,0 +1,281 @@
+//Colors
+
+// Base Colors
+$yellow: #FFB900;
+$orange: #FF9057;
+$fuchsia: #F8408E;
+$purple: #A737C9;
+$grey: #EDF0F4;
+$dark-grey: #889EAC;
+$light-grey: #E9E9F0;
+$blue: #1569E6;
+$blue-pale: #E9F0FC;
+$green: #CFEC00;
+$dark-green: #67A599;
+$dark-blue: #144081;
+$red: #E66750;
+$light-green: #C5F5B0;
+$dark: black;
+$black: #3D4550 ;
+$white: white;
+$athens-gray: #F1F1F3;
+$text-muted: $dark-grey;
+$transparent: #ffffffff;
+
+$mineshaft-2: $dark-green;
+$gray-300: $grey;
+
+// Global
+$horizontal-spacing-sm: 1rem;
+$horizontal-spacing-md: 2rem;
+$horizontal-spacing-lg: 2rem;
+$horizontal-spacing-xl: 2rem;
+$horizontal-spacing-xxl: 150px;
+
+
+$top-spacing-sm: 20px;
+$top-spacing-md: 25px;
+$top-spacing-lg: 35px;
+
+$gray-600: $dark-grey;
+$gray-400: $grey;
+$gray-100: $light-grey;
+
+
+// Theme Colors
+$primary: $blue;
+$primary-dark: $dark-blue;
+$primary-pale: $blue-pale;
+$secondary: $green;
+$body-bg: #F7F7F7;
+$success: $blue;
+
+// Typography
+$font-family-sans-serif: 'Inter', sans-serif;
+$font-bootstrap:        'Inter', sans-serif;
+$font-body:            'Inter', sans-serif;
+$font-title:        'Inter', sans-serif;
+$font-icon-fontawesome: FontAwesome;
+$font-icon-themify:     themify;
+$font-size-base:              1rem;
+$font-size-md:                $font-size-base * 1.625;
+$font-size-lg:                $font-size-base * 1.875;
+$font-size-sm:                $font-size-base * .75;
+$font-size-xs:                $font-size-base * .625;
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts" !default;
+$font-weight-extralight:      100;
+$font-weight-light:           300;
+$font-weight-normal:          400;
+$font-weight-semibold:        600;
+$font-weight-bold:            700;
+$small-font-size:             70% !default;
+$h1-font-size:                2.5625rem;
+$h2-font-size:                $font-size-lg;
+
+$input-btn-font-size: $font-size-base * .875;
+$custom-select-bg-size: 10px;
+
+//ColorLists
+
+
+$theme-colors: (
+  "body": $body-bg,
+  "success": $dark-green,
+  "primary-dark": $primary-dark,
+  "light-grey": $light-grey,
+  "dark-grey": $dark-grey,
+  "muted": $text-muted,
+  "white": $white,
+);
+
+$font-weights:(
+  "extralight": $font-weight-extralight,
+  "light": $font-weight-light,
+  "normal": $font-weight-normal,
+  "semibold": $font-weight-semibold,
+  "bold":  $font-weight-bold
+);
+
+$sizes: (
+  xs: 0.5rem,
+  sm: 1rem,
+  md: 1.5rem,
+  lg: 2rem,
+  xl: 3rem,
+  xxl: 4rem,
+  xxxl: 5rem,
+);
+
+$font-sizes: (
+  12: 12px,
+  14: 14px,
+  16: 16px,
+  18: 18px,
+  19: 19px,
+  20: 20px,
+  24: 1.5rem,
+);
+
+//Global
+$container-lateral-padding-lg: 140px;
+$container-lateral-padding-md: 80px;
+$container-vertical-padding-lg: 30px;
+$container-vertical-padding-md: 30px;
+
+//Components
+//Badge
+$badge-circle-size: 20px;
+$badge-text-color: white;
+
+//Input
+$input-border-radius: 4px;
+$input-border-width: 2px;
+$label-font-size: 0.8rem;
+$label-font-weight: $font-weight-light;
+
+//Tables
+$table-head-bg: $white;
+$table-head-border: none;
+$table-head-color: $dark-grey;
+$table-head-font-size: 0.75rem;
+$table-body-border: 1px solid $light-grey;
+
+//Dropdown
+$dropdown-width: 176px;
+$dropdown-height: 43px;
+$dropdown-dark-bg: #225793;
+$dropdown-width-sm: 100px;
+
+//Switches
+$switch-toggle-color: $white;
+$switch-color-enabled: $primary;
+$switch-color-disabled: #B5B5B5;
+
+//Navbar
+$navbar-bg: $primary-dark;
+$navbar-height: 200px;
+$navbar-item-font-size: 0.75rem;
+
+//Bottom Bar
+$bottom-bar-bg: $white;
+$bottom-bar-height: 100px;
+
+//Select2
+$select2-bg: $white;
+$navbar-height: 80px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1940px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1380px,
+);
+
+$border-color: $white;
+$custom-select-border-radius: 1rem;
+
+@mixin border-radius($border-radius) {
+	border-radius: $border-radius;
+}
+
+@mixin center($position: absolute) {
+  position: $position;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin background-image($image: null, $size: cover, $position: 50% 50%, $repeat: no-repeat) {
+  @if $image {
+    background-image: url($image);
+  }
+
+  background-position: $position;
+  background-size: $size;
+  background-repeat: $repeat;
+}
+
+@mixin input-with-icon($image, $background-color: $white) {
+  @include background-image($image, $custom-select-bg-size, right 1rem center);
+  padding-right: $custom-select-bg-size + 32px;
+  background-color: $background-color !important;
+}
+
+$input-btn-padding-x: 1rem;
+$zindex-dropdown: 999;
+
+$icon-clock: '../assets/icons/clock.svg';
+$icon-calendar: '../assets/icons/calendar.svg';
+$body-color: '#f0f0f0';
+$porcelain: $grey;
+
+$image-icon-width: 2rem;
+$image-icon-height: 2rem;
+
+$image-icon-radius: 5px;
+$content-disabled-zindex: 999;
+
+%user-select-none {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+%fixed-full {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+%text-ellipsis {
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+display: block;
+}
+
+%content-disabled {
+  &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba($white, .5);
+      z-index: $content-disabled-zindex;
+  }
+}
+
+%dropdown {
+position: absolute;
+z-index: $zindex-dropdown;
+margin-top: 5px;
+padding: 0;
+border-radius: .5rem;
+border: 1px solid $gray-300;
+box-shadow: 0px 3px 6px $gray-400;
+background-color: $white;
+}
