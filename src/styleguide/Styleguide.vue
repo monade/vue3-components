@@ -545,6 +545,24 @@
 
               <hr />
             </div>
+            <div id="VMultiLevelSelect">
+              <h4 class="pb-1">VMultiLevelSelect</h4>
+              <div class="mb-3">
+                <v-multi-level-select v-model="option" :options="mlsOptions"></v-multi-level-select>
+              </div>
+              <pre>
+                &lt;v-multi-level-select&gt;&lt;/v-multi-level-select&gt;
+              </pre>
+
+              <h5 class="pb-1">VMultiLevelSelect multiple selection</h5>
+              <div class="mb-3">
+                <v-multi-level-select v-model="option" :options="mlsOptions" :multiple="true"></v-multi-level-select>
+              </div>
+              <pre>
+                &lt;v-multi-level-select&gt;&lt;/v-multi-level-select&gt;
+              </pre>
+              <hr />
+            </div>
           </div>
         </div>
       </div>
@@ -575,6 +593,7 @@
               <li class="list-group-item"><a href="#VTimePicker">VTimePicker</a></li>
               <li class="list-group-item"><a href="#VTimeSlotPicker">VTimeSlotPicker</a></li>
               <li class="list-group-item"><a href="#VDatePicker">VDatePicker</a></li>
+              <li class="list-group-item"><a href="#VMultiLevelSelect">VMultiLevelSelect</a></li>
             </ul>
           </div>
         </div>
@@ -606,6 +625,7 @@ import VLetterIcon from '@/components/VLetterIcon.vue';
 import VTimePicker from '@/components/VTimePicker.vue';
 import VTimeSlotPicker from '@/components/VTimeSlotPicker.vue';
 import VDatePicker from '@/components/VDatePicker.vue';
+import VMultiLevelSelect from '@/components/VMultiLevelSelect.vue';
 
 import { Component, Vue } from 'vue-property-decorator';
 
@@ -633,7 +653,8 @@ import { Component, Vue } from 'vue-property-decorator';
     VLetterIcon,
     VTimePicker,
     VTimeSlotPicker,
-    VDatePicker
+    VDatePicker,
+    VMultiLevelSelect
   }
 })
 export default class Styleguide extends Vue {
@@ -751,6 +772,32 @@ export default class Styleguide extends Vue {
       disabled: false
     }
   ];
+
+  mlsOptions = [
+    {
+      id: '1',
+      text: 'Text 1',
+      children: [
+        {
+          id: '4',
+          text: 'Text 4'
+        },
+        {
+          id: '5',
+          text: 'Text 5'
+        }
+      ]
+    },
+    {
+      id: '2',
+      text: 'Text 2'
+    },
+    {
+      id: '3',
+      text: 'Text 3'
+    }
+
+  ]
 
   palette = {
     1: '#33C8FF',

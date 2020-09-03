@@ -12,7 +12,7 @@
 
     <transition name="fade">
     <div class="datepicker__dropdown" :class="`datepicker__dropdown--${dropdownAlign}`" v-show="visible">
-      <airbnb-style-datepicker
+      <AirbnbStyleDatepicker
         :trigger-element-id="triggerId"
         :mode="mode"
         :months-to-show="monthsToShow"
@@ -68,9 +68,9 @@
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import AirbnbStyleDatepicker from 'vue-airbnb-style-datepicker';
 import VCheckButton from '@/components/VCheckButton.vue';
 import ClickOutside from '@/directives/ClickOutside';
+import AirbnbStyleDatepicker from 'vue-airbnb-style-datepicker';
 
 export const DATE_FORMAT = 'YYYY-MM-DD';
 
@@ -88,8 +88,7 @@ export interface DatePickerData {
 
 @Component({
   components: {
-    VCheckButton,
-    AirbnbStyleDatepicker
+    VCheckButton
   },
   directives: {
     ClickOutside

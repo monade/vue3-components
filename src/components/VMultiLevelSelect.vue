@@ -14,7 +14,8 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import SelectOption from '@/models/SelectOption';
-import VMultiLevelDropdown from './VMultiLevelDropdown.vue';
+import VMultiLevelDropdown from '@/components/VMultiLevelDropdown.vue';
+import ClickOutside from '@/directives/ClickOutside';
 
 const DEFAULT_PLACEHOLDER = 'Selezionare una voce';
 
@@ -33,14 +34,17 @@ export interface MultiLevelMultipleObject {
 @Component({
   components: {
     VMultiLevelDropdown
+  },
+  directives: {
+    ClickOutside
   }
 })
-export default class MultiLevelSelect extends Vue {
+export default class VMultiLevelSelect extends Vue {
   @Prop() value!: string|Array<string[]>|null;
-  @Prop({default: DEFAULT_PLACEHOLDER}) placeholder? : string;
-  @Prop({default: () => { return []; }}) headers? : Array<string>;
-  @Prop({default: () => { return []; }}) options!: Array<MultiLevelObject>;
-  @Prop({default: false}) multiple? : boolean;
+  @Prop({ default: DEFAULT_PLACEHOLDER }) placeholder? : string;
+  @Prop({ default: () => { return []; } }) headers? : Array<string>;
+  @Prop({ default: () => { return []; } }) options!: Array<MultiLevelObject>;
+  @Prop({ default: false }) multiple? : boolean;
 
   @Watch('value')
   onValueChange(value: string|Array<string[]>|null) {
@@ -61,7 +65,7 @@ export default class MultiLevelSelect extends Vue {
   selectedMultiple: MultiLevelMultipleObject = {};
 
   get label(): string {
-    if(this.multiple) {
+    if (this.multiple) {
       let first: MultiLevelObject|null = null;
       let count = 0;
 
@@ -76,7 +80,7 @@ export default class MultiLevelSelect extends Vue {
       if (count && first) {
         let label = first.text;
 
-        if(count > 1) {
+        if (count > 1) {
           label += ` + altre ${count - 1}`;
         }
 
@@ -85,7 +89,7 @@ export default class MultiLevelSelect extends Vue {
         return this.placeholder || DEFAULT_PLACEHOLDER;
       }
     } else {
-      if(this.selected == null) {
+      if (this.selected == null) {
         return this.placeholder || DEFAULT_PLACEHOLDER;
       }
 
@@ -98,7 +102,7 @@ export default class MultiLevelSelect extends Vue {
   }
 
   closeDropdown() {
-    if(this.visible) {
+    if (this.visible) {
       this.visible = false;
     }
   }
@@ -112,12 +116,11 @@ export default class MultiLevelSelect extends Vue {
       }
 
       this.updateSelectedMultiple(this.options, 0);
-
     } else {
-      if(value && this.items) {
-        const option = this.items.find(e => e.id == value);
+      if (value && this.items) {
+        const option = this.items.find(e => e.id === value);
 
-        if(option) {
+        if (option) {
           this.selected = option;
         }
       }
@@ -132,7 +135,7 @@ export default class MultiLevelSelect extends Vue {
         if (option.selected) {
           this.selectedMultiple[level].push(option);
 
-          if (parent && parent.selected == false) {
+          if (parent && parent.selected === false) {
             this.$set(parent, 'partial', true);
           }
         } else if (parent && parent.selected) {
@@ -154,11 +157,11 @@ export default class MultiLevelSelect extends Vue {
     }
 
     options.forEach(option => {
-      if(option.selected) {
+      if (option.selected) {
         this.selectedMultiple[level].push(option);
       }
 
-      if(option.partial && option.children) {
+      if (option.partial && option.children) {
         this.processMultipleOptions(option.children, level + 1);
       }
     })
@@ -169,8 +172,8 @@ export default class MultiLevelSelect extends Vue {
     const empty: string[] = [];
     const value = Array(length).map(() => empty);
 
-    for(let i = 0; i < length; i++) {
-      if (this.selectedMultiple[i] == undefined) {
+    for (let i = 0; i < length; i++) {
+      if (this.selectedMultiple[i] === undefined) {
         value[i] = [];
       } else {
         value[i] = this.selectedMultiple[i].map(element => {

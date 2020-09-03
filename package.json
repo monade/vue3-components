@@ -38,7 +38,7 @@
     "moment": "^2.27.0",
     "svg-inline-loader": "^0.8.2",
     "vue": "^2.6.11",
-    "vue-airbnb-style-datepicker": "^2.7.1",
+    "vue-airbnb-style-datepicker": "monade/vue-airbnb-style-datepicker#distribution",
     "vue-class-component": "^7.2.3",
     "vue-moment": "^4.1.0"
   },

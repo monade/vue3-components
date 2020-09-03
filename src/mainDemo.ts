@@ -7,6 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCircleNotch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { } from '@fortawesome/free-brands-svg-icons';
 import AirbnbStyleDatepicker from 'vue-airbnb-style-datepicker';
+import 'vue-airbnb-style-datepicker/dist/vue-airbnb-style-datepicker.min.css';
 
 library.add(faCircleNotch, faTimes)
 
@@ -38,7 +39,7 @@ Vue.use(VueMoment, {
 
 Vue.use(AirbnbStyleDatepicker, datepickerOptions);
 
-new Vue({
+const vue = new Vue({
   render: h => h(Show),
   components: { FaIcon }
 }).$mount('#app')

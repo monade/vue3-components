@@ -1,6 +1,6 @@
 // import { mount } from '@vue/test-utils'
 // import { expect } from 'chai'
-// import VMultiLevelSelect from '@/components/VMultiLevelDropdown.vue'
+// import VMultiLevelDropdown from '@/components/VMultiLevelDropdown.vue'
 // import { MultiLevelObject } from '@/components/VMultiLevelSelect.vue';
 
 // describe('VMultiLevelDropdown', () => {
@@ -15,7 +15,7 @@
 //     }
 //   ];
 
-//   const component = mount(VMultiLevelSelect, {
+//   const component = mount(VMultiLevelDropdown, {
 //     propsData: {
 //       options
 //     }
