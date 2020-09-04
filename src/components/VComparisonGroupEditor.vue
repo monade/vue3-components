@@ -79,6 +79,7 @@ import EntryGroupItem from '../models/EntryGroupItem';
 import VEntrySearch, { VEntrySearchResult } from './VEntrySearch.vue';
 import VEntryList from './VEntryList.vue';
 import VEntryListGroup from './VEntryListGroup.vue';
+import VIcon from './VIcon.vue';
 
 const STATUS_DEFAULT = 'default';
 const STATUS_CREATE = 'create';
@@ -90,14 +91,15 @@ const MAX_ELEMENTS_COUNT = 10;
   components: {
     VEntrySearch,
     VEntryList,
-    VEntryListGroup
+    VEntryListGroup,
+    VIcon
   }
 })
 export default class ComparisonGroupEditor extends Vue {
   @Prop({ default: null }) payload? : any;
   @Prop({ default: MAX_ELEMENTS_COUNT }) maxElements? : number;
-  @Prop({ default: ({ }) => { return Promise.resolve([]); } }) loadGroups!: (payload: any|null) => Promise<EntryGroupItem[]>;
-  @Prop({ default: ({ }) => { return Promise.resolve({}); } }) createGroup!: (group: EntryGroupItem) => Promise<EntryGroupItem>;
+  @Prop({ default: () => { return Promise.resolve([]); } }) loadGroups!: (payload: any|null) => Promise<EntryGroupItem[]>;
+  @Prop({ default: () => { return Promise.resolve({}); } }) createGroup!: (group: EntryGroupItem) => Promise<EntryGroupItem>;
   @Prop({ default: (entry: Entry, group: EntryGroupItem) => { return Promise.resolve(); } }) addEntryToGroup!: (entry: Entry, group: EntryGroupItem) => Promise<void>;
   @Prop({ default: (entry: Entry, group: EntryGroupItem) => { return Promise.resolve(); } }) removeEntryFromGroup!: (entry: Entry, group: EntryGroupItem) => Promise<void>;
 
@@ -130,13 +132,12 @@ export default class ComparisonGroupEditor extends Vue {
     if (!this.selected) {
       return false;
     } else {
-      if (! this.selected.entries) {
+      if (!this.selected.entries) {
         return false;
       } else {
         return this.selected.entries.length < (this.maxElements || MAX_ELEMENTS_COUNT);
       }
     }
-
   }
 
   created() {
@@ -184,7 +185,7 @@ export default class ComparisonGroupEditor extends Vue {
   }
 
   public selectById(id: string) {
-    const group = this.groups.find((group: EntryGroupItem) => group.id == id);
+    const group = this.groups.find((group: EntryGroupItem) => group.id === id);
     if (group) {
       this.select(group);
     }
@@ -266,21 +267,21 @@ export default class ComparisonGroupEditor extends Vue {
     const container = this.$refs.list as HTMLElement;
     const selected = this.$refs[`item-${this.selected.id}`] as Element[];
 
-    if (selected.length == 0) {
+    if (selected.length === 0) {
       return;
     }
 
     const element = selected[0] as HTMLElement;
     if (element.offsetTop > container.clientHeight) {
       container.scrollTop = (element.offsetTop + element.clientHeight) - container.clientHeight;
-    } else if(element.offsetTop < container.scrollTop) {
+    } else if (element.offsetTop < container.scrollTop) {
       container.scrollTop = element.offsetTop;
     }
   }
 
   protected sortGroups() {
     this.groups.sort((first: EntryGroupItem, second: EntryGroupItem): number => {
-      if( first.title.toUpperCase() < second.title.toUpperCase()) {
+      if (first.title.toUpperCase() < second.title.toUpperCase()) {
         return -1;
       } else if (first.title.toUpperCase() > second.title.toUpperCase()) {
         return 1;

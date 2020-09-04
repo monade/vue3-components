@@ -563,6 +563,17 @@
               </pre>
               <hr />
             </div>
+            <div id="VComparisonGroupSelect">
+              <h4 class="pb-1">VComparisonGroupSelect</h4>
+              <div class="mb-3">
+                <v-comparison-group-select :payload="null" :load-groups="loadGroups" :create-group="createGroup" :add-entry-to-group="addEntryToGroup" :remove-entry-from-group="removeEntryFromGroup"></v-comparison-group-select>
+              </div>
+              <pre>
+                &lt;v-comparison-group-select :payload="null" :load-groups="loadGroups" :create-group="createGroup" :add-entry-to-group="addEntryToGroup" :remove-entry-from-group="removeEntryFromGroup"&gt;&lt;/v-comparison-group-select&gt;
+              </pre>
+
+              <hr />
+            </div>
           </div>
         </div>
       </div>
@@ -594,6 +605,7 @@
               <li class="list-group-item"><a href="#VTimeSlotPicker">VTimeSlotPicker</a></li>
               <li class="list-group-item"><a href="#VDatePicker">VDatePicker</a></li>
               <li class="list-group-item"><a href="#VMultiLevelSelect">VMultiLevelSelect</a></li>
+              <li class="list-group-item"><a href="#VComparisonGroupSelect">VComparisonGroupSelect</a></li>
             </ul>
           </div>
         </div>
@@ -626,6 +638,9 @@ import VTimePicker from '../components/VTimePicker.vue';
 import VTimeSlotPicker from '../components/VTimeSlotPicker.vue';
 import VDatePicker from '../components/VDatePicker.vue';
 import VMultiLevelSelect from '../components/VMultiLevelSelect.vue';
+import Entry from '../models/Entry';
+import EntryGroupItem from '../models/EntryGroupItem';
+import VComparisonGroupSelect from '../components/VComparisonGroupSelect.vue';
 
 import { Component, Vue } from 'vue-property-decorator';
 
@@ -654,7 +669,8 @@ import { Component, Vue } from 'vue-property-decorator';
     VTimePicker,
     VTimeSlotPicker,
     VDatePicker,
-    VMultiLevelSelect
+    VMultiLevelSelect,
+    VComparisonGroupSelect
   }
 })
 export default class Styleguide extends Vue {
@@ -773,6 +789,8 @@ export default class Styleguide extends Vue {
     }
   ];
 
+  option = { };
+
   mlsOptions = [
     {
       id: '1',
@@ -821,6 +839,35 @@ export default class Styleguide extends Vue {
     19: '#FCBEBE',
     20: '#A0559D'
   };
+
+  gItems: EntryGroupItem[] = [];
+
+  public loadGroups(payload: any): Promise<EntryGroupItem[]> {
+    return Promise.resolve(this.gItems);
+  }
+
+  public createGroup(group: EntryGroupItem): Promise<EntryGroupItem> {
+    group.id = this.gItems.length;
+    this.gItems.push(group);
+    return Promise.resolve(group);
+  }
+
+  public addEntryToGroup(entry: Entry, group: EntryGroupItem): Promise<void> {
+    if (group.entries) {
+      group.entries.push(entry);
+    } else {
+      group.entries = [entry];
+    }
+    return Promise.resolve();
+  }
+
+  public removeEntryFromGroup(entry: Entry, group: EntryGroupItem): Promise<void> {
+    if (group.entries) {
+      const idx = group.entries.indexOf(entry);
+      group.entries = group.entries.splice(idx, 1);
+    }
+    return Promise.resolve();
+  }
 
   public async loadItems(term: string) {
     return Promise.resolve([...this.IMSoptions]);
