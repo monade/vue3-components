@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import VNumberPicker from '@/components/VNumberPicker.vue';
+import VNumberPicker from './VNumberPicker.vue';
 
 export const TIME_FORMAT = 'HH:mm';
 
@@ -56,7 +56,7 @@ export default class VTimePicker extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  @import '@/css/vue';
+  @import '../css/vue';
 
   .timepicker {
     font-size: $font-size-sm;

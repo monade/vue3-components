@@ -41,8 +41,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { MultiLevelObject } from '@/components/VMultiLevelSelect.vue';
-import VIcon from '@/components/VIcon.vue';
+import { MultiLevelObject } from './VMultiLevelSelect.vue';
+import VIcon from './VIcon.vue';
 
 @Component({
   name: 'v-multi-level-dropdown',

@@ -34,7 +34,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import VModal from '@/components/VModal.vue';
+import VModal from './VModal.vue';
 import moment from 'moment';
 
 @Component({ components: { VModal } })

@@ -33,7 +33,7 @@ export default class VSwitchButton extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  @import '@/css/vue';
+  @import '../css/vue';
 
   $switch-width: 28px;
   $switch-height: 14px;

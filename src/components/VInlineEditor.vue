@@ -36,8 +36,8 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import { NestedDictionary } from '@/models/NestedDictionary';
-import { renderNestedParams } from '@/utils/renderNestedParams';
+import { NestedDictionary } from '../models/NestedDictionary';
+import { renderNestedParams } from '../utils/renderNestedParams';
 
 export interface DataFormatter {
   fromString(value: string): any;

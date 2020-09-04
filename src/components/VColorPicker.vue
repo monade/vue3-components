@@ -23,9 +23,9 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { chunkArrayInGroups } from '@/utils/chunkArrayInGroups';
+import { chunkArrayInGroups } from '../utils/chunkArrayInGroups';
 import ClickOutside from '../directives/ClickOutside';
-import VIcon from '@/components/VIcon.vue';
+import VIcon from './VIcon.vue';
 
 @Component({
   directives: {

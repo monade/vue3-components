@@ -1,4 +1,4 @@
-import NumberFormatter from '@/services/NumberFormatter';
+import NumberFormatter from '../services/NumberFormatter';
 
 export default function percentage(value: number|undefined, valueForZero = '0', valueForUndefined = '-') {
   if (value === undefined) {

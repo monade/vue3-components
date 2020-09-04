@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VDatePickerModal from '@/components/VDatePickerModal.vue'
+import VDatePickerModal from '../../src/components/VDatePickerModal.vue'
 
 describe('VDatePickerModal', () => {
   const component = mount(VDatePickerModal, {

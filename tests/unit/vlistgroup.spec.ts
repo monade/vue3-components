@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VListGroup from '@/components/VListGroup.vue'
+import VListGroup from '../../src/components/VListGroup.vue'
 
 describe('VListGroup', () => {
   const component = mount(VListGroup, {

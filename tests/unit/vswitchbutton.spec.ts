@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VSwitchButton from '@/components/VSwitchButton.vue'
+import VSwitchButton from '../../src/components/VSwitchButton.vue'
 
 describe('VSwitchButton', () => {
   const component = mount(VSwitchButton, {

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VMultiSwitcher from '@/components/VMultiSwitcher.vue'
-import SelectOption from '@/models/SelectOption';
+import VMultiSwitcher from '../../src/components/VMultiSwitcher.vue'
+import SelectOption from '../../src/models/SelectOption';
 
 describe('VMultiSwitcher', () => {
   const options: Array<SelectOption> = [

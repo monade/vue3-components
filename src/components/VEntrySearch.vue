@@ -23,9 +23,10 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import VEntryList, { VEntryInterface } from '@/components/VEntryList.vue';
-import ClickOutside from '@/directives/ClickOutside';
-import VIcon from '@/components/VIcon.vue';
+import VEntryList from './VEntryList.vue';
+import VEntryInterface from '../models/Entry';
+import ClickOutside from '../directives/ClickOutside';
+import VIcon from './VIcon.vue';
 
 const DEFAULT_PLACEHOLDER = 'Cerca...';
 const DEFAULT_MIN = 3;

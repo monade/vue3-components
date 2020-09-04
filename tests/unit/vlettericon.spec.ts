@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VLetterIcon from '@/components/VLetterIcon.vue'
+import VLetterIcon from '../../src/components/VLetterIcon.vue'
 
 describe('VLetterIcon', () => {
   const component = mount(VLetterIcon, {

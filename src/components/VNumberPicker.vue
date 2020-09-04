@@ -12,8 +12,8 @@
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import VIcon from '@/components/VIcon.vue';
-import Number from '@/filters/Number';
+import VIcon from './VIcon.vue';
+import Number from '../filters/Number';
 
 @Component({ components: { VIcon }, filters: { Number } })
 export default class VNumberPicker extends Vue {
@@ -65,7 +65,7 @@ export default class VNumberPicker extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  @import '@/css/vue';
+  @import '../css/vue';
   $v-number-picker-size: 20px;
   $v-number-picker-icon-size: 8px;
 

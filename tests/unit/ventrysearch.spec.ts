@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VEntrySearch from '@/components/VEntrySearch.vue'
+import VEntrySearch from '../../src/components/VEntrySearch.vue'
 
 describe('VEntrySearch', () => {
   const component = mount(VEntrySearch, {

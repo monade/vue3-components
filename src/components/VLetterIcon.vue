@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import ColorHelper, { ColorsInterface } from '@/services/ColorHelper';
+import ColorHelper, { ColorsInterface } from '../services/ColorHelper';
 
 @Component
 export default class VLetterIcon extends Vue {
@@ -46,7 +46,7 @@ export default class VLetterIcon extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  @import '@/css/vue';
+  @import '../css/vue';
 
   .v-letter-icon {
     width: $image-icon-width;

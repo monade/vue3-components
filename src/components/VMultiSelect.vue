@@ -73,7 +73,7 @@
 <script lang="ts">
 import VBaseMultiSelect from './VBaseMultiSelect.vue';
 import VCheckbox from './VCheckbox.vue';
-import ClickOutside from '@/directives/ClickOutside';
+import ClickOutside from '../directives/ClickOutside';
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 
 export interface MultiSelectOption {
@@ -302,7 +302,7 @@ export default class MultiSelect extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import "@/css/vue";
+@import "../css/vue";
 
 .multiselect-dropdown-header {
   padding: 1.25rem 1rem;

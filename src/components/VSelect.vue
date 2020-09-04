@@ -81,8 +81,8 @@
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import VIcon from '@/components/VIcon.vue';
-import ClickOutside from '@/directives/ClickOutside';
+import VIcon from './VIcon.vue';
+import ClickOutside from '../directives/ClickOutside';
 
 export interface VSelectOption {
   id: string;

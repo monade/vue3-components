@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Styleguide from '@/styleguide/Styleguide.vue';
+import Styleguide from './styleguide/Styleguide.vue';
 
 @Component({ components: { Styleguide } })
 export default class Show extends Vue {

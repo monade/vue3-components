@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VColorPicker from '@/components/VColorPicker.vue'
+import VColorPicker from '../../src/components/VColorPicker.vue'
 
 describe('VColorPicker', () => {
   const component = mount(VColorPicker, {

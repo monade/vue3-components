@@ -1,4 +1,4 @@
-import { NestedDictionary } from '@/models/NestedDictionary';
+import { NestedDictionary } from '../models/NestedDictionary';
 
 export function renderNestedParams(dataKeys: string[] | undefined, data: any) {
   let payload: NestedDictionary | null = {};

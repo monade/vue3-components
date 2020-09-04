@@ -58,7 +58,7 @@ export default class VListGroup extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  @import "@/css/vue";
+  @import "../css/vue";
 
   .list-group-item {
     border-bottom: 0;

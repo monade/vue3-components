@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VNumberPicker from '@/components/VNumberPicker.vue'
+import VNumberPicker from '../../src/components/VNumberPicker.vue'
 
 describe('VNumberPicker', () => {
   const component = mount(VNumberPicker, {

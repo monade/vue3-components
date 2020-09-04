@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import SelectOption from '@/models/SelectOption';
+import SelectOption from '../models/SelectOption';
 
 @Component
 export default class VMultiSwitcher extends Vue {

@@ -154,7 +154,7 @@ export default class VBaseMultiSelect extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import "@/css/vue";
+@import "../css/vue";
 
 $close-icon: 'none';
 

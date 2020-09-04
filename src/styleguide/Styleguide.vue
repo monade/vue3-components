@@ -602,30 +602,30 @@
   </div>
 </template>
 <script lang="ts">
-import VIcon from '@/components/VIcon.vue';
-import VSwitch from '@/components/VSwitch.vue';
-import VPaginator from '@/components/VPaginator.vue';
-import VCheckbox from '@/components/VCheckbox.vue';
-import VColorPicker from '@/components/VColorPicker.vue';
-import VDataTable from '@/components/VDataTable.vue';
-import VModal from '@/components/VModal.vue';
-import VDatePickerModal from '@/components/VDatePickerModal.vue';
-import VInlineEditor from '@/components/VInlineEditor.vue';
-import VInlineMultiSelect from '@/components/VInlineMultiSelect.vue';
-import VListGroup from '@/components/VListGroup.vue';
-import VMultiSelect from '@/components/VMultiSelect.vue';
-import VContentLoading from '@/components/VContentLoading.vue';
-import VEntryList from '@/components/VEntryList.vue';
-import VEntrySearch from '@/components/VEntrySearch.vue';
-import VSelect, { VSelectOption } from '@/components/VSelect.vue';
-import VSwitchButton from '@/components/VSwitchButton.vue';
-import VMultiSwitcher from '@/components/VMultiSwitcher.vue';
-import VNumberPicker from '@/components/VNumberPicker.vue';
-import VLetterIcon from '@/components/VLetterIcon.vue';
-import VTimePicker from '@/components/VTimePicker.vue';
-import VTimeSlotPicker from '@/components/VTimeSlotPicker.vue';
-import VDatePicker from '@/components/VDatePicker.vue';
-import VMultiLevelSelect from '@/components/VMultiLevelSelect.vue';
+import VIcon from '../components/VIcon.vue';
+import VSwitch from '../components/VSwitch.vue';
+import VPaginator from '../components/VPaginator.vue';
+import VCheckbox from '../components/VCheckbox.vue';
+import VColorPicker from '../components/VColorPicker.vue';
+import VDataTable from '../components/VDataTable.vue';
+import VModal from '../components/VModal.vue';
+import VDatePickerModal from '../components/VDatePickerModal.vue';
+import VInlineEditor from '../components/VInlineEditor.vue';
+import VInlineMultiSelect from '../components/VInlineMultiSelect.vue';
+import VListGroup from '../components/VListGroup.vue';
+import VMultiSelect from '../components/VMultiSelect.vue';
+import VContentLoading from '../components/VContentLoading.vue';
+import VEntryList from '../components/VEntryList.vue';
+import VEntrySearch from '../components/VEntrySearch.vue';
+import VSelect, { VSelectOption } from '../components/VSelect.vue';
+import VSwitchButton from '../components/VSwitchButton.vue';
+import VMultiSwitcher from '../components/VMultiSwitcher.vue';
+import VNumberPicker from '../components/VNumberPicker.vue';
+import VLetterIcon from '../components/VLetterIcon.vue';
+import VTimePicker from '../components/VTimePicker.vue';
+import VTimeSlotPicker from '../components/VTimeSlotPicker.vue';
+import VDatePicker from '../components/VDatePicker.vue';
+import VMultiLevelSelect from '../components/VMultiLevelSelect.vue';
 
 import { Component, Vue } from 'vue-property-decorator';
 

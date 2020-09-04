@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VInlineMultiSelect from '@/components/VInlineMultiSelect.vue'
+import VInlineMultiSelect from '../../src/components/VInlineMultiSelect.vue'
 
 describe('VInlineMultiSelect', () => {
   const component = mount(VInlineMultiSelect, {

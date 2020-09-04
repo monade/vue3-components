@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import VIcon from '@/components/VIcon.vue';
+import VIcon from './VIcon.vue';
 
 @Component({ components: { VIcon } })
 export default class VCheckButton extends Vue {
@@ -44,7 +44,7 @@ export default class VCheckButton extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  @import '@/css/vue';
+  @import '../css/vue';
 
   $check-width: 15px;
   $check-height: 15px;

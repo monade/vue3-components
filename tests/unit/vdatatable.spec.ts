@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VDataTable from '@/components/VDataTable.vue'
+import VDataTable from '../../src/components/VDataTable.vue'
 
 describe('VDataTable', () => {
   const component = mount(VDataTable, {

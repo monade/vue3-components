@@ -24,14 +24,9 @@
 </template>
 
 <script lang="ts">
-import VIcon from '@/components/VIcon.vue';
+import VIcon from './VIcon.vue';
 import { Component, Prop, Vue } from 'vue-property-decorator';
-
-export interface VEntryInterface {
-  id: string;
-  name: string;
-  image?: string;
-}
+import VEntryInterface from '../models/Entry';
 
 @Component({ components: { VIcon } })
 export default class VEntryList extends Vue {

@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VModal from '@/components/VModal.vue'
+import VModal from '../../src/components/VModal.vue'
 
 describe('VModal', () => {
   it('displays a modal which is initially not shown', () => {

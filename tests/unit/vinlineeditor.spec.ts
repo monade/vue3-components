@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VInlineEditor from '@/components/VInlineEditor.vue'
+import VInlineEditor from '../../src/components/VInlineEditor.vue'
 
 describe('VInlineEditor', () => {
   const component = mount(VInlineEditor, {

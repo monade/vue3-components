@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VSelect from '@/components/VSelect.vue'
+import VSelect from '../../src/components/VSelect.vue'
 
 describe('VSelect', () => {
   const component = mount(VSelect, {

@@ -68,8 +68,8 @@
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import VCheckButton from '@/components/VCheckButton.vue';
-import ClickOutside from '@/directives/ClickOutside';
+import VCheckButton from './VCheckButton.vue';
+import ClickOutside from '../directives/ClickOutside';
 import AirbnbStyleDatepicker from 'vue-airbnb-style-datepicker';
 
 export const DATE_FORMAT = 'YYYY-MM-DD';
@@ -346,7 +346,7 @@ export default class VDatePicker extends Vue {
 </script>
 
 <style lang="scss">
-  @import '@/css/vue';
+  @import '../css/vue';
 
   .datepicker {
     position: relative;

@@ -13,9 +13,9 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import SelectOption from '@/models/SelectOption';
-import VMultiLevelDropdown from '@/components/VMultiLevelDropdown.vue';
-import ClickOutside from '@/directives/ClickOutside';
+import SelectOption from '../models/SelectOption';
+import VMultiLevelDropdown from './VMultiLevelDropdown.vue';
+import ClickOutside from '../directives/ClickOutside';
 
 const DEFAULT_PLACEHOLDER = 'Selezionare una voce';
 
@@ -204,7 +204,7 @@ export default class VMultiLevelSelect extends Vue {
 </script>
 
 <style lang="scss">
-  @import '@/css/vue';
+  @import '../css/vue';
 
   $multiselect-dropdown-padding-x: 1rem;
   $multiselect-dropdown-padding-y: .5rem;

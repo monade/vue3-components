@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VPaginator from '@/components/VPaginator.vue'
+import VPaginator from '../../src/components/VPaginator.vue'
 
 describe('VPaginator', () => {
   const meta = {

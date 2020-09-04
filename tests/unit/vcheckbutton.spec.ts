@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
-import VCheckButton from '@/components/VCheckButton.vue'
+import VCheckButton from '../../src/components/VCheckButton.vue'
 
 describe('VCheckButton', () => {
   const component = mount(VCheckButton, {

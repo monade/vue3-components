@@ -26,8 +26,8 @@
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import VTimePicker, { TIME_FORMAT } from '@/components/VTimePicker.vue';
-import ClickOutside from '@/directives/ClickOutside';
+import VTimePicker, { TIME_FORMAT } from './VTimePicker.vue';
+import ClickOutside from '../directives/ClickOutside';
 
 export interface SlotObject {
   from: string;
@@ -129,7 +129,7 @@ export default class TimeSlotPicker extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  @import '@/css/vue';
+  @import '../css/vue';
 
   .timeslot-select {
     position: relative;

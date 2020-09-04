@@ -43,7 +43,7 @@ export default class VToggleSwitch extends Vue {
 }
 </script>
 <style lang="scss" scoped>
-@import "@/css/vue";
+@import "../css/vue";
 
 body,
 html {
