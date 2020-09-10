@@ -1,33 +1,32 @@
 <template>
   <div class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input" :id="id" :value="checkboxValue" v-model="selected" @change="onChange" :disabled="disabled" />
-    <label class="custom-control-label" :for="id" v-if="label">{{ label }}</label>
+    <label class="custom-control-label" :for="id" v-if="$slots.default"><slot></slot></label>
   </div>
 </template>
 
 <script lang="ts">
-import { Prop, Component, Vue, Watch } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 
 @Component
 export default class VCheckbox extends Vue {
-  @Prop({ required: true }) value!: boolean | any[];
-  @Prop() label?: string;
-  @Prop() inputValue: any;
-  @Prop({ default: false }) disabled!: boolean;
+  @Prop() value!: boolean;
+  @Prop() inputValue? : string|null;
+  @Prop({default: false}) disabled? : boolean;
 
-  private selected = this.value;
+  @Watch('value')
+  onValueChange(value: boolean) {
+    this.selected = value;
+  }
+
+  protected selected: boolean = this.value;
 
   get id() {
     return 'checkbox-' + this.randomValue();
   }
 
   get checkboxValue() {
-    return this.inputValue ? this.inputValue : this.label;
-  }
-
-  @Watch('value')
-  onValueChanged(value: boolean | any[]) {
-    this.selected = value;
+    return this.inputValue ? this.inputValue : this.$slots.default;
   }
 
   randomValue() {
@@ -41,6 +40,7 @@ export default class VCheckbox extends Vue {
 </script>
 
 <style lang="scss" scoped>
+
   label {
     user-select: none;
   }
