@@ -574,6 +574,78 @@
 
               <hr />
             </div>
+            <div id="VAudio">
+              <h4 class="pb-1">VAudio</h4>
+              <div class="mb-3">
+                <v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000" />
+              </div>
+              <pre>
+                &lt;v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000"&gt;&lt;/v-audio&gt;
+              </pre>
+              <h5 class="pb-1">VAudio that can pause</h5>
+              <div class="mb-3">
+                <v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000" :can-pause="true" />
+              </div>
+              <pre>
+                &lt;v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000" :can-pause="true"&gt;&lt;/v-audio&gt;
+              </pre>
+              <h5 class="pb-1">VAudio with color</h5>
+              <div class="mb-3">
+                <v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000" />
+              </div>
+              <pre>
+                &lt;v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000"&gt;&lt;/v-audio&gt;
+              </pre>
+              <h5 class="pb-1">VAudio with no existing source</h5>
+              <div class="mb-3">
+                <v-audio :sources="['https:missing.com/mpthreetest.mp3']" :timeout="60000" />
+              </div>
+              <pre>
+                &lt;v-audio :sources="['https:missing.com/mpthreetest.mp3']" :timeout="60000"&gt;&lt;/v-audio&gt;
+              </pre>
+              <h5 class="pb-1">VAudio with empty sources</h5>
+              <div class="mb-3">
+                <v-audio :sources="[]" :timeout="60000" />
+              </div>
+              <pre>
+                &lt;v-audio :sources="[]" :timeout="60000"&gt;&lt;/v-audio&gt;
+              </pre>
+            </div>
+            <div id="VVideo">
+              <hr />
+              <h4>VVideo</h4>
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <v-video :sources="['http://techslides.com/demos/sample-videos/small.mp4']" width="400px"></v-video>
+              </div>
+              <pre>&lt;v-video :sources="[urls]" width="400px" /&gt;</pre>
+
+              <hr />
+            </div>
+            <div id="VModalVideo">
+              <h4>VModalVideo</h4>
+
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <button class="btn btn-primary" @click.stop="openVideo('modalVideo')">Open video</button>
+                <v-modal-video title="Video" ref="modalVideo" :sources="['http://techslides.com/demos/sample-videos/small.mp4']"></v-modal-video>
+              </div>
+              <pre>&lt;v-modal-video title='title' :sources="[urls]" /&gt;</pre>
+
+              <h5>VModalVideo with autostart</h5>
+
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <button class="btn btn-primary" @click.stop="openVideo('modalVideo2')">Open video</button>
+                <v-modal-video title="Video" ref="modalVideo2" :sources="['http://techslides.com/demos/sample-videos/small.mp4']" :autostart="true"></v-modal-video>
+              </div>
+              <pre>&lt;v-modal-video title='title' :sources="[urls]" :autostart="true"/&gt;</pre>
+
+              <h5>VModalVideo with size</h5>
+
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <button class="btn btn-primary" @click.stop="openVideo('modalVideo2')">Open video</button>
+                <v-modal-video title="Video" ref="modalVideo2" :sources="['http://techslides.com/demos/sample-videos/small.mp4']" size="xl"></v-modal-video>
+              </div>
+              <pre>&lt;v-modal-video title='title' :sources="[urls]" size="xl"/&gt;</pre>
+            </div>
           </div>
         </div>
       </div>
@@ -606,6 +678,9 @@
               <li class="list-group-item"><a href="#VDatePicker">VDatePicker</a></li>
               <li class="list-group-item"><a href="#VMultiLevelSelect">VMultiLevelSelect</a></li>
               <li class="list-group-item"><a href="#VComparisonGroupSelect">VComparisonGroupSelect</a></li>
+              <li class="list-group-item"><a href="#VAudio">VAudio</a></li>
+              <li class="list-group-item"><a href="#VVideo">VVideo</a></li>
+              <li class="list-group-item"><a href="#VModalVideo">VModalVideo</a></li>
             </ul>
           </div>
         </div>
@@ -641,6 +716,9 @@ import VMultiLevelSelect from '../components/VMultiLevelSelect.vue';
 import Entry from '../models/Entry';
 import EntryGroupItem from '../models/EntryGroupItem';
 import VComparisonGroupSelect from '../components/VComparisonGroupSelect.vue';
+import VAudio from '../components/VAudio.vue';
+import VVideo from '../components/VVideo.vue';
+import VModalVideo from '../components/VModalVideo.vue';
 
 import { Component, Vue } from 'vue-property-decorator';
 
@@ -670,7 +748,10 @@ import { Component, Vue } from 'vue-property-decorator';
     VTimeSlotPicker,
     VDatePicker,
     VMultiLevelSelect,
-    VComparisonGroupSelect
+    VComparisonGroupSelect,
+    VAudio,
+    VVideo,
+    VModalVideo
   }
 })
 export default class Styleguide extends Vue {
@@ -881,6 +962,11 @@ export default class Styleguide extends Vue {
   public mdOpen() {
     const modal = this.$refs.modal as any;
     modal.show();
+  }
+
+  openVideo(which: string) {
+    const modalVideo = (this.$refs[which] as any)
+    modalVideo.show();
   }
 }
 </script>

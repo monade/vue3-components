@@ -99,6 +99,8 @@ $font-weights:(
   "semibold": $font-weight-semibold,
   "bold":  $font-weight-bold
 );
+$btn-circle-radius: 50%;
+$btn-circle-font-size: $font-size-base * 0.75;
 
 $sizes: (
   xs: 0.5rem,
@@ -284,4 +286,45 @@ border-radius: .5rem;
 border: 1px solid $gray-300;
 box-shadow: 0px 3px 6px $gray-400;
 background-color: $white;
+}
+
+.btn-circle {
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  font-size: $btn-circle-font-size;
+  padding: 0;
+  @include border-radius($btn-circle-radius);
+
+  &.btn-lg {
+    width: 2.875rem;
+    height: 2.875rem;
+    font-size: $font-size-lg;
+    padding: $font-size-lg/2 0;
+    line-height: 2.1;
+  }
+}
+.btn-player {
+  border-radius: 100%;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  border-color: $gray-300;
+  box-shadow: none !important;
+  text-align: center;
+
+  .icon {
+    width: 11px !important;
+    height: 11px !important;
+
+    > svg {
+      width: 10px !important;
+      height: 10px !important;
+    }
+  }
+  &:hover {
+    background-color: $primary;
+    border-color: $primary;
+    color: $porcelain;
+  }
 }
