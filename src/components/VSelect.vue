@@ -6,7 +6,11 @@
   >
     <div class="d-flex h-100 position-relative">
       <div class="d-flex position-absolute h-100">
-        <fa-icon icon="circle-notch" class="mx-2 my-auto text-primary" spin v-if="loading"></fa-icon>
+        <template v-if="loading">
+          <slot name="loading">
+            <fa-icon icon="circle-notch" class="mx-2 my-auto text-primary" spin></fa-icon>
+          </slot>
+        </template>
       </div>
       <input v-if="!expanded" type="text" class="form-control my-auto" :class="inputClass" readonly :value="label" @click.prevent="toggleDropdown" :disabled="disabled" />
     </div>
@@ -81,7 +85,6 @@
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import VIcon from './VIcon.vue';
 import ClickOutside from '../directives/ClickOutside';
 
 export interface VSelectOption {
@@ -91,7 +94,7 @@ export interface VSelectOption {
   new?: boolean;
 }
 
-@Component({ components: { VIcon }, directives: { ClickOutside } })
+@Component({ directives: { ClickOutside } })
 export default class VSelect extends Vue {
   @Prop() readonly value!: string | null;
   @Prop({ default: 'Select an option' }) readonly placeholder?: string;
