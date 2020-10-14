@@ -110,12 +110,20 @@ export default class AudioElementWrapper extends Vue {
     this.audio.play();
   }
 
+  private checkIfVideoCanBePlayedAnyway() {
+    return this.audio.readyState > 2;
+  }
+
   private async loadAndPlayIfItDoesNotTimeOutFirst() {
     this.load();
     if (await this.playOrTimeoutStartRace() === CAN_PLAY_MESSAGE) {
       this.playAndNotify();
     } else {
-      this.timeOutHandler();
+      if (this.checkIfVideoCanBePlayedAnyway()) {
+        this.playAndNotify();
+      } else {
+        this.timeOutHandler();
+      }
     }
   }
 
