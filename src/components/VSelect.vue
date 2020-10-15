@@ -1,22 +1,36 @@
 <template>
   <span
     class="v-select"
-    :class="{'v-select--open': showDropdown, 'v-select--expanded': expanded }"
+    :class="{ 'v-select--open': showDropdown, 'v-select--expanded': expanded }"
     v-click-outside="closeDropdown"
   >
     <div class="d-flex h-100 position-relative">
       <div class="d-flex position-absolute h-100">
         <template v-if="loading">
           <slot name="loading">
-            <fa-icon icon="circle-notch" class="mx-2 my-auto text-primary" spin></fa-icon>
+            <v-icon :spin="true">spinner</v-icon>
           </slot>
         </template>
       </div>
-      <input v-if="!expanded" type="text" class="form-control my-auto" :class="inputClass" readonly :value="label" @click.prevent="toggleDropdown" :disabled="disabled" />
+      <input
+        v-if="!expanded"
+        type="text"
+        class="form-control my-auto"
+        :class="inputClass"
+        readonly
+        :value="label"
+        @click.prevent="toggleDropdown"
+        :disabled="disabled"
+      />
     </div>
     <input class="v-select__value" :required="required" v-model="value" />
 
-    <div class="v-select__dropdown" v-show="showDropdown" :class="inputClass" ref="dropdown">
+    <div
+      class="v-select__dropdown"
+      v-show="showDropdown"
+      :class="inputClass"
+      ref="dropdown"
+    >
       <div
         class="v-select__options d-flex flex-column"
         :class="{ 'flex-column-reverse': addableAlign === 'bottom' }"
@@ -46,10 +60,17 @@
             <slot name="add">Add</slot>
           </template>
         </div>
-        <div :class="scrollable ?  'v-select__options--scrollable' : 'v-select__options'">
+        <div
+          :class="
+            scrollable ? 'v-select__options--scrollable' : 'v-select__options'
+          "
+        >
           <div
             class="v-select__option"
-            :class="[{'v-select__option--selected': isSelected(option)}, inputClass]"
+            :class="[
+              { 'v-select__option--selected': isSelected(option) },
+              inputClass,
+            ]"
             v-for="option in selectableOptions"
             :key="option.id"
             @click.stop="select(option)"
@@ -84,8 +105,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import ClickOutside from '../directives/ClickOutside';
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
+import VIcon from "../components/VIcon.vue";
+import ClickOutside from "../directives/ClickOutside";
 
 export interface VSelectOption {
   id: string;
@@ -94,28 +116,28 @@ export interface VSelectOption {
   new?: boolean;
 }
 
-@Component({ directives: { ClickOutside } })
+@Component({ directives: { ClickOutside }, components: { VIcon } })
 export default class VSelect extends Vue {
   @Prop() readonly value!: string | null;
-  @Prop({ default: 'Select an option' }) readonly placeholder?: string;
+  @Prop({ default: "Select an option" }) readonly placeholder?: string;
   @Prop() readonly options!: VSelectOption[];
   @Prop({ required: false }) readonly required!: boolean;
   @Prop({ default: false }) readonly addable!: boolean;
   @Prop({ default: false }) readonly editable!: boolean;
   @Prop({ default: false }) readonly expanded!: boolean;
   @Prop({ default: true }) readonly autoSort!: boolean;
-  @Prop({ default: 'top' }) readonly addableAlign!: string;
+  @Prop({ default: "top" }) readonly addableAlign!: string;
   @Prop({ default: false }) readonly disabled!: boolean;
   @Prop({ default: true }) readonly scrollable!: boolean;
   @Prop({ default: true }) readonly loading!: boolean;
   @Prop({ default: true }) readonly inputClass!: boolean;
 
-  @Watch('value', { immediate: true })
+  @Watch("value", { immediate: true })
   onValueChange() {
     this.updateSelected();
   }
 
-  @Watch('options', { immediate: true })
+  @Watch("options", { immediate: true })
   onOptionChange(value: VSelectOption[]) {
     this.selectableOptions = [...value];
     this.updateSelected();
@@ -129,7 +151,7 @@ export default class VSelect extends Vue {
 
   adding = {
     enabled: false,
-    text: ''
+    text: ""
   };
 
   get showDropdown() {
@@ -139,9 +161,9 @@ export default class VSelect extends Vue {
   get label(): string {
     if (this.selected == null) {
       if (this.loading) {
-        return '';
+        return "";
       }
-      return this.placeholder || '';
+      return this.placeholder || "";
     }
 
     return this.selected.text;
@@ -156,7 +178,8 @@ export default class VSelect extends Vue {
       this.selected = null;
     } else {
       this.selected =
-        this.selectableOptions.find(element => element.id === this.value) || null;
+        this.selectableOptions.find(element => element.id === this.value) ||
+        null;
     }
   }
 
@@ -171,11 +194,11 @@ export default class VSelect extends Vue {
   select(option: VSelectOption) {
     this.selected = option;
     this.closeDropdown();
-    this.$emit('input', this.selected.id);
+    this.$emit("input", this.selected.id);
   }
 
   add() {
-    if (this.adding.text === '') {
+    if (this.adding.text === "") {
       return;
     }
 
@@ -197,7 +220,7 @@ export default class VSelect extends Vue {
     this.stopAdding();
     this.closeDropdown();
 
-    this.$emit('added', option);
+    this.$emit("added", option);
   }
 
   startAdding() {
@@ -209,20 +232,20 @@ export default class VSelect extends Vue {
 
   stopAdding() {
     this.adding.enabled = false;
-    this.adding.text = '';
+    this.adding.text = "";
   }
 
   edit() {
     this.closeDropdown();
 
-    this.$emit('edited', this.editing);
+    this.$emit("edited", this.editing);
     this.stopEditing();
   }
 
   async startEditing(option: VSelectOption) {
     this.editing = option;
     await this.$nextTick();
-    const edt: any[] = (this.$refs.editInput as any);
+    const edt: any[] = this.$refs.editInput as any;
     return edt[0]?.focus();
   }
 
