@@ -11,9 +11,9 @@ import { Component, Prop, Ref, Vue } from 'vue-property-decorator';
 
 @Component({ })
 export default class VVideo extends Vue {
-  @Prop({ default: () => [] }) sources!: string[];
-  @Prop({ default: () => '100%' }) width!: string;
-  @Ref() video!: HTMLVideoElement;
+  @Prop({ default: () => [] }) readonly sources!: string[];
+  @Prop({ default: () => '100%' }) readonly width!: string;
+  @Ref() readonly video!: HTMLVideoElement;
 
   mounted() {
     // start loading video

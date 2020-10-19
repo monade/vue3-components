@@ -245,7 +245,7 @@ export default class VSelect extends Vue {
   async startEditing(option: VSelectOption) {
     this.editing = option;
     await this.$nextTick();
-    const edt: any[] = this.$refs.editInput as any;
+    const edt = this.$refs.editInput as HTMLInputElement[];
     return edt[0]?.focus();
   }
 

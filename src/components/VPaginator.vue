@@ -69,7 +69,7 @@ export default class VPaginator extends Vue {
       }
     }
 
-    const items = [];
+    const items: number[] = [];
     for (let i = first; i <= last; i++) {
       items.push(i);
     }

@@ -40,17 +40,17 @@ import VIcon from './VIcon.vue'
 
 @Component({ components: { VAudioElementWrapper, VIcon } })
 export default class VAudio extends Vue {
-  @Prop({ default: () => [] }) sources!: string[];
-  @Prop({ default: () => 1000 }) timeout!: number;
-  @Prop({ default: () => false }) canPause!: boolean;
-  @Prop({ default: () => '#9FABBC' }) playingColor!: boolean;
-  @Prop({ default: () => 'white' }) contrastColor!: string[];
+  @Prop({ default: () => [] }) readonly sources!: string[];
+  @Prop({ default: () => 1000 }) readonly timeout!: number;
+  @Prop({ default: () => false }) readonly canPause!: boolean;
+  @Prop({ default: () => '#9FABBC' }) readonly playingColor!: boolean;
+  @Prop({ default: () => 'white' }) readonly contrastColor!: string[];
 
-  loading = false;
-  playing = false;
-  error = false;
-  loaded = 0;
-  @Ref('audio-wrapper') audio!: VAudioElementWrapper;
+  private loading = false;
+  private playing = false;
+  private error = false;
+  private loaded = 0;
+  @Ref('audio-wrapper') readonly audio!: VAudioElementWrapper;
 
   private timeupdateHandler(event: { progression: number}) {
     if (event) {
