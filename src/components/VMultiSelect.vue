@@ -82,8 +82,8 @@ export interface MultiSelectOption {
 }
 
 export interface MultiSelectGroup {
-  id?: string;
-  options: MultiSelectOption[] | null;
+  id: string;
+  name: string;
 }
 
 export interface MultiSelectAction {
@@ -144,8 +144,7 @@ export default class MultiSelect extends Vue {
     }
     return this.groups
       .map(group => {
-        group.options = this.getGroupedOptions(group);
-        return group;
+        return { ...group, options: this.getGroupedOptions(group) };
       })
       .filter(group => {
         return (group.options?.length || 0) > 0;
