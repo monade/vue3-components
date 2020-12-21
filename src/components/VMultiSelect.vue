@@ -40,7 +40,7 @@
 
         <ul class="list-inline list-options">
           <li class="list-inline-item" v-for="(option, index2) in group.options" :key="index2">
-            <v-checkbox v-model="selected" :input-value="option" :label="option.name"></v-checkbox>
+            <v-checkbox v-model="selected" :input-value="option">{{ option.name }}</v-checkbox>
           </li>
         </ul>
       </li>
@@ -57,8 +57,7 @@
           v-if="(index - offset) >= 0 && (index - offset) < maxElements"
           v-model="selected"
           :input-value="option"
-          :label="option.name"
-        ></v-checkbox>
+        >{{ option.name }}</v-checkbox>
 
         <div
           :data-index="index - maxElements / 2"

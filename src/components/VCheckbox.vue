@@ -10,9 +10,9 @@ import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 
 @Component
 export default class VCheckbox extends Vue {
-  @Prop() value!: boolean;
-  @Prop() inputValue? : string|null;
-  @Prop({ default: false }) disabled? : boolean;
+  @Prop({ default: false }) readonly value!: boolean;
+  @Prop() readonly inputValue?: string|null;
+  @Prop({ default: false }) readonly disabled!: boolean;
 
   @Watch('value')
   onValueChange(value: boolean) {
