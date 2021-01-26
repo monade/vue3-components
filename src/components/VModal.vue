@@ -56,7 +56,7 @@ export default class VModal extends Vue {
   private hideable = false;
 
   eventListener(e: KeyboardEvent) {
-    if (e.keyCode === 27) {
+    if (e.keyCode === 27 && this.hidesOnClickOut) {
       this.hide();
     }
   }
