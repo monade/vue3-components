@@ -2,7 +2,9 @@
   <span :class="containerCssClass" class="multiselect-container" @clickOutside="hideDropdown">
     <span :class="selectionCssClass" class="multiselect-selection" @click="toggleDropdown">
       <span class="multiselect-result" v-html="result"></span>
-      <span class="multiselect-icon" @click.stop="toggleDropdownOrClearResult"></span>
+      <span class="multiselect-icon d-flex align-items-center" @click.stop="toggleDropdownOrClearResult">
+        <slot name="result-icon"></slot>
+      </span>
     </span>
     <transition name="fade">
       <span class="multiselect-dropdown" v-if="dropdownVisible">
@@ -218,7 +220,7 @@ $close-icon: 'none';
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 10px;
+    min-width: 10px;
     height: 2rem;
     right: 1rem;
     top: 0;

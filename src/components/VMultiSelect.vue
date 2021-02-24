@@ -16,6 +16,11 @@
     @search="onSearch"
     @toggle-visible="onToggleVisible"
   >
+
+    <template slot="result-icon">
+      <slot name="custom-icon"></slot>
+    </template>
+
     <template slot="dropdown-header">
       <span class="multiselect-dropdown-header d-flex align-items-center" v-if="actions">
         <span class="multiselect-dropdown-custom-actions">
