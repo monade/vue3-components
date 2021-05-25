@@ -4,7 +4,6 @@ import VDataTable from './components/VDataTable.vue'
 import VModal from './components/VModal.vue'
 import VPaginator from './components/VPaginator.vue'
 import VPlacesAutocomplete from './components/VPlacesAutocomplete.vue'
-import VDatePickerModal from './components/VDatePickerModal.vue'
 import VBaseMultiSelect from './components/VBaseMultiSelect.vue'
 import VMultiSelect from './components/VMultiSelect.vue'
 import VSwitch from './components/VSwitch.vue'
@@ -29,7 +28,7 @@ import VComparisonGroupEditor from './components/VComparisonGroupEditor.vue'
 import VComparisonGroupSelect from './components/VComparisonGroupSelect.vue'
 
 export {
-  VCheckbox, VColorPicker, VDataTable, VModal, VPaginator, VPlacesAutocomplete, VDatePickerModal,
+  VCheckbox, VColorPicker, VDataTable, VModal, VPaginator, VPlacesAutocomplete,
   VBaseMultiSelect, VMultiSelect, VSwitch, VInlineEditor, VInlineMultiSelect, VInlinePlacesAutocomplete,
   VListGroup, VIcon, Styleguide, VContentLoading, VEntryList, VEntrySearch, VSelect, VSwitchButton,
   VMultiSwitcher, VNumberPicker, VLetterIcon, VTimePicker, VDatePicker, VEntryListGroup,

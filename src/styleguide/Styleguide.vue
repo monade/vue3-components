@@ -156,18 +156,6 @@
 
               <hr />
             </div>
-            <div id="VDatePickerModal">
-              <h4 class="pb-1">VDatePickerModal</h4>
-              <div class="mb-3">
-                <button type="button" class="btn btn-primary mb-2" @click.stop="dpOpen">Open</button>
-                <v-date-picker-modal ref="datePicker" :datetime="DPNow" title="Test data" dateLabel="Data" timeLabel="Ora" />
-              </div>
-              <pre>
-                &lt;v-date-picker-modal title="Test data" dateLabel="Data" timeLabel="Ora" /&gt;
-              </pre>
-
-              <hr />
-            </div>
 
             <div id="VInlineEditor">
               <h4 class="pb-1">VInlineEditor</h4>
@@ -660,7 +648,6 @@
               <li class="list-group-item"><a href="#VColorPicker">VColorPicker</a></li>
               <li class="list-group-item"><a href="#VDataTable">VDataTable</a></li>
               <li class="list-group-item"><a href="#VModal">VModal</a></li>
-              <li class="list-group-item"><a href="#VDatePickerModal">VDatePickerModal</a></li>
               <li class="list-group-item"><a href="#VInlineEditor">VInlineEditor</a></li>
               <li class="list-group-item"><a href="#VInlineMultiSelect">VInlineMultiSelect</a></li>
               <li class="list-group-item"><a href="#VListGroup">VListGroup</a></li>
@@ -696,7 +683,6 @@ import VCheckbox from '../components/VCheckbox.vue';
 import VColorPicker from '../components/VColorPicker.vue';
 import VDataTable from '../components/VDataTable.vue';
 import VModal from '../components/VModal.vue';
-import VDatePickerModal from '../components/VDatePickerModal.vue';
 import VInlineEditor from '../components/VInlineEditor.vue';
 import VInlineMultiSelect from '../components/VInlineMultiSelect.vue';
 import VListGroup from '../components/VListGroup.vue';
@@ -730,7 +716,6 @@ import { Component, Vue } from 'vue-property-decorator';
     VCheckbox,
     VColorPicker,
     VDataTable,
-    VDatePickerModal,
     VInlineEditor,
     VModal,
     VInlineMultiSelect,

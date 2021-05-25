@@ -1,13 +1,14 @@
 <template>
   <div class="toggle-container clickable" :class="{checked: checked, unchecked: !checked, disabled: disabled}">
-    <div class="toggle text-white">
+    <div class="toggle text-white"   @click="activate()">
       <input
+       @click="activate()"
         :id="'toggle-on-'+toggleName"
         class="toggle"
         name="toggle"
         value="false"
         type="radio"
-        v-on:click.stop="activate()"
+
       >
       <label
         :for="'toggle-on-'+toggleName"
@@ -74,6 +75,7 @@ html {
 }
 
 .toggle {
+  cursor: pointer;
   width: 50px;
   height: 20px;
 }
