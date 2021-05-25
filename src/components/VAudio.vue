@@ -43,8 +43,8 @@ export default class VAudio extends Vue {
   @Prop({ default: () => [] }) readonly sources!: string[];
   @Prop({ default: () => 1000 }) readonly timeout!: number;
   @Prop({ default: () => false }) readonly canPause!: boolean;
-  @Prop({ default: () => '#9FABBC' }) readonly playingColor!: boolean;
-  @Prop({ default: () => 'white' }) readonly contrastColor!: string[];
+  @Prop({ default: () => '#9FABBC' }) readonly playingColor!: string;
+  @Prop({ default: () => 'white' }) readonly contrastColor!: string;
 
   private loading = false;
   private playing = false;
