@@ -3,7 +3,7 @@
 A collection of vue components by @monade
 
 ## List of components
-- [DataTable](docs/components/DataTable.md)
+- [VSwitch](docs/components/VSwitch.md)
 - [Select2](docs/components/Select2.md)
 - [Paginator](docs/components/Paginator.md)
 
