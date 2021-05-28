@@ -48,7 +48,7 @@
             <div id="VPaginator">
               <h4 class="pb-1">VPaginator</h4>
               <div class="mb-3">
-                <v-paginator :meta="meta"></v-paginator>
+                <v-paginator :meta="meta" />
               </div>
               <pre>
                 &lt;v-paginator :meta="meta" /&gt;
@@ -68,6 +68,25 @@
               </div>
               <pre>
                 &lt;v-paginator :meta="meta" :range="..." /&gt;
+              </pre>
+
+              <h5 class="pb-1">VPaginator with custom slot</h5>
+              <div class="mb-3">
+                <v-paginator :meta="meta" :range="2" align="center">
+                  <template v-slot:left-arrow>
+                    <span class="small">Prev</span>
+                  </template>
+                  <template v-slot:right-arrow>
+                    <span class="small">Next</span>
+                  </template>
+                </v-paginator>
+              </div>
+              <pre>
+                &lt;v-paginator :meta="meta" :range="..."&gt;
+                  &lt;template v-slot:left-arrow&gt;
+                    ...Insert here everything you want
+                  &lt;/template&gt;
+                &lt;v-paginator/&gt;
               </pre>
 
               <hr />
@@ -745,6 +764,8 @@ export default class Styleguide extends Vue {
   vcheckboxVariable = true;
 
   meta = {
+    previousPage: 1,
+    nextPage: 2,
     lastPage: 3,
     currentPage: 1,
     totalPages: 4
