@@ -1,4 +1,4 @@
-# DataTable
+# VSwitch
 Simple switch
 
 ## Dependencies:

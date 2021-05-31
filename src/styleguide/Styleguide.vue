@@ -94,7 +94,7 @@
             <div id="VCheckbox">
               <h4 class="pb-1">VCheckbox</h4>
               <div class="mb-3">
-                <v-checkbox :value="vcheckboxVariable" label="Checkbox"/>
+                <v-checkbox :value="vcheckboxVariable" label="Checkbox"></v-checkbox>
               </div>
               <pre>
                 &lt;v-checkbox :value="variable" /&gt;
