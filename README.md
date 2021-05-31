@@ -7,6 +7,7 @@ A collection of vue components by @monade
 - [Paginator](docs/components/VPaginator.md)
 - [VColorPicker](docs/components/VColorPicker.md)
 - [VDataTable](docs/components/VDataTable.md)
+- [VModal](docs/components/VModal.md)
 
 ## TODO:
 - Documentation
