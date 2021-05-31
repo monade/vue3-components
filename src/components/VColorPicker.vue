@@ -2,7 +2,7 @@
   <div class="dropdown" v-click-outside="closeDropdown">
     <div class="d-flex h-100">
       <div class="my-auto clickable ml-3 h-100" @click="open=!open">
-        <div class="color-indicator" :style="{background: color}"></div>
+        <div class="color-indicator" :style="{background: currentColor}"></div>
       </div>
     </div>
     <div
@@ -13,7 +13,7 @@
       <div class="row mb-2" v-for="(chunk, index) in colorChunks" :key="index">
         <div class="col p-0" v-for="chunkColor in chunk" :key="chunkColor">
           <div class="color-picker-indicator mx-auto clickable d-flex" :style="{background: chunkColor}" @click="onColorClick(chunkColor)">
-            <v-icon class="m-auto icon icon-white" size="xs" v-if="color==chunkColor">check</v-icon>
+            <v-icon class="m-auto icon icon-white" size="xs" v-if="currentColor==chunkColor">check</v-icon>
           </div>
         </div>
       </div>
@@ -36,28 +36,25 @@ import VIcon from './VIcon.vue';
   }
 })
 export default class VColorPicker extends Vue {
-  @Prop({
-    default: () => {
-      return [];
-    }
-  })
-  readonly colors!: string[];
+  @Prop({ default: [] }) readonly colors!: string[];
+  @Prop({ default: '#ff0000' }) readonly color!: string;
+  @Prop({ default: 1 }) readonly columns!: number;
 
-  @Prop({ default: 1 })
-  readonly columns!: number;
+  created() {
+    this.currentColor = this.color;
+  }
 
   open = false;
+  currentColor = '';
 
   closeDropdown() {
     this.open = false;
   }
 
   onColorClick(color: string) {
+    this.currentColor = color;
     this.$emit('change', color);
   }
-
-  @Prop()
-  color!: string[];
 
   get colorChunks() {
     return chunkArrayInGroups(this.colors, this.columns);
