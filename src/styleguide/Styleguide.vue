@@ -325,9 +325,9 @@
 
             <div id="VContentLoading">
               <h4 class="pb-1">VContentLoading</h4>
-              <!-- <div class="mb-3">
-                <v-content-loading notch-size="3x"></v-content-loading>
-              </div> -->
+              <div class="mb-3 position-relative">
+                <v-content-loading notch-size="3x" notch-color="red"></v-content-loading>
+              </div>
               <pre>
                 &lt;v-content-loading notch-size="3x" /&gt;
               </pre>
