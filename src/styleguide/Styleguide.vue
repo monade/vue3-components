@@ -12,18 +12,13 @@
               <div class="mb-3">
                 <v-icon>audio</v-icon>
               </div>
-              <pre>
-                &lt;v-icon&gt;audio&lt;/v-icon&gt;
-              </pre>
+              <pre><code>&lt;v-icon&gt;audio&lt;/v-icon&gt;</code></pre>
 
               <h5>Spinning VIcon</h5>
               <div class="mb-3">
                 <v-icon :spin="true">audio</v-icon>
               </div>
-              <pre>
-                &lt;v-icon :spin="true" &gt;audio&lt;/v-icon&gt;
-              </pre>
-
+              <pre><code>&lt;v-icon :spin="true" &gt;audio&lt;/v-icon&gt;</code></pre>
               <hr />
             </div>
             <div id="VSwitch">
@@ -31,17 +26,13 @@
               <div class="mb-3">
                 <v-switch :value="vswitchVariable" />
               </div>
-              <pre>
-                &lt;v-switch :value="variable" /&gt;
-              </pre>
+              <pre><code>&lt;v-switch :value="variable" /&gt;</code></pre>
 
               <h5 class="pb-1">Disabled VSwitch</h5>
               <div class="mb-3">
                 <v-switch :value="vswitchVariable" :disabled="true" />
               </div>
-              <pre>
-                &lt;v-switch :value="variable" :disabled="true" /&gt;
-              </pre>
+              <pre><code>&lt;v-switch :value="variable" :disabled="true" /&gt;</code></pre>
 
               <hr />
             </div>
@@ -50,26 +41,19 @@
               <div class="mb-3">
                 <v-paginator :meta="meta" />
               </div>
-              <pre>
-                &lt;v-paginator :meta="meta" /&gt;
-              </pre>
+              <pre><code>&lt;v-paginator :meta="meta" /&gt;</code></pre>
 
               <h5 class="pb-1">VPaginator with alignment</h5>
               <div class="mb-3">
                 <v-paginator :meta="meta" align="center"></v-paginator>
               </div>
-              <pre>
-                &lt;v-paginator :meta="meta" align="..." /&gt;
-              </pre>
+              <pre><code>&lt;v-paginator :meta="meta" align="..." /&gt;</code></pre>
 
               <h5 class="pb-1">VPaginator with range</h5>
               <div class="mb-3">
                 <v-paginator :meta="meta" :range="2" align="center"></v-paginator>
               </div>
-              <pre>
-                &lt;v-paginator :meta="meta" :range="..." /&gt;
-              </pre>
-
+              <pre><code>&lt;v-paginator :meta="meta" :range="..." /&gt;</code></pre>
               <h5 class="pb-1">VPaginator with custom slot</h5>
               <div class="mb-3">
                 <v-paginator :meta="meta" :range="2" align="center">
@@ -81,14 +65,11 @@
                   </template>
                 </v-paginator>
               </div>
-              <pre>
-                &lt;v-paginator :meta="meta" :range="..."&gt;
-                  &lt;template v-slot:left-arrow&gt;
-                    ...Insert here everything you want
-                  &lt;/template&gt;
-                &lt;v-paginator/&gt;
-              </pre>
-
+              <pre><code>&lt;v-paginator :meta="meta" :range="..."&gt;
+  &lt;template v-slot:left-arrow&gt;
+    ...Insert here everything you want
+  &lt;/template&gt;
+&lt;v-paginator/&gt;</code></pre>
               <hr />
             </div>
             <div id="VCheckbox">
@@ -96,10 +77,7 @@
               <div class="mb-3">
                 <v-checkbox :value="vcheckboxVariable" label="Checkbox"></v-checkbox>
               </div>
-              <pre>
-                &lt;v-checkbox :value="variable" /&gt;
-              </pre>
-
+              <pre><code>&lt;v-checkbox :value="variable" label="Checkbox" /&gt;</code></pre>
               <hr />
             </div>
 
@@ -108,18 +86,13 @@
               <div class="mb-3">
                 <v-color-picker :color="color" :colors="colors" />
               </div>
-              <pre>
-                &lt;v-color-picker :color="color" :colors="colors" /&gt;
-              </pre>
+              <pre><code>&lt;v-color-picker :color="color" :colors="colors" /&gt;</code></pre>
 
               <h5 class="pb-1">VColorPicker with columns</h5>
               <div class="mb-3">
                 <v-color-picker :color="color" :colors="colors" :columns="2"/>
               </div>
-              <pre>
-                &lt;v-color-picker :color="color" :colors="colors" :columns="..." /&gt;
-              </pre>
-
+              <pre><code>&lt;v-color-picker :color="color" :colors="colors" :columns="..." /&gt;</code></pre>
               <hr />
             </div>
             <div id="VDataTable">
@@ -127,9 +100,7 @@
               <div class="mb-3">
                 <v-data-table :columns="DTcolumns" :values="DTvalues" :sortable="true" :loading="false"/>
               </div>
-              <pre>
-                &lt;v-data-table columns="columns" values="values" sortable="true" loading="false" /&gt;
-              </pre>
+              <pre><code>&lt;v-data-table columns="columns" values="values" sortable="true" loading="false" /&gt;</code></pre>
 
               <h5 class="pb-1">VDataTable with actions</h5>
               <div class="mb-3">
@@ -139,9 +110,7 @@
                   </template>
                 </v-data-table>
               </div>
-              <pre>
-                &lt;v-data-table columns="columns" values="values" sortable="true" loading="false" /&gt;
-              </pre>
+              <pre><code>&lt;v-data-table columns="columns" values="values" sortable="true" loading="false" /&gt;</code></pre>
 
               <h5 class="pb-1">VDataTable with sortable columns</h5>
               <div class="mb-3">
@@ -151,9 +120,7 @@
                   </template>
                 </v-data-table>
               </div>
-              <pre>
-                &lt;v-data-table columns="columns" values="values" sortable="true" loading="false" /&gt;
-              </pre>
+              <pre><code>&lt;v-data-table columns="columns" values="values" sortable="true" loading="false" /&gt;</code></pre>
 
               <hr />
             </div>
@@ -169,10 +136,7 @@
                   <template v-slot:footer><div>Footer</div></template>
                 </v-modal>
               </div>
-              <pre>
-                &lt;v-modal&gt;&lt;template v-slot:header&gt;&lt;/template&gt;&lt;template v-slot:footer&gt;&lt;/template&gt;&lt;template v-slot&gt;&lt;/template&gt;&lt;/v-modal&gt;
-              </pre>
-
+              <pre><code>&lt;v-modal&gt;&lt;template v-slot:header&gt;&lt;/template&gt;&lt;template v-slot:footer&gt;&lt;/template&gt;&lt;template v-slot&gt;&lt;/template&gt;&lt;/v-modal&gt;</code></pre>
               <hr />
             </div>
 
@@ -181,17 +145,13 @@
               <div class="mb-3">
                 <v-inline-editor :value="IVvalue" :placeholder="IVplaceholder" max-length="10" :uppercase="false"/>
               </div>
-              <pre>
-                &lt;v-inline-editor :value="value" :placeholder="..." max-length="10" uppercase="false" /&gt;
-              </pre>
+              <pre><code>&lt;v-inline-editor :value="value" :placeholder="..." max-length="10" uppercase="false" /&gt;</code></pre>
 
               <h5 class="pb-1">VInlineEditor with uppercase</h5>
               <div class="mb-3">
                 <v-inline-editor :value="IVvalue" :placeholder="IVplaceholder" max-length="10" :uppercase="true"/>
               </div>
-              <pre>
-                &lt;v-inline-editor :value="value" :placeholder="..." max-length="10" uppercase="<b>true</b>" /&gt;
-              </pre>
+              <pre><code>&lt;v-inline-editor :value="value" :placeholder="..." max-length="10" uppercase="<b>true</b>" /&gt;</code></pre>
 
               <hr />
             </div>
@@ -201,25 +161,18 @@
               <div class="mb-3">
                 <v-inline-multi-select :value="IMSvalues" :options="IMSoptions"></v-inline-multi-select>
               </div>
-              <pre>
-                &lt;v-inline-multi-select :value="..." :options="..." /&gt;
-              </pre>
-
+              <pre><code>&lt;v-inline-multi-select :value="..." :options="..." /&gt;</code></pre>
               <h5 class="pb-1">VInlineMultiSelect with search</h5>
               <div class="mb-3">
                 <v-inline-multi-select :value="IMSvalues" :options="IMSoptions" :search-enabled="true"></v-inline-multi-select>
               </div>
-              <pre>
-                &lt;v-inline-multi-select :value="..." :options="..." <b>:search-enabled="true"</b>/&gt;
-              </pre>
+              <pre><code>&lt;v-inline-multi-select :value="..." :options="..." <b>:search-enabled="true"</b>/&gt;</code></pre>
 
               <h5 class="pb-1">VInlineMultiSelect with dropdown</h5>
               <div class="mb-3">
                 <v-inline-multi-select :value="IMSvalues" :options="IMSoptions" :show-dropdown="true"></v-inline-multi-select>
               </div>
-              <pre>
-                &lt;v-inline-multi-select :value="..." :options="..." <b>:show-dropdown="true"</b>/&gt;
-              </pre>
+              <pre><code>&lt;v-inline-multi-select :value="..." :options="..." <b>:show-dropdown="true"</b>/&gt;</code></pre>
               <hr />
             </div>
 
@@ -232,11 +185,9 @@
                   </template>
                 </v-list-group>
               </div>
-              <pre>
-                &lt;v-list-group :items="..." :options="..." &gt;<br>
-                &lt;template v-slot:item&gt;...&lt;/template&gt;<br>
-                &lt;/v-list-group&gt;
-              </pre>
+              <pre><code>&lt;v-list-group :items="..." :options="..." &gt;<br>
+  &lt;template v-slot:item&gt;...&lt;/template&gt;<br>
+&lt;/v-list-group&gt;</code></pre>
 
               <h5 class="pb-1">VListGroup ordered</h5>
               <div class="mb-3">
@@ -246,11 +197,9 @@
                   </template>
                 </v-list-group>
               </div>
-              <pre>
-                &lt;v-list-group :items="..." <b>:ordered="true"</b> &gt;<br>
-                &lt;template v-slot:item&gt;...&lt;/template&gt;<br>
-                &lt;/v-list-group&gt;
-              </pre>
+              <pre><code>&lt;v-list-group :items="..." <b>:ordered="true"</b> &gt;<br>
+  &lt;template v-slot:item&gt;...&lt;/template&gt;<br>
+&lt;/v-list-group&gt;</code></pre>
 
               <h5 class="pb-1">VListGroup with selection</h5>
               <div class="mb-3">
@@ -260,12 +209,9 @@
                   </template>
                 </v-list-group>
               </div>
-              <pre>
-                &lt;v-list-group :items="..." <b>:selectable="true"</b> &gt;<br>
-                &lt;template v-slot:item&gt;...&lt;/template&gt;<br>
-                &lt;/v-list-group&gt;
-              </pre>
-
+              <pre><code>&lt;v-list-group :items="..." <b>:selectable="true"</b> &gt;<br>
+  &lt;template v-slot:item&gt;...&lt;/template&gt;<br>
+&lt;/v-list-group&gt;</code></pre>
               <h5 class="pb-1">VListGroup with highlight</h5>
               <div class="mb-3">
                 <v-list-group :items="Vitems" :is-highlighted="item => item.id == 1">
@@ -274,11 +220,9 @@
                   </template>
                 </v-list-group>
               </div>
-              <pre>
-                &lt;v-list-group :items="..." <b>:is-highlighted="(item) => {...}"</b> &gt;<br>
-                &lt;template v-slot:item&gt;...&lt;/template&gt;<br>
-                &lt;/v-list-group&gt;
-              </pre>
+              <pre><code>&lt;v-list-group :items="..." <b>:is-highlighted="(item) => {...}"</b> &gt;<br>
+  &lt;template v-slot:item&gt;...&lt;/template&gt;<br>
+&lt;/v-list-group&gt;</code></pre>
 
               <h5 class="pb-1">VListGroup with over</h5>
               <div class="mb-3">
@@ -288,11 +232,9 @@
                   </template>
                 </v-list-group>
               </div>
-              <pre>
-                &lt;v-list-group :items="..." <b>:is-over="(item) => {...}"</b> &gt;<br>
-                &lt;template v-slot:item&gt;...&lt;/template&gt;<br>
-                &lt;/v-list-group&gt;
-              </pre>
+              <pre><code>&lt;v-list-group :items="..." <b>:is-over="(item) => {...}"</b> &gt;<br>
+  &lt;template v-slot:item&gt;...&lt;/template&gt;<br>
+&lt;/v-list-group&gt;</code></pre>
               <hr />
             </div>
 
@@ -301,36 +243,31 @@
               <div class="mb-3">
                 <v-multi-select :value="IMSvalues" :options="IMSoptions"></v-multi-select>
               </div>
-              <pre>
-                &lt;v-multi-select :value="..." :options="..." /&gt;
-              </pre>
-
+              <pre><code>&lt;v-multi-select :value="..." :options="..." /&gt;</code></pre>
               <h5 class="pb-1">VMultiSelect with search</h5>
               <div class="mb-3">
                 <v-multi-select :value="IMSvalues" :options="IMSoptions" :search-enabled="true"></v-multi-select>
               </div>
-              <pre>
-                &lt;v-multi-select :value="..." :options="..." <b>:search-enabled="true"</b>/&gt;
-              </pre>
+              <pre><code>&lt;v-multi-select :value="..." :options="..." <b>:search-enabled="true"</b>/&gt;</code></pre>
 
               <h5 class="pb-1">VMultiSelect with dropdown</h5>
               <div class="mb-3">
                 <v-multi-select :value="IMSvalues" :options="IMSoptions" :show-dropdown="true"></v-multi-select>
               </div>
-              <pre>
-                &lt;v-multi-select :value="..." :options="..." <b>:show-dropdown="true"</b>/&gt;
-              </pre>
+              <pre><code>&lt;v-multi-select :value="..." :options="..." <b>:show-dropdown="true"</b>/&gt;</code></pre>
               <hr />
             </div>
 
             <div id="VContentLoading">
               <h4 class="pb-1">VContentLoading</h4>
-              <div class="mb-3 position-relative">
-                <v-content-loading notch-size="3x" notch-color="red"></v-content-loading>
+              <div>
+                <pre><code>&lt;v-content-loading notch-size="3x" notch-color="red" /&gt;</code></pre>
               </div>
-              <pre>
-                &lt;v-content-loading notch-size="3x" /&gt;
-              </pre>
+              <div  class=" position-relative my-5">
+                <div class="my-5">
+                  <v-content-loading notch-size="3x" notch-color="red"></v-content-loading>
+                </div>
+              </div>
 
               <hr />
             </div>
@@ -339,33 +276,25 @@
               <div class="mb-3">
                 <v-entry-list title="Entry list" :items="IMSoptions"></v-entry-list>
               </div>
-              <pre>
-                &lt;v-entry-list  title="..." :items="..." /&gt;
-              </pre>
+              <pre><code>&lt;v-entry-list  title="..." :items="..." /&gt;</code></pre>
 
               <h5 class="pb-1">VEntryList with add</h5>
               <div class="mb-3">
                 <v-entry-list title="Entry list" :items="IMSoptions" :can-add="() => true"></v-entry-list>
               </div>
-              <pre>
-                &lt;v-entry-list  title="..." :items="..."  :can-add="() => true" /&gt;
-              </pre>
+              <pre><code>&lt;v-entry-list  title="..." :items="..."  :can-add="() => true" /&gt;</code></pre>
 
               <h5 class="pb-1">VEntryList with no actions</h5>
               <div class="mb-3">
                 <v-entry-list title="Entry list" :items="IMSoptions" :actions="false"></v-entry-list>
               </div>
-              <pre>
-                &lt;v-entry-list  title="..." :items="..."  :actions="false"/&gt;
-              </pre>
+              <pre><code>&lt;v-entry-list  title="..." :items="..."  :actions="false"/&gt;</code></pre>
 
               <h5 class="pb-1">VEntryList with selectable</h5>
               <div class="mb-3">
                 <v-entry-list title="Entry list" :items="IMSoptions" :actions="false" :selectable="true"></v-entry-list>
               </div>
-              <pre>
-                &lt;v-entry-list  title="..." :items="..."  :actions="false" :selectable="true" /&gt;
-              </pre>
+              <pre><code>&lt;v-entry-list  title="..." :items="..."  :actions="false" :selectable="true" /&gt;</code></pre>
               <hr />
             </div>
             <div id="VEntrySearch">
@@ -373,25 +302,19 @@
               <div class="mb-3">
                 <v-entry-search :load="loadItems"></v-entry-search>
               </div>
-              <pre>
-                &lt;v-entry-search :load="..." /&gt;
-              </pre>
+              <pre><code>&lt;v-entry-search :load="..." /&gt;</code></pre>
 
               <h5 class="pb-1">VEntrySearch with selectable</h5>
               <div class="mb-3">
                 <v-entry-search :load="loadItems" :selectable="true"></v-entry-search>
               </div>
-              <pre>
-                &lt;v-entry-search :load="..."  :selectable="true" /&gt;
-              </pre>
+              <pre><code>&lt;v-entry-search :load="..."  :selectable="true" /&gt;</code></pre>
 
               <h5 class="pb-1">VEntrySearch with icon</h5>
               <div class="mb-3">
                 <v-entry-search :load="loadItems" :with-icon="true"></v-entry-search>
               </div>
-              <pre>
-                &lt;v-entry-search :load="..."  :with-icon="true" /&gt;
-              </pre>
+              <pre><code>&lt;v-entry-search :load="..."  :with-icon="true" /&gt;</code></pre>
 
               <hr />
             </div>
@@ -400,25 +323,19 @@
               <div class="mb-3">
                 <v-select :value="null" :options="VselectItems" :loading="false"></v-select>
               </div>
-              <pre>
-                &lt;v-select value="..." :options="..."  :loading="false"/&gt;
-              </pre>
+             <pre><code>&lt;v-select value="..." :options="..."  :loading="false"/&gt;</code></pre>
 
               <h5 class="pb-1">VSelect addable</h5>
               <div class="mb-3">
                 <v-select :value="null" :options="VselectItems" :loading="false" :addable="true"></v-select>
               </div>
-              <pre>
-                &lt;v-select value="..." :options="..."  :loading="false" :loading="false" :addable="true"/&gt;
-              </pre>
+              <pre><code>&lt;v-select value="..." :options="..."  :loading="false" :loading="false" :addable="true"/&gt;</code></pre>
 
               <h5 class="pb-1">VSelect scrollable</h5>
               <div class="mb-3">
                 <v-select :value="null" :options="VselectItems" :loading="false" :scrollable="true"></v-select>
               </div>
-              <pre>
-                &lt;v-select value="..." :options="..."  :loading="false" :loading="false" :addable="true"/&gt;
-              </pre>
+              <pre><code>&lt;v-select value="..." :options="..."  :loading="false" :loading="false" :addable="true"/&gt;</code></pre>
               <hr />
             </div>
             <div id="VSwitchButton">
@@ -426,10 +343,7 @@
               <div class="mb-3">
                 <v-switch-button :value="false">VSwitchButton</v-switch-button>
               </div>
-              <pre>
-                &lt;v-switch-button value="..."&gt;LABEL&lt;/v-switch-button&gt;
-              </pre>
-
+              <pre><code>&lt;v-switch-button value="..."&gt;LABEL&lt;/v-switch-button&gt;</code></pre>
               <hr />
             </div>
             <div id="VMultiSwitcher">
@@ -437,10 +351,7 @@
               <div class="mb-3">
                 <v-multi-switcher value="" :items="msoptions"></v-multi-switcher>
               </div>
-              <pre>
-                &lt;v-multi-switcher value="" :items="..."&gt;&lt;/v-multi-switcher&gt;
-              </pre>
-
+              <pre><code>&lt;v-multi-switcher value="" :items="..."&gt;&lt;/v-multi-switcher&gt;</code></pre>
               <hr />
             </div>
             <div id="VNumberPicker">
@@ -448,41 +359,31 @@
               <div class="mb-3">
                 <v-number-picker :value="0"></v-number-picker>
               </div>
-              <pre>
-                &lt;v-number-picker :value="0"&gt;&lt;/v-number-picker&gt;
-              </pre>
+              <pre><code>&lt;v-number-picker :value="0"&gt;&lt;/v-number-picker&gt;</code></pre>
 
               <h5 class="pb-1">VNumberPicker 2 digits</h5>
               <div class="mb-3">
                 <v-number-picker :value="0" :digits="2"></v-number-picker>
               </div>
-              <pre>
-                &lt;v-number-picker :value="..." :digits="..."&gt;&lt;/v-number-picker&gt;
-              </pre>
+              <pre><code>&lt;v-number-picker :value="..." :digits="..."&gt;&lt;/v-number-picker&gt;</code></pre>
 
               <h5 class="pb-1">VNumberPicker Max and Min</h5>
               <div class="mb-3">
                 <v-number-picker :value="0" :max="2" :min="-2"></v-number-picker>
               </div>
-              <pre>
-                &lt;v-number-picker :value="..." :max="..." :min="..."&gt;&lt;/v-number-picker&gt;
-              </pre>
+              <pre><code>&lt;v-number-picker :value="..." :max="..." :min="..."&gt;&lt;/v-number-picker&gt;</code></pre>
 
               <h5 class="pb-1">VNumberPicker Max, Min in loop mode</h5>
               <div class="mb-3">
                 <v-number-picker :value="0" :max="2" :min="-2" :loop="true"></v-number-picker>
               </div>
-              <pre>
-                &lt;v-number-picker :value="..." :max="..." :min="..." :loop="true"&gt;&lt;/v-number-picker&gt;
-              </pre>
+              <pre><code>&lt;v-number-picker :value="..." :max="..." :min="..." :loop="true"&gt;&lt;/v-number-picker&gt;</code></pre>
 
               <h5 class="pb-1">VNumberPicker custom step</h5>
               <div class="mb-3">
                 <v-number-picker :value="0" :step="3"></v-number-picker>
               </div>
-              <pre>
-                &lt;v-number-picker :value="..." :step="..."&gt;&lt;/v-number-picker&gt;
-              </pre>
+              <pre><code>&lt;v-number-picker :value="..." :step="..."&gt;&lt;/v-number-picker&gt;</code></pre>
               <hr />
             </div>
             <div id="VLetterIcon">
@@ -490,33 +391,24 @@
               <div class="mb-3">
                 <v-letter-icon color="#ff5000">A</v-letter-icon>
               </div>
-              <pre>
-                &lt;v-letter-icon color="..."&gt;LETTER&lt;/v-letter-icon&gt;
-              </pre>
-
+              <pre><code>&lt;v-letter-icon color="..."&gt;LETTER&lt;/v-letter-icon&gt;</code></pre>
               <h5 class="pb-1">VLetterIcon with number</h5>
               <div class="mb-3">
                 <v-letter-icon color="#ff5000">3</v-letter-icon>
               </div>
-              <pre>
-                &lt;v-letter-icon color="..."&gt;LETTER&lt;/v-letter-icon&gt;
-              </pre>
+              <pre><code>&lt;v-letter-icon color="..."&gt;LETTER&lt;/v-letter-icon&gt;</code></pre>
 
               <h5 class="pb-1">VLetterIcon with random color</h5>
               <div class="mb-3">
                 <v-letter-icon>3</v-letter-icon>
               </div>
-              <pre>
-                &lt;v-letter-icon &gt;LETTER&lt;/v-letter-icon&gt;
-              </pre>
+              <pre><code>&lt;v-letter-icon &gt;LETTER&lt;/v-letter-icon&gt;</code></pre>
 
               <h5 class="pb-1">VLetterIcon with random color palette</h5>
               <div class="mb-3">
                 <v-letter-icon :colors="palette">3</v-letter-icon>
               </div>
-              <pre>
-                &lt;v-letter-icon :colors="..." &gt;LETTER&lt;/v-letter-icon&gt;
-              </pre>
+              <pre><code>&lt;v-letter-icon :colors="..." &gt;LETTER&lt;/v-letter-icon&gt;</code></pre>
               <hr />
             </div>
             <div id="VTimePicker">
@@ -524,10 +416,7 @@
               <div class="mb-3">
                 <v-time-picker value="12:30"></v-time-picker>
               </div>
-              <pre>
-                &lt;v-time-picker value="..."&gt;&lt;/v-time-picker&gt;
-              </pre>
-
+              <pre><code>&lt;v-time-picker value="..."&gt;&lt;/v-time-picker&gt;</code></pre>
               <hr />
             </div>
             <div id="VTimeSlotPicker">
@@ -535,10 +424,7 @@
               <div class="mb-3">
                 <v-time-slot-picker :value="[]"></v-time-slot-picker>
               </div>
-              <pre>
-                &lt;v-time-slot-picker :value="[...]"&gt;&lt;/v-time-slot-picker&gt;
-              </pre>
-
+              <pre><code>&lt;v-time-slot-picker :value="[...]"&gt;&lt;/v-time-slot-picker&gt;</code></pre>
               <hr />
             </div>
             <div id="VDatePicker">
@@ -546,9 +432,7 @@
               <div class="mb-3">
                 <v-date-picker></v-date-picker>
               </div>
-              <pre>
-                &lt;v-date-picker&gt;&lt;/v-date-picker&gt;
-              </pre>
+              <pre><code>&lt;v-date-picker&gt;&lt;/v-date-picker&gt;</code></pre>
 
               <hr />
             </div>
@@ -557,17 +441,13 @@
               <div class="mb-3">
                 <v-multi-level-select v-model="option" :options="mlsOptions"></v-multi-level-select>
               </div>
-              <pre>
-                &lt;v-multi-level-select&gt;&lt;/v-multi-level-select&gt;
-              </pre>
+              <pre><code>&lt;v-multi-level-select&gt;&lt;/v-multi-level-select&gt;</code></pre>
 
               <h5 class="pb-1">VMultiLevelSelect multiple selection</h5>
               <div class="mb-3">
                 <v-multi-level-select v-model="option" :options="mlsOptions" :multiple="true"></v-multi-level-select>
               </div>
-              <pre>
-                &lt;v-multi-level-select&gt;&lt;/v-multi-level-select&gt;
-              </pre>
+              <pre><code>&lt;v-multi-level-select&gt;&lt;/v-multi-level-select&gt;</code></pre>
               <hr />
             </div>
             <div id="VComparisonGroupSelect">
@@ -575,10 +455,7 @@
               <div class="mb-3">
                 <v-comparison-group-select :payload="null" :load-groups="loadGroups" :create-group="createGroup" :add-entry-to-group="addEntryToGroup" :remove-entry-from-group="removeEntryFromGroup"></v-comparison-group-select>
               </div>
-              <pre>
-                &lt;v-comparison-group-select :payload="null" :load-groups="loadGroups" :create-group="createGroup" :add-entry-to-group="addEntryToGroup" :remove-entry-from-group="removeEntryFromGroup"&gt;&lt;/v-comparison-group-select&gt;
-              </pre>
-
+              <pre><code>&lt;v-comparison-group-select :payload="null" :load-groups="loadGroups" :create-group="createGroup" :add-entry-to-group="addEntryToGroup" :remove-entry-from-group="removeEntryFromGroup"&gt;&lt;/v-comparison-group-select&gt;</code></pre>
               <hr />
             </div>
             <div id="VAudio">
@@ -586,37 +463,27 @@
               <div class="mb-3">
                 <v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000" />
               </div>
-              <pre>
-                &lt;v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000"&gt;&lt;/v-audio&gt;
-              </pre>
+              <pre><code>&lt;v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000"&gt;&lt;/v-audio&gt;</code></pre>
               <h5 class="pb-1">VAudio that can pause</h5>
               <div class="mb-3">
                 <v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000" :can-pause="true" />
               </div>
-              <pre>
-                &lt;v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000" :can-pause="true"&gt;&lt;/v-audio&gt;
-              </pre>
+              <pre><code>&lt;v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000" :can-pause="true"&gt;&lt;/v-audio&gt;</code></pre>
               <h5 class="pb-1">VAudio with color</h5>
               <div class="mb-3">
                 <v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000" />
               </div>
-              <pre>
-                &lt;v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000"&gt;&lt;/v-audio&gt;
-              </pre>
+              <pre><code>&lt;v-audio :sources="['https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3']" :timeout="60000"&gt;&lt;/v-audio&gt;</code></pre>
               <h5 class="pb-1">VAudio with no existing source</h5>
               <div class="mb-3">
                 <v-audio :sources="['https:missing.com/mpthreetest.mp3']" :timeout="60000" />
               </div>
-              <pre>
-                &lt;v-audio :sources="['https:missing.com/mpthreetest.mp3']" :timeout="60000"&gt;&lt;/v-audio&gt;
-              </pre>
+              <pre><code>&lt;v-audio :sources="['https:missing.com/mpthreetest.mp3']" :timeout="60000"&gt;&lt;/v-audio&gt;</code></pre>
               <h5 class="pb-1">VAudio with empty sources</h5>
               <div class="mb-3">
                 <v-audio :sources="[]" :timeout="60000" />
               </div>
-              <pre>
-                &lt;v-audio :sources="[]" :timeout="60000"&gt;&lt;/v-audio&gt;
-              </pre>
+              <pre><code>&lt;v-audio :sources="[]" :timeout="60000"&gt;&lt;/v-audio&gt;</code></pre>
             </div>
             <div id="VVideo">
               <hr />
@@ -624,7 +491,7 @@
               <div class="mb-3 d-flex align-items-center justify-content-between">
                 <v-video :sources="['http://techslides.com/demos/sample-videos/small.mp4']" width="400px"></v-video>
               </div>
-              <pre>&lt;v-video :sources="[urls]" width="400px" /&gt;</pre>
+              <pre><code>&lt;v-video :sources="[urls]" width="400px" /&gt;</code></pre>
 
               <hr />
             </div>
@@ -635,7 +502,7 @@
                 <button class="btn btn-primary" @click.stop="openVideo('modalVideo')">Open video</button>
                 <v-modal-video title="Video" ref="modalVideo" :sources="['http://techslides.com/demos/sample-videos/small.mp4']"></v-modal-video>
               </div>
-              <pre>&lt;v-modal-video title='title' :sources="[urls]" /&gt;</pre>
+              <pre><code>&lt;v-modal-video title='title' :sources="[urls]" /&gt;</code></pre>
 
               <h5>VModalVideo with autostart</h5>
 
@@ -643,7 +510,7 @@
                 <button class="btn btn-primary" @click.stop="openVideo('modalVideo2')">Open video</button>
                 <v-modal-video title="Video" ref="modalVideo2" :sources="['http://techslides.com/demos/sample-videos/small.mp4']" :autostart="true"></v-modal-video>
               </div>
-              <pre>&lt;v-modal-video title='title' :sources="[urls]" :autostart="true"/&gt;</pre>
+              <pre><code>&lt;v-modal-video title='title' :sources="[urls]" :autostart="true"/&gt;</code></pre>
 
               <h5>VModalVideo with size</h5>
 
@@ -651,7 +518,7 @@
                 <button class="btn btn-primary" @click.stop="openVideo('modalVideo2')">Open video</button>
                 <v-modal-video title="Video" ref="modalVideo2" :sources="['http://techslides.com/demos/sample-videos/small.mp4']" size="xl"></v-modal-video>
               </div>
-              <pre>&lt;v-modal-video title='title' :sources="[urls]" size="xl"/&gt;</pre>
+              <pre><code>&lt;v-modal-video title='title' :sources="[urls]" size="xl"/&gt;</code></pre>
             </div>
           </div>
         </div>
@@ -660,18 +527,18 @@
         <div class="card sticky-top scroll">
           <div class="card-body">
             <ul class="list-group list-group-flush v-50">
-              <li class="list-group-item"><a href="#VIcon">VIcon</a></li>
-              <li class="list-group-item"><a href="#VSwitch">VSwitch</a></li>
-              <li class="list-group-item"><a href="#VPaginator">VPaginator</a></li>
-              <li class="list-group-item"><a href="#VCheckbox">VCheckbox</a></li>
-              <li class="list-group-item"><a href="#VColorPicker">VColorPicker</a></li>
-              <li class="list-group-item"><a href="#VDataTable">VDataTable</a></li>
-              <li class="list-group-item"><a href="#VModal">VModal</a></li>
+              <li class="list-group-item"><v-icon class="text-success mr-2">check</v-icon><a href="#VIcon">VIcon</a></li>
+              <li class="list-group-item"><v-icon class="text-success mr-2">check</v-icon><a href="#VSwitch">VSwitch</a></li>
+              <li class="list-group-item"><v-icon class="text-success mr-2">check</v-icon><a href="#VPaginator">VPaginator</a></li>
+              <li class="list-group-item"><v-icon class="text-success mr-2">check</v-icon><a href="#VCheckbox">VCheckbox</a></li>
+              <li class="list-group-item"><v-icon class="text-success mr-2">check</v-icon><a href="#VColorPicker">VColorPicker</a></li>
+              <li class="list-group-item"><v-icon class="text-success mr-2">check</v-icon><a href="#VDataTable">VDataTable</a></li>
+              <li class="list-group-item"><v-icon class="text-success mr-2">check</v-icon><a href="#VModal">VModal</a></li>
               <li class="list-group-item"><a href="#VInlineEditor">VInlineEditor</a></li>
               <li class="list-group-item"><a href="#VInlineMultiSelect">VInlineMultiSelect</a></li>
               <li class="list-group-item"><a href="#VListGroup">VListGroup</a></li>
               <li class="list-group-item"><a href="#VMultiSelect">VMultiSelect</a></li>
-              <li class="list-group-item"><a href="#VContentLoading">VContentLoading</a></li>
+              <li class="list-group-item"><a href="#VContentLoading">VContentLoading</a><v-icon class="text-success">check</v-icon></li>
               <li class="list-group-item"><a href="#VEntryList">VEntryList</a></li>
               <li class="list-group-item"><a href="#VEntrySearch">VEntrySearch</a></li>
               <li class="list-group-item"><a href="#VSelect">VSelect</a></li>
@@ -684,7 +551,7 @@
               <li class="list-group-item"><a href="#VDatePicker">VDatePicker</a></li>
               <li class="list-group-item"><a href="#VMultiLevelSelect">VMultiLevelSelect</a></li>
               <li class="list-group-item"><a href="#VComparisonGroupSelect">VComparisonGroupSelect</a></li>
-              <li class="list-group-item"><a href="#VAudio">VAudio</a></li>
+              <li class="list-group-item"><v-icon class="text-success mr-2">check</v-icon><a href="#VAudio">VAudio</a></li>
               <li class="list-group-item"><a href="#VVideo">VVideo</a></li>
               <li class="list-group-item"><a href="#VModalVideo">VModalVideo</a></li>
             </ul>
