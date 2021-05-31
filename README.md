@@ -6,6 +6,7 @@ A collection of vue components by @monade
 - [VSwitch](docs/components/VSwitch.md)
 - [Paginator](docs/components/VPaginator.md)
 - [VColorPicker](docs/components/VColorPicker.md)
+- [VDataTable](docs/components/VDataTable.md)
 
 ## TODO:
 - Documentation
