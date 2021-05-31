@@ -1,4 +1,4 @@
-# DataTable
+# VSwitch
 Simple switch
 
 ## Dependencies:
@@ -20,4 +20,3 @@ Simple switch
 |-----------|-----------------------------------------------------------|
 | `@input`  | value: boolean                                            |
 
-```

@@ -1,4 +1,4 @@
-# DataTable
+# VPaginator
 Component to handle pagination on lists.
 
 ## Dependencies:
