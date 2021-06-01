@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div v-click-outside="disableEditing">
     <template v-if="!disabled && (inputOnly || editing || !data)">
       <textarea
         v-if="textArea"
         v-model="data"
         :maxLength="maxLength"
         :class="classes"
-        @click="editing = true"
+        @click.stop="enableEditing"
         :placeholder="placeholder"
         resize="none"
         @blur="onSave"
@@ -14,7 +14,7 @@
       <input
         v-else
         :maxLength="maxLength"
-        @click="editing = true"
+        @click.stop="enableEditing"
         v-model="data"
         :style="inputStyle"
         :type="type"
@@ -25,7 +25,7 @@
     </template>
     <template v-else>
       <p
-        @click="editing = true"
+        @click.stop="enableEditing"
         :class="classes"
         :style="inputStyle"
         class="m-0 white-space-pre"
@@ -39,6 +39,8 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { NestedDictionary } from '../models/NestedDictionary';
 import { renderNestedParams } from '../utils/renderNestedParams';
 
+import ClickOutside from '../directives/ClickOutside';
+
 export interface DataFormatter {
   fromString(value: string): any;
   toString(value: any): string;
@@ -48,7 +50,11 @@ class NullDataFormatter implements DataFormatter {
   toString(v: string) { return v; }
 }
 
-@Component
+@Component({
+  directives: {
+    ClickOutside
+  }
+})
 export default class VInlineEditor extends Vue {
   @Prop() readonly value!: string | NestedDictionary;
   @Prop({ default: '' }) readonly suffix!: string;
@@ -112,12 +118,22 @@ export default class VInlineEditor extends Vue {
     return renderNestedParams(this.dataKeys, this.data);
   }
 
+  private enableEditing() {
+    this.editing = true;
+  }
+
+  private disableEditing() {
+    this.editing = false;
+  }
+
   validateRegExp() {
     this.matchesRegExp = this.regExp && typeof this.data === 'string' ? this.regExp.test(this.data) : true;
   }
 
   onSave() {
-    if (this.uppercase && this.data && typeof this.data === 'string') this.data = this.data.toUpperCase();
+    if (this.uppercase && this.data && typeof this.data === 'string') {
+      this.data = this.data.toUpperCase();
+    }
     if (this.changed && (this.matchesRegExp || !this.data)) {
       this.$emit('change', this.outputParams);
     }
