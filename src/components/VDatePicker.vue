@@ -88,7 +88,7 @@ export interface DatePickerData {
 
 @Component({
   components: {
-    VCheckButton
+    VCheckButton, AirbnbStyleDatepicker
   },
   directives: {
     ClickOutside
