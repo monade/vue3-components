@@ -70,7 +70,6 @@
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 import VCheckButton from './VCheckButton.vue';
 import ClickOutside from '../directives/ClickOutside';
-import AirbnbStyleDatepicker from 'vue-airbnb-style-datepicker';
 
 export const DATE_FORMAT = 'YYYY-MM-DD';
 
