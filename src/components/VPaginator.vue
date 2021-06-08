@@ -1,7 +1,12 @@
 <template>
-  <nav aria-label="Page navigation example" v-if="isReady()">
+  <nav aria-label="Page navigation example" v-if="isReady">
     <ul class="pagination" :class="alignClass">
-      <li class="page-item" :class="{ 'disabled': this.meta.previousPage == null }">
+      <li class="page-item" :class="{ 'disabled': previousDisabled }">
+        <a class="page-link" href="#" aria-label="First" @click.prevent="goToFirst">
+          <slot name="first-arrow">&lt;&lt;</slot>
+        </a>
+      </li>
+      <li class="page-item" :class="{ 'disabled': previousDisabled }">
         <a class="page-link" href="#" aria-label="Previous" @click.prevent="goToPrevious">
           <slot name="left-arrow">⇦</slot>
         </a>
@@ -16,9 +21,14 @@
         <a class="page-link" href="#" @click.prevent="goTo(item)">{{ item }}</a>
       </li>
 
-      <li class="page-item" :class="{ 'disabled': this.meta.nextPage == null }">
+      <li class="page-item" :class="{ 'disabled': nextDisabled }">
         <a class="page-link" href="#" aria-label="Next" @click.prevent="goToNext">
           <slot name="right-arrow">⇨</slot>
+        </a>
+      </li>
+      <li class="page-item" :class="{ 'disabled': nextDisabled }">
+        <a class="page-link last-link" href="#" aria-label="Last" @click.prevent="goToLast">
+          <slot name="last-arrow">&gt;&gt;</slot>
         </a>
       </li>
     </ul>
@@ -36,17 +46,48 @@ interface PaginationMeta {
   nextPage: number | null;
 }
 
+interface GraphQLPaginationMeta {
+  currentPage: number | null;
+  limitValue: number | null;
+  totalCount: number | null;
+  totalPages: number | null;
+}
+
 @Component
-export default class VPaginator extends Vue {
-  @Prop({ required: true }) readonly meta!: PaginationMeta;
+export default class VPaginatorGrapQL extends Vue {
+  @Prop({ default: 'rest' }) readonly paginationMode!: 'rest' | 'graphql';
+
+  @Prop({ default: null }) readonly meta!: PaginationMeta;
   @Prop({ default: 5 }) readonly range!: number;
   @Prop({ default: false }) readonly loading!: boolean;
   @Prop({ default: null }) readonly align!: 'center' | 'right' | 'left' | null;
 
+  @Prop({ default: null }) readonly graphQLMeta!: GraphQLPaginationMeta;
+
   private page = 1;
   private ready = false;
 
+  get isGraphQLMode() {
+    return this.paginationMode === 'graphql';
+  }
+
+  get previousDisabled() {
+    return this.isGraphQLMode ?
+      this.graphQLMeta.currentPage === 1 :
+      this.meta.previousPage == null;
+  }
+
+  get nextDisabled() {
+    return this.isGraphQLMode ?
+      this.graphQLMeta.currentPage === this.graphQLMeta.totalPages :
+      this.meta.nextPage == null;
+  }
+
   get pages() {
+    if (this.isGraphQLMode) {
+      return this.graphQLPages;
+    }
+
     const step = Math.floor(this.range / 2);
     let first = this.page - step;
 
@@ -77,6 +118,18 @@ export default class VPaginator extends Vue {
     return items;
   }
 
+  get graphQLPages() {
+    if (!this.graphQLMeta.totalPages) {
+      return [];
+    }
+
+    const items: number[] = [];
+    for (let i = 0; i < this.graphQLMeta.totalPages; i ++) {
+      items.push(i + 1);
+    }
+    return items;
+  }
+
   get alignClass() {
     switch (this.align) {
       case 'center':
@@ -90,6 +143,11 @@ export default class VPaginator extends Vue {
   }
 
   created() {
+    if (this.isGraphQLMode) {
+      this.ready = true;
+      return;
+    }
+
     if (this.meta.currentPage) {
       this.page = this.meta.currentPage;
       this.ready = true;
@@ -114,19 +172,37 @@ export default class VPaginator extends Vue {
   goToNext() {
     let next = this.page + 1;
 
-    if (next > this.meta.lastPage) {
-      next = this.meta.lastPage;
+    if (this.isGraphQLMode) {
+      if (this.graphQLMeta.totalPages && next > this.graphQLMeta.totalPages) {
+        next = this.graphQLMeta.totalPages;
+      }
+    } else {
+      if (next > this.meta.lastPage) {
+        next = this.meta.lastPage;
+      }
     }
 
     this.goTo(next);
+  }
+
+  goToFirst() {
+    this.goTo(1);
+  }
+
+  goToLast() {
+    if (this.graphQLMeta.totalPages) {
+      this.goTo(this.graphQLMeta.totalPages);
+    }
   }
 
   isCurrent(item: number) {
     return item === this.page;
   }
 
-  isReady() {
-    return this.ready && this.meta.totalPages > 1;
+  get isReady() {
+    return this.isGraphQLMode ?
+      this.ready && this.graphQLMeta :
+      this.ready && this.meta.totalPages > 1;
   }
 }
 </script>
