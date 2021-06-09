@@ -1,17 +1,13 @@
 {
   "name": "@monade/vue-components",
-  "version": "0.1.2",
-  "description": "A set of utility components from monade.",
+  "version": "0.1.0",
+  "private": true,
   "main": "dist/monade-components.cjs.js",
   "module": "dist/monade-components.es.js",
   "unpkg": "dist/monade-components.js",
   "modules.root": "src",
   "directories": {
     "test": "test"
-  },
-  "scripts": {
-    "build": "rm -rf ./dist && bili --format cjs,es,umd,umd-min --plugins.vue --module-name monade-components --file-name monade-components[min].[format].js",
-    "test": "mocha  --require test/setup.js test/**/*.spec.js"
   },
   "repository": "monade/vue-components",
   "keywords": [
@@ -23,11 +19,59 @@
     "url": "https://github.com/monade/vue-components/issues"
   },
   "homepage": "https://github.com/monade/vue-components#readme",
+  "scripts": {
+    "serve": "vue-cli-service serve src/mainDemo.ts",
+    "build:package": "rm -rf ./dist && bili --format cjs,es,umd,umd-min --plugins.vue --module-name monade-components --file-name monade-components[min].[format].js",
+    "build:demo": "vue-cli-service build --dest dist/demo src/mainDemo.ts",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-regular-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/vue-fontawesome": "^0.1.10",
+    "core-js": "^3.6.5",
+    "date-fns": "1.29.0",
+    "moment": "^2.27.0",
+    "svg-inline-loader": "^0.8.2",
+    "vue": "^2.6.11",
+    "vue-airbnb-style-datepicker": "monade/vue-airbnb-style-datepicker#distribution",
+    "vue-class-component": "^7.2.3",
+    "vue-moment": "^4.1.0"
+  },
   "devDependencies": {
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-2": "^6.24.1",
-    "bili": "^4.8.1",
-    "rollup-plugin-vue": "^5.1.4",
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^5.2.4",
+    "@types/moment": "^2.13.0",
+    "@types/vue-moment": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-plugin-unit-mocha": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "@vue/test-utils": "^1.0.3",
+    "bili": "^5.0.5",
+    "bootstrap": "^4.5.2",
+    "chai": "^4.1.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.2",
+    "typescript": "~3.9.3",
+    "vue-property-decorator": "^9.0.0",
     "vue-template-compiler": "^2.6.11"
   }
 }

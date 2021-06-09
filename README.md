@@ -3,9 +3,11 @@
 A collection of vue components by @monade
 
 ## List of components
-- [DataTable](docs/components/DataTable.md)
-- [Select2](docs/components/Select2.md)
-- [Paginator](docs/components/Paginator.md)
+- [VSwitch](docs/components/VSwitch.md)
+- [Paginator](docs/components/VPaginator.md)
+- [VColorPicker](docs/components/VColorPicker.md)
+- [VDataTable](docs/components/VDataTable.md)
+- [VModal](docs/components/VModal.md)
 
 ## TODO:
 - Documentation
