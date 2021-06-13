@@ -47,7 +47,7 @@ export interface PaginationMeta {
 }
 
 @Component
-export default class VPaginatorGrapQL extends Vue {
+export default class VPaginator extends Vue {
   @Prop({ default: null }) readonly meta!: PaginationMeta;
   @Prop({ default: 5 }) readonly range!: number;
   @Prop({ default: false }) readonly loading!: boolean;

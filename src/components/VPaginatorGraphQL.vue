@@ -10,7 +10,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
-import VPaginator, { PaginationMeta } from '@/components/VPaginator.vue';
+import VPaginator, { PaginationMeta } from '../components/VPaginator.vue';
 
 export interface GraphQLPaginationMeta {
   currentPage: number | null;
@@ -24,7 +24,7 @@ export interface GraphQLPaginationMeta {
     VPaginator
   }
 })
-export default class VPaginatorGrapQL extends Vue {
+export default class VPaginatorGraphQL extends Vue {
   @Prop({ required: true }) meta!: GraphQLPaginationMeta;
 
   @Prop({ default: 5 }) readonly range!: number;
