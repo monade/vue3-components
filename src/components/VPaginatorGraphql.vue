@@ -6,7 +6,14 @@
     :loading="loading"
     :align="align"
     @change="onPageChange($event)"
-  />
+  >
+    <template v-slot:left-arrow>
+      <slot name="left-arrow">⇦</slot>
+    </template>
+    <template v-slot:right-arrow>
+      <slot name="right-arrow">⇨</slot>
+    </template>
+  </v-paginator>
 </template>
 
 <script lang="ts">
