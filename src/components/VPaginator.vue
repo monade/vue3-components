@@ -38,7 +38,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
-interface PaginationMeta {
+export interface PaginationMeta {
   lastPage: number;
   currentPage: number;
   totalPages: number;
@@ -46,48 +46,25 @@ interface PaginationMeta {
   nextPage: number | null;
 }
 
-interface GraphQLPaginationMeta {
-  currentPage: number | null;
-  limitValue: number | null;
-  totalCount: number | null;
-  totalPages: number | null;
-}
-
 @Component
 export default class VPaginatorGrapQL extends Vue {
-  @Prop({ default: 'rest' }) readonly paginationMode!: 'rest' | 'graphql';
-
   @Prop({ default: null }) readonly meta!: PaginationMeta;
   @Prop({ default: 5 }) readonly range!: number;
   @Prop({ default: false }) readonly loading!: boolean;
   @Prop({ default: null }) readonly align!: 'center' | 'right' | 'left' | null;
 
-  @Prop({ default: null }) readonly graphQLMeta!: GraphQLPaginationMeta;
-
   private page = 1;
   private ready = false;
 
-  get isGraphQLMode() {
-    return this.paginationMode === 'graphql';
-  }
-
   get previousDisabled() {
-    return this.isGraphQLMode ?
-      this.graphQLMeta.currentPage === 1 :
-      this.meta.previousPage == null;
+    return this.meta.previousPage == null;
   }
 
   get nextDisabled() {
-    return this.isGraphQLMode ?
-      this.graphQLMeta.currentPage === this.graphQLMeta.totalPages :
-      this.meta.nextPage == null;
+    return this.meta.nextPage == null;
   }
 
   get pages() {
-    if (this.isGraphQLMode) {
-      return this.graphQLPages;
-    }
-
     const step = Math.floor(this.range / 2);
     let first = this.page - step;
 
@@ -118,18 +95,6 @@ export default class VPaginatorGrapQL extends Vue {
     return items;
   }
 
-  get graphQLPages() {
-    if (!this.graphQLMeta.totalPages) {
-      return [];
-    }
-
-    const items: number[] = [];
-    for (let i = 0; i < this.graphQLMeta.totalPages; i ++) {
-      items.push(i + 1);
-    }
-    return items;
-  }
-
   get alignClass() {
     switch (this.align) {
       case 'center':
@@ -143,11 +108,6 @@ export default class VPaginatorGrapQL extends Vue {
   }
 
   created() {
-    if (this.isGraphQLMode) {
-      this.ready = true;
-      return;
-    }
-
     if (this.meta.currentPage) {
       this.page = this.meta.currentPage;
       this.ready = true;
@@ -172,14 +132,8 @@ export default class VPaginatorGrapQL extends Vue {
   goToNext() {
     let next = this.page + 1;
 
-    if (this.isGraphQLMode) {
-      if (this.graphQLMeta.totalPages && next > this.graphQLMeta.totalPages) {
-        next = this.graphQLMeta.totalPages;
-      }
-    } else {
-      if (next > this.meta.lastPage) {
-        next = this.meta.lastPage;
-      }
+    if (next > this.meta.lastPage) {
+      next = this.meta.lastPage;
     }
 
     this.goTo(next);
@@ -190,9 +144,7 @@ export default class VPaginatorGrapQL extends Vue {
   }
 
   goToLast() {
-    if (this.graphQLMeta.totalPages) {
-      this.goTo(this.graphQLMeta.totalPages);
-    }
+    this.goTo(this.meta.lastPage);
   }
 
   isCurrent(item: number) {
@@ -200,9 +152,7 @@ export default class VPaginatorGrapQL extends Vue {
   }
 
   get isReady() {
-    return this.isGraphQLMode ?
-      this.ready && this.graphQLMeta :
-      this.ready && this.meta.totalPages > 1;
+    return this.ready && this.meta.totalPages > 1;
   }
 }
 </script>
