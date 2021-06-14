@@ -53,7 +53,7 @@ export default class VPaginatorGraphql extends Vue {
     adaptedMeta.previousPage = this.meta.currentPage === 1 ? null : this.meta.currentPage! - 1;
 
     adaptedMeta.nextPage = this.meta.currentPage === this.meta.totalPages ?
-      this.meta.totalPages :
+      null :
       this.meta.currentPage! + 1;
 
     adaptedMeta.lastPage = this.meta.totalPages!;
