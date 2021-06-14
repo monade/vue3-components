@@ -1,7 +1,12 @@
 <template>
-  <nav aria-label="Page navigation example" v-if="isReady()">
+  <nav aria-label="Page navigation example" v-if="isReady">
     <ul class="pagination" :class="alignClass">
-      <li class="page-item" :class="{ 'disabled': this.meta.previousPage == null }">
+      <li class="page-item" :class="{ 'disabled': previousDisabled }">
+        <a class="page-link" href="#" aria-label="First" @click.prevent="goToFirst">
+          <slot name="first-arrow">&lt;&lt;</slot>
+        </a>
+      </li>
+      <li class="page-item" :class="{ 'disabled': previousDisabled }">
         <a class="page-link" href="#" aria-label="Previous" @click.prevent="goToPrevious">
           <slot name="left-arrow">⇦</slot>
         </a>
@@ -16,9 +21,14 @@
         <a class="page-link" href="#" @click.prevent="goTo(item)">{{ item }}</a>
       </li>
 
-      <li class="page-item" :class="{ 'disabled': this.meta.nextPage == null }">
+      <li class="page-item" :class="{ 'disabled': nextDisabled }">
         <a class="page-link" href="#" aria-label="Next" @click.prevent="goToNext">
           <slot name="right-arrow">⇨</slot>
+        </a>
+      </li>
+      <li class="page-item" :class="{ 'disabled': nextDisabled }">
+        <a class="page-link last-link" href="#" aria-label="Last" @click.prevent="goToLast">
+          <slot name="last-arrow">&gt;&gt;</slot>
         </a>
       </li>
     </ul>
@@ -28,7 +38,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
-interface PaginationMeta {
+export interface PaginationMeta {
   lastPage: number;
   currentPage: number;
   totalPages: number;
@@ -45,6 +55,14 @@ export default class VPaginator extends Vue {
 
   private page = 1;
   private ready = false;
+
+  get previousDisabled() {
+    return this.meta.previousPage == null;
+  }
+
+  get nextDisabled() {
+    return this.meta.nextPage == null;
+  }
 
   get pages() {
     const step = Math.floor(this.range / 2);
@@ -121,11 +139,19 @@ export default class VPaginator extends Vue {
     this.goTo(next);
   }
 
+  goToFirst() {
+    this.goTo(1);
+  }
+
+  goToLast() {
+    this.goTo(this.meta.lastPage);
+  }
+
   isCurrent(item: number) {
     return item === this.page;
   }
 
-  isReady() {
+  get isReady() {
     return this.ready && this.meta.totalPages > 1;
   }
 }
