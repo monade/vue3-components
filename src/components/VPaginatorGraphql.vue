@@ -40,7 +40,7 @@ export interface GraphQLPaginationMeta {
   }
 })
 export default class VPaginatorGraphql extends Vue {
-  @Prop({ required: true }) meta!: GraphQLPaginationMeta;
+  @Prop({ required: true }) readonly meta!: GraphQLPaginationMeta;
 
   @Prop({ default: 5 }) readonly range!: number;
   @Prop({ default: false }) readonly loading!: boolean;
