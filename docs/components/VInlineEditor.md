@@ -1,4 +1,4 @@
-# DataTable
+# VInlineEditor
 Inline multi-type input.
 
 ## Dependencies:

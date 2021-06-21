@@ -1,4 +1,4 @@
-# DataTable
+# VColorPicker
 Color picker component.
 
 ## Dependencies:
