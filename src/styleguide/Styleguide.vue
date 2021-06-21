@@ -203,11 +203,12 @@
 
               <h5 class="pb-1">VListGroup with selection</h5>
               <div class="mb-3">
-                <v-list-group :items="Vitems" :selectable="true">
+                <v-list-group :items="Vitems" :selectable="true" @selected="onListGroupItemSelected($event)">
                   <template #item="slotProps">
                     <span>{{slotProps.value.label}}</span>
                   </template>
                 </v-list-group>
+                {{ listGroupSelectedItem }}
               </div>
               <pre><code>&lt;v-list-group :items="..." <b>:selectable="true"</b> &gt;<br>
   &lt;template v-slot:item&gt;...&lt;/template&gt;<br>
@@ -535,7 +536,7 @@
               <li class="list-group-item"><v-icon class="text-success mr-2">check</v-icon><a href="#VDataTable">VDataTable</a></li>
               <li class="list-group-item"><v-icon class="text-success mr-2">check</v-icon><a href="#VModal">VModal</a></li>
               <li class="list-group-item"><a href="#VInlineEditor">VInlineEditor</a></li>
-              <li class="list-group-item"><a href="#VInlineMultiSelect">VInlineMultiSelect</a></li>
+              <li class="list-group-item"><v-icon class="text-success mr-2">check</v-icon><a href="#VInlineMultiSelect">VInlineMultiSelect</a></li>
               <li class="list-group-item"><a href="#VListGroup">VListGroup</a></li>
               <li class="list-group-item"><a href="#VMultiSelect">VMultiSelect</a></li>
               <li class="list-group-item"><a href="#VContentLoading">VContentLoading</a><v-icon class="text-success">check</v-icon></li>
@@ -795,6 +796,7 @@ export default class Styleguide extends Vue {
   };
 
   gItems: EntryGroupItem[] = [];
+  private listGroupSelectedItem = { id: null, label: null };
 
   public loadGroups(payload: any): Promise<EntryGroupItem[]> {
     return Promise.resolve(this.gItems);
@@ -840,6 +842,10 @@ export default class Styleguide extends Vue {
   openVideo(which: string) {
     const modalVideo = (this.$refs[which] as any)
     modalVideo.show();
+  }
+
+  onListGroupItemSelected(value: any) {
+    this.listGroupSelectedItem = value;
   }
 }
 </script>
