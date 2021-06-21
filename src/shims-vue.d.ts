@@ -25,3 +25,4 @@ declare module '*.scss' {
 }
 
 declare module 'uuid';
+declare module 'vue-numeric';
