@@ -29,3 +29,5 @@ declare module 'vue-airbnb-style-datepicker' {
 
   export default AirbnbStyleDatepicker;
 }
+
+declare module 'vue-numeric';
