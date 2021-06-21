@@ -116,7 +116,7 @@ export default class VDatePicker extends Vue {
 
   dateOne: Date|string|undefined = '';
   dateTwo: Date|string|undefined = '';
-  protected datepicker: AirbnbStyleDatepicker|null = null;
+  protected datepicker: any|null = null;
   visible = false;
   selected: string|null = null;
   firstOpen = true;
@@ -137,7 +137,7 @@ export default class VDatePicker extends Vue {
   }
 
   mounted() {
-    this.datepicker = this.$refs.datepicker as AirbnbStyleDatepicker;
+    this.datepicker = this.$refs.datepicker as any;
     this.datepicker.width = 220;
   }
 

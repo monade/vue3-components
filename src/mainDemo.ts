@@ -37,6 +37,14 @@ Vue.use(VueMoment, {
   moment
 });
 
+Vue.filter("currency", function(value: number, currency: string) {
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: currency
+  });
+  return formatter.format(value);
+});
+
 Vue.use(AirbnbStyleDatepicker, datepickerOptions);
 
 const vue = new Vue({
