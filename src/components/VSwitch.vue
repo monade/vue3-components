@@ -36,10 +36,11 @@ export default class VToggleSwitch extends Vue {
 
   private checked: boolean = this.value;
   activate() {
-    if (!this.disabled) {
-      this.checked = !this.checked;
-      this.$emit('input', this.checked);
+    if (this.disabled) {
+      return;
     }
+    this.checked = !this.checked;
+    this.$emit('input', this.checked);
   }
 }
 </script>
