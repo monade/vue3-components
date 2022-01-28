@@ -1,3 +1,5 @@
+[![build-test](https://github.com/monade/vue-components/actions/workflows/vue-tests.yml/badge.svg)](https://github.com/monade/vue-components/actions/workflows/vue-tests.yml)
+
 # @monade/vue-components
 
 A collection of vue components by @monade
@@ -11,5 +13,4 @@ A collection of vue components by @monade
 
 ## TODO:
 - Documentation
-- d.ts files
 - Tests
