@@ -18,9 +18,9 @@ import SelectOption from '../models/SelectOption';
 
 @Component
 export default class VMultiSwitcher extends Vue {
-  @Prop() value!: string|number;
-  @Prop() items!: Array<SelectOption>;
-  @Prop() size? : string;
+  @Prop() readonly value!: string|number;
+  @Prop() readonly items!: Readonly<Array<SelectOption>>;
+  @Prop() readonly size? : string;
 
   @Watch('value')
   onValueChange(value: string|number) {

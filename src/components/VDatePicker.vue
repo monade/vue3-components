@@ -94,15 +94,15 @@ export interface DatePickerData {
   }
 })
 export default class VDatePicker extends Vue {
-  @Prop({ default: undefined }) date? : Date|string|undefined;
-  @Prop({ default: undefined }) dateTo? : Date|string|undefined;
-  @Prop({ default: null }) endDate? : Date|string|null;
-  @Prop({ default: 'DD/MM/YYYY' }) format? : string;
-  @Prop({ default: 'range' }) mode? : string;
-  @Prop({ default: null }) placeholder? : string|null;
-  @Prop({ default: false }) disabled? : boolean;
-  @Prop({ default: 'left' }) dropdownAlign? : string;
-  @Prop({ default: false }) compare? : boolean;
+  @Prop({ default: undefined }) readonly date? : Date|string|undefined;
+  @Prop({ default: undefined }) readonly dateTo? : Date|string|undefined;
+  @Prop({ default: null }) readonly endDate? : Date|string|null;
+  @Prop({ default: 'DD/MM/YYYY' }) readonly format? : string;
+  @Prop({ default: 'range' }) readonly mode? : string;
+  @Prop({ default: null }) readonly placeholder? : string|null;
+  @Prop({ default: false }) readonly disabled? : boolean;
+  @Prop({ default: 'left' }) readonly dropdownAlign? : string;
+  @Prop({ default: false }) readonly compare? : boolean;
 
   @Watch('date')
   onDateChange(value: Date|string) {

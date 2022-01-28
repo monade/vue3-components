@@ -18,11 +18,11 @@ export interface VListGroupItem {
 
 @Component
 export default class VListGroup extends Vue {
-  @Prop() items!: Array<VListGroupItem>;
-  @Prop({ default: false }) ordered? : boolean;
-  @Prop({ default: false }) selectable? : boolean;
-  @Prop() isHighlighted? : Function;
-  @Prop() isOver? : Function;
+  @Prop() readonly items!: Array<VListGroupItem>;
+  @Prop({ default: false }) readonly ordered? : boolean;
+  @Prop({ default: false }) readonly selectable? : boolean;
+  @Prop() readonly isHighlighted? : Function;
+  @Prop() readonly isOver? : Function;
 
   overed: VListGroupItem|undefined = {};
 

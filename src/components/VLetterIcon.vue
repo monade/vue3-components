@@ -10,8 +10,8 @@ import ColorHelper, { ColorsInterface } from '../services/ColorHelper';
 
 @Component
 export default class VLetterIcon extends Vue {
-  @Prop() color? : string|number;
-  @Prop() colors? : ColorsInterface;
+  @Prop() readonly color? : string|number;
+  @Prop() readonly colors? : ColorsInterface;
 
   created() {
     if (this.colors !== undefined) {

@@ -43,8 +43,8 @@ export interface SlotObject {
   }
 })
 export default class TimeSlotPicker extends Vue {
-  @Prop() value!: Array<SlotObject>;
-  @Prop({ default: 'left' }) dropdownAlign? : string;
+  @Prop({ required: true }) readonly value!: Array<SlotObject>;
+  @Prop({ default: 'left' }) readonly dropdownAlign!: string;
 
   from = '';
   to = '';

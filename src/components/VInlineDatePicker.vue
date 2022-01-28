@@ -86,10 +86,10 @@ export interface DatePickerData {
   }
 })
 export default class VInlineDatePicker extends Vue {
-  @Prop({ default: null }) date?: number | null;
-  @Prop({ default: null }) placeholder?: string | null;
-  @Prop({ default: false }) disabled?: boolean;
-  @Prop({ default: 'left' }) dropdownAlign?: string;
+  @Prop({ default: null }) readonly date?: number | null;
+  @Prop({ default: null }) readonly placeholder?: string | null;
+  @Prop({ default: false }) readonly disabled?: boolean;
+  @Prop({ default: 'left' }) readonly dropdownAlign?: string;
   @Prop({}) readonly value!: string;
 
   private mode = 'single';
