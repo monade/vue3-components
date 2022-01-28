@@ -575,6 +575,15 @@
 
               <hr />
             </div>
+            <div id="VSplitDateSelect">
+              <h4 class="pb-1">VSplitDateSelect</h4>
+              <div class="mb-3">
+                <v-split-date-select></v-split-date-select>
+              </div>
+              <pre><code>&lt;v-split-date-select&gt;&lt;/v-split-date-select&gt;</code></pre>
+
+              <hr />
+            </div>
             <div id="VMultiLevelSelect">
               <h4 class="pb-1">VMultiLevelSelect</h4>
               <div class="mb-3">
@@ -870,6 +879,7 @@ import VComparisonGroupSelect from '../components/VComparisonGroupSelect.vue';
 import VAudio from '../components/VAudio.vue';
 import VVideo from '../components/VVideo.vue';
 import VModalVideo from '../components/VModalVideo.vue';
+import VSplitDateSelect from '@/components/VSplitDateSelect.vue';
 
 import { Component, Vue } from 'vue-property-decorator';
 
@@ -900,6 +910,7 @@ import { Component, Vue } from 'vue-property-decorator';
     VDatePicker,
     VMultiLevelSelect,
     VComparisonGroupSelect,
+    VSplitDateSelect,
     VAudio,
     VVideo,
     VModalVideo
