@@ -78,6 +78,15 @@ export default class VSplitDateSelect extends Vue {
     return days;
   }
 
+  @Watch('value')
+  onValueChanged() {
+    this.currentDate = this.value ? moment(this.value) : null;
+
+    this.day = this.currentDate?.date() ?? null;
+    this.month = this.currentDate?.month() ?? null;
+    this.year = this.currentDate?.year() ?? null;
+  }
+
   @Watch('day')
   onDayChanged() {
     this.updateValue();

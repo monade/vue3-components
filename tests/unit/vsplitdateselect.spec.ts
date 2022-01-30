@@ -68,6 +68,23 @@ describe('VSplitDateSelect', () => {
       expect(year.value).to.eq('2022');
     });
 
+    it('reacts to changed prop', async () => {
+      await component.setProps({
+        value: '2021-05-12',
+        minDate: moment('2020-02-02', 'YYYY-MM-DD').toDate(),
+        maxDate: moment('2023-10-10', 'YYYY-MM-DD').toDate()
+      });
+
+      const day = component.get('.v-split-date-select__day').element as HTMLSelectElement;
+      expect(day.value).to.eq('12');
+
+      const month = component.get('.v-split-date-select__month').element as HTMLSelectElement;
+      expect(month.value).to.eq('4');
+
+      const year = component.get('.v-split-date-select__year').element as HTMLSelectElement;
+      expect(year.value).to.eq('2021');
+    });
+
     it('resets dates when less than min date', async () => {
       expect(component.vm.$data.month).to.eq(0);
       const year = component.get('.v-split-date-select__year');
