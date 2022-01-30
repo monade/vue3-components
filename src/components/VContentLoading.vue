@@ -19,7 +19,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 
-export interface ContentLaodingConfig {
+export interface ContentLoadingConfig {
   notch: {
     size: "3x" | "2x" | "1x";
     color: string;
@@ -35,12 +35,12 @@ export interface ContentLaodingConfig {
 @Component({})
 export default class VContentLoading extends Vue {
   @Prop()
-  readonly config!: ContentLaodingConfig;
+  readonly config?: ContentLoadingConfig;
 
   @Prop({ default: "3x" })
   readonly notchSize!: string;
 
-  get configuration(): ContentLaodingConfig {
+  get configuration(): ContentLoadingConfig {
     return this.config || this.defaultConfig;
   }
 
@@ -68,7 +68,7 @@ export default class VContentLoading extends Vue {
     return this.config?.overlay?.show ?? this.defaultConfig?.overlay?.show;
   }
 
-  get defaultConfig(): ContentLaodingConfig {
+  get defaultConfig(): ContentLoadingConfig {
     return {
       notch: { size: "3x", color: "red", class: "" },
       overlay: {

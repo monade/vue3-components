@@ -13,8 +13,8 @@ import VIcon from './VIcon.vue';
 
 @Component({ components: { VIcon } })
 export default class VCheckButton extends Vue {
-  @Prop() value!: boolean;
-  @Prop({ default: false }) disableUncheck? : boolean;
+  @Prop() readonly value!: boolean;
+  @Prop({ default: false }) readonly disableUncheck? : boolean;
 
   @Watch('value', { deep: true })
   onValueChange(value: boolean) {

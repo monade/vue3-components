@@ -94,15 +94,15 @@ export interface DatePickerData {
   }
 })
 export default class VDatePicker extends Vue {
-  @Prop({ default: undefined }) date? : Date|string|undefined;
-  @Prop({ default: undefined }) dateTo? : Date|string|undefined;
-  @Prop({ default: null }) endDate? : Date|string|null;
-  @Prop({ default: 'DD/MM/YYYY' }) format? : string;
-  @Prop({ default: 'range' }) mode? : string;
-  @Prop({ default: null }) placeholder? : string|null;
-  @Prop({ default: false }) disabled? : boolean;
-  @Prop({ default: 'left' }) dropdownAlign? : string;
-  @Prop({ default: false }) compare? : boolean;
+  @Prop({ default: undefined }) readonly date? : Date|string|undefined;
+  @Prop({ default: undefined }) readonly dateTo? : Date|string|undefined;
+  @Prop({ default: null }) readonly endDate? : Date|string|null;
+  @Prop({ default: 'DD/MM/YYYY' }) readonly format? : string;
+  @Prop({ default: 'range' }) readonly mode? : string;
+  @Prop({ default: null }) readonly placeholder? : string|null;
+  @Prop({ default: false }) readonly disabled? : boolean;
+  @Prop({ default: 'left' }) readonly dropdownAlign? : string;
+  @Prop({ default: false }) readonly compare? : boolean;
 
   @Watch('date')
   onDateChange(value: Date|string) {
@@ -116,7 +116,7 @@ export default class VDatePicker extends Vue {
 
   dateOne: Date|string|undefined = '';
   dateTwo: Date|string|undefined = '';
-  protected datepicker: AirbnbStyleDatepicker|null = null;
+  protected datepicker: any|null = null;
   visible = false;
   selected: string|null = null;
   firstOpen = true;
@@ -137,7 +137,7 @@ export default class VDatePicker extends Vue {
   }
 
   mounted() {
-    this.datepicker = this.$refs.datepicker as AirbnbStyleDatepicker;
+    this.datepicker = this.$refs.datepicker as any;
     this.datepicker.width = 220;
   }
 

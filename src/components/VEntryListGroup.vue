@@ -27,11 +27,11 @@ import EntryGroupItem from '../models/EntryGroupItem';
   }
 })
 export default class VEntryListGroup extends Vue {
-  @Prop() items!: Array<EntryGroupItem>;
+  @Prop() readonly items!: Array<EntryGroupItem>;
 
-  @Prop() canAdd? : Function;
-  @Prop({ default: false }) selectable? : boolean;
-  @Prop({ default: true }) actions? : boolean;
+  @Prop() readonly canAdd? : Function;
+  @Prop({ default: false }) readonly selectable? : boolean;
+  @Prop({ default: true }) readonly actions? : boolean;
 
   onAdd(value: Entry) {
     this.$emit('add', value);

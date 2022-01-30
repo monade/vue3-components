@@ -24,6 +24,7 @@ $transparent: #ffffffff;
 
 $mineshaft-2: $dark-green;
 $gray-300: $grey;
+$text-color: $black;
 
 // Global
 $horizontal-spacing-sm: 1rem;
@@ -31,7 +32,6 @@ $horizontal-spacing-md: 2rem;
 $horizontal-spacing-lg: 2rem;
 $horizontal-spacing-xl: 2rem;
 $horizontal-spacing-xxl: 150px;
-
 
 $top-spacing-sm: 20px;
 $top-spacing-md: 25px;
@@ -80,8 +80,6 @@ $custom-select-bg-size: 10px;
 $font-weight-medium: $font-weight-normal;
 
 //ColorLists
-
-
 $theme-colors: (
   "body": $body-bg,
   "success": $dark-green,
@@ -330,9 +328,33 @@ background-color: $white;
 }
 
 pre{
-  display: inline;
+  display: block;
   padding: 16px;
   background-color:$black;
   color: $primary !important;
 }
 
+
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base;
+$input-background-color: white;
+$light: $gray-100;
+
+:export {
+	@each $key, $value in $theme-colors {
+		#{unquote($key)}: $value;
+	}
+
+	h1-font-size: $h1-font-size;
+	h2-font-size: $h2-font-size;
+	h3-font-size: $h3-font-size;
+	h4-font-size: $h4-font-size;
+	h5-font-size: $h5-font-size;
+	h6-font-size: $h6-font-size;
+	base-font-size: $font-size-base;
+
+}

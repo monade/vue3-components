@@ -49,12 +49,12 @@ import VIcon from './VIcon.vue';
   components: { VIcon }
 })
 export default class VMultiLevelDropdown extends Vue {
-  @Prop() options!: Array<MultiLevelObject>;
-  @Prop({ default: false }) nested? : boolean;
-  @Prop() headers? : Array<string>;
-  @Prop({ default: 0 }) level? : number;
-  @Prop({ default: false }) multiple? : boolean;
-  @Prop() parent?: MultiLevelObject;
+  @Prop() readonly options!: Array<MultiLevelObject>;
+  @Prop({ default: false }) readonly nested? : boolean;
+  @Prop() readonly headers? : Array<string>;
+  @Prop({ default: 0 }) readonly level? : number;
+  @Prop({ default: false }) readonly multiple? : boolean;
+  @Prop() readonly parent?: MultiLevelObject;
 
   selected: MultiLevelObject|null = null;
   current: MultiLevelObject|null = null;

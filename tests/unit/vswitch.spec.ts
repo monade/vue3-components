@@ -11,10 +11,11 @@ describe('VSwitch', () => {
   });
 
   it('emits input when clicked', async () => {
-    component.find('input.toggle').trigger('click');
+    component.find('div.toggle').trigger('click');
     await component.vm.$nextTick();
     expect(component.vm.$data.checked).to.eq(true);
     expect(component.emitted('input')?.length).to.eq(1);
+    expect(component.emitted('input')?.[0]?.[0]).to.eq(true);
   })
 
   it('does nothing if it is disabled', async () => {
@@ -25,7 +26,7 @@ describe('VSwitch', () => {
     await component.vm.$nextTick();
     component.setData({ checked: false });
     await component.vm.$nextTick();
-    component.find('input.toggle').trigger('click');
+    component.find('div.toggle').trigger('click');
     await component.vm.$nextTick();
     expect(component.vm.$data.checked).to.eq(false);
     expect(component.emitted('input')?.length).to.eq(1);

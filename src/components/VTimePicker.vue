@@ -18,7 +18,7 @@ export const TIME_FORMAT = 'HH:mm';
   }
 })
 export default class VTimePicker extends Vue {
-  @Prop() value!: string;
+  @Prop({ default: '00:00' }) readonly value!: string;
 
   @Watch('value')
   onValueChange(value: string) {

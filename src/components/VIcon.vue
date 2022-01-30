@@ -7,7 +7,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component
 export default class VIcon extends Vue {
-  @Prop({ default: false }) spin? : boolean;
+  @Prop({ default: false }) readonly spin!: boolean;
 
   getIcon() {
     return this.$slots.default && this.$slots.default.length ? this.$slots.default[0].text : null;

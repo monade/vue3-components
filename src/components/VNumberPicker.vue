@@ -17,12 +17,12 @@ import Number from '../filters/Number';
 
 @Component({ components: { VIcon }, filters: { Number } })
 export default class VNumberPicker extends Vue {
-  @Prop() value!: number;
-  @Prop({ default: 1 }) step? : number;
-  @Prop({ default: 0 }) min? : number|null;
-  @Prop({ default: null }) max? : number|null;
-  @Prop({ default: false }) loop? : boolean;
-  @Prop({ default: 1 }) digits? : number|null;
+  @Prop() readonly value!: number;
+  @Prop({ default: 1 }) readonly step!: number;
+  @Prop({ default: 0 }) readonly min!: number;
+  @Prop({ default: null }) readonly max!: number|null;
+  @Prop({ default: false }) readonly loop!: boolean;
+  @Prop({ default: 1 }) readonly digits? : number|null;
 
   number = 0;
 

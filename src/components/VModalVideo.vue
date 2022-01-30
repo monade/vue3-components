@@ -15,12 +15,12 @@ import VVideo from '@/components/VVideo.vue';
 
 @Component({ components: { VModal, VVideo } })
 export default class VModalVideo extends Vue {
-  @Prop({ default: () => [] }) sources!: string[];
-  @Prop({ default: () => '' }) title!: string;
-  @Prop({ default: 'modal-lg' }) size? : string;
-  @Prop({ default: false }) autostart!: boolean;
-  @Ref() modal!: VModal;
-  @Ref() video!: VVideo;
+  @Prop({ default: () => [] }) readonly sources!: string[];
+  @Prop({ default: () => '' }) readonly title!: string;
+  @Prop({ default: 'modal-lg' }) readonly size? : string;
+  @Prop({ default: false }) readonly autostart!: boolean;
+  @Ref() readonly modal!: VModal;
+  @Ref() readonly video!: VVideo;
 
   isShowing = false;
 

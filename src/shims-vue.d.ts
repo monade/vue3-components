@@ -8,7 +8,7 @@ declare module 'vue/types/vue' {
 
 declare module '*.vue' {
   import Vue from 'vue'
-  // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'  
+  // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
   // Vue.component('fa-icon', FontAwesomeIcon);
 
@@ -16,6 +16,13 @@ declare module '*.vue' {
   //   moment
   // });
   Vue.prototype.$moment = moment;
-  
   export default Vue
 }
+
+declare module '*.scss' {
+  const variables: any;
+  export default variables;
+}
+
+declare module 'uuid';
+declare module 'vue-numeric';

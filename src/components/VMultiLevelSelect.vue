@@ -40,11 +40,11 @@ export interface MultiLevelMultipleObject {
   }
 })
 export default class VMultiLevelSelect extends Vue {
-  @Prop() value!: string|Array<string[]>|null;
-  @Prop({ default: DEFAULT_PLACEHOLDER }) placeholder? : string;
-  @Prop({ default: () => { return []; } }) headers? : Array<string>;
-  @Prop({ default: () => { return []; } }) options!: Array<MultiLevelObject>;
-  @Prop({ default: false }) multiple? : boolean;
+  @Prop() readonly value!: string|Array<string[]>|null;
+  @Prop({ default: DEFAULT_PLACEHOLDER }) readonly placeholder!: string;
+  @Prop({ default: () => { return []; } }) readonly headers? : Array<string>;
+  @Prop({ default: () => { return []; } }) readonly options!: Array<MultiLevelObject>;
+  @Prop({ default: false }) readonly multiple!: boolean;
 
   @Watch('value')
   onValueChange(value: string|Array<string[]>|null) {

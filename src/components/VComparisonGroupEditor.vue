@@ -96,12 +96,12 @@ const MAX_ELEMENTS_COUNT = 10;
   }
 })
 export default class ComparisonGroupEditor extends Vue {
-  @Prop({ default: null }) payload? : any;
-  @Prop({ default: MAX_ELEMENTS_COUNT }) maxElements? : number;
-  @Prop({ default: () => { return Promise.resolve([]); } }) loadGroups!: (payload: any|null) => Promise<EntryGroupItem[]>;
-  @Prop({ default: () => { return Promise.resolve({}); } }) createGroup!: (group: EntryGroupItem) => Promise<EntryGroupItem>;
-  @Prop({ default: (entry: Entry, group: EntryGroupItem) => { return Promise.resolve(); } }) addEntryToGroup!: (entry: Entry, group: EntryGroupItem) => Promise<void>;
-  @Prop({ default: (entry: Entry, group: EntryGroupItem) => { return Promise.resolve(); } }) removeEntryFromGroup!: (entry: Entry, group: EntryGroupItem) => Promise<void>;
+  @Prop({ default: null }) readonly payload? : any;
+  @Prop({ default: MAX_ELEMENTS_COUNT }) readonly maxElements? : number;
+  @Prop({ default: () => { return Promise.resolve([]); } }) readonly loadGroups!: (payload: any|null) => Promise<EntryGroupItem[]>;
+  @Prop({ default: () => { return Promise.resolve({}); } }) readonly createGroup!: (group: EntryGroupItem) => Promise<EntryGroupItem>;
+  @Prop({ default: (entry: Entry, group: EntryGroupItem) => { return Promise.resolve(); } }) readonly addEntryToGroup!: (entry: Entry, group: EntryGroupItem) => Promise<void>;
+  @Prop({ default: (entry: Entry, group: EntryGroupItem) => { return Promise.resolve(); } }) readonly removeEntryFromGroup!: (entry: Entry, group: EntryGroupItem) => Promise<void>;
 
   status: string = STATUS_DEFAULT;
   loading = false;

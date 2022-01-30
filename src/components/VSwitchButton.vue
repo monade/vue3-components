@@ -10,7 +10,7 @@ import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 
 @Component
 export default class VSwitchButton extends Vue {
-  @Prop() value!: boolean;
+  @Prop({ default: false }) readonly value!: boolean;
 
   @Watch('value')
   onValueChange(value: boolean) {

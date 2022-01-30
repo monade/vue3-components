@@ -18,9 +18,9 @@ const CAN_PLAY_MESSAGE = 'can play';
 
 @Component({ })
 export default class AudioElementWrapper extends Vue {
-  @Prop({ default: false }) canPause!: boolean;
-  @Prop({ default: 1000 }) timeOut!: number;
-  @Prop({ default: () => [] }) sources!: string[];
+  @Prop({ default: false }) readonly canPause!: boolean;
+  @Prop({ default: 1000 }) readonly timeOut!: number;
+  @Prop({ default: () => [] }) readonly sources!: string[];
 
   @Ref('audio-ctrl') audio!: HTMLAudioElement;
 

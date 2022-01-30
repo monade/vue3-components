@@ -30,12 +30,12 @@ import VEntryInterface from '../models/Entry';
 
 @Component({ components: { VIcon } })
 export default class VEntryList extends Vue {
-  @Prop() title? : string;
-  @Prop({ default: 'small' }) size? : string;
-  @Prop() items!: VEntryInterface[];
-  @Prop() canAdd!: Function;
-  @Prop({ default: true }) actions? : boolean;
-  @Prop({ default: false }) selectable? : boolean;
+  @Prop() readonly title?: string;
+  @Prop({ default: 'small' }) readonly size?: string;
+  @Prop() readonly items!: VEntryInterface[];
+  @Prop() readonly canAdd!: Function;
+  @Prop({ default: true }) readonly actions? : boolean;
+  @Prop({ default: false }) readonly selectable? : boolean;
 
   add(value: VEntryInterface) {
     this.$emit('add', value);

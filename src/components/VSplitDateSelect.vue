@@ -28,14 +28,19 @@ export default class VSplitDateSelect extends Vue {
   @Prop({ default: false }) required!: boolean;
   private currentDate = this.value ? moment(this.value) : null;
 
-  private day: number | null = this.currentDate?.date() || null;
-  private month: number | null = this.currentDate?.month() || null;
-  private year: number | null = this.currentDate?.year() || null;
+  private day: number | null = this.currentDate?.date() ?? null;
+  private month: number | null = this.currentDate?.month() ?? null;
+  private year: number | null = this.currentDate?.year() ?? null;
 
   get years() {
     const maxDate = moment(this.maxDate);
-    const interval = moment(this.maxDate).diff(this.minDate, 'years', false);
-    return new Array(interval).fill(undefined).map((_, index) => maxDate.year() - index).map(e => { return { id: e, label: e } });
+    const minDate = moment(this.minDate);
+    const output: { id: number; label: number }[] = [];
+
+    for (let i = maxDate.year(); i >= minDate.year(); i--) {
+      output.push({ id: i, label: i });
+    }
+    return output;
   }
 
   get months() {
@@ -43,11 +48,14 @@ export default class VSplitDateSelect extends Vue {
     if (this.year === this.maxDate.getFullYear()) {
       return months.filter(e => e.id <= this.maxDate.getMonth())
     }
+    if (this.year === this.minDate.getFullYear()) {
+      return months.filter(e => e.id >= this.minDate.getMonth())
+    }
     return months;
   }
 
   get days() {
-    let count = 31;
+    let count;
     if (this.month === null) {
       count = moment(new Date(2018, 0, 1)).daysInMonth();
     } else if (this.year === null) {
@@ -60,6 +68,11 @@ export default class VSplitDateSelect extends Vue {
     if (this.year === this.maxDate.getFullYear() && this.month === this.maxDate.getMonth()) {
       const maxDate = moment(this.maxDate);
       return days.filter(e => e.id <= maxDate.date());
+    }
+
+    if (this.year === this.minDate.getFullYear() && this.month === this.minDate.getMonth()) {
+      const minDate = moment(this.minDate);
+      return days.filter(e => e.id >= minDate.date());
     }
 
     return days;
@@ -106,7 +119,6 @@ export default class VSplitDateSelect extends Vue {
     }
     this.currentDate = moment({ day: this.day, month: this.month, year: this.year });
 
-    console.log(this.currentDate)
     this.$emit('input', this.currentDate.format(this.dateFormat))
   }
 }
