@@ -2,7 +2,7 @@
 // const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  publicPath: process.env.PUBLIC_PATH ?? '/',
+  publicPath: process.env.PUBLIC_PATH || '/',
   configureWebpack: {
     externals: {
 
