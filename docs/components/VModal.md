@@ -1,4 +1,4 @@
-# DataTable
+# VModal
 Component to make modals.
 
 ## Dependencies:
