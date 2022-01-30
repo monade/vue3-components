@@ -23,6 +23,7 @@
     "serve": "vue-cli-service serve src/mainDemo.ts",
     "build:package": "rm -rf ./dist && bili --format cjs,es,umd,umd-min --plugins.vue --module-name monade-components --file-name monade-components[min].[format].js",
     "build:demo": "vue-cli-service build --dest dist/demo src/mainDemo.ts",
+    "build:docs": "PUBLIC_PATH=https://monade.github.io/vue-components vue-cli-service build --dest dist/demo src/mainDemo.ts && git checkout docs",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
