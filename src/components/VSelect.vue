@@ -278,7 +278,7 @@ export default class VSelect extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../css/vue";
 
 $v-select-min-width: 200px !default;
