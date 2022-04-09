@@ -38,7 +38,7 @@
     "@types/uuid": "^8.3.0",
     "core-js": "^3.6.5",
     "date-fns": "1.29.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "svg-inline-loader": "^0.8.2",
     "vue": "^2.6.11",
     "vue-airbnb-style-datepicker": "monade/vue-airbnb-style-datepicker#distribution",
