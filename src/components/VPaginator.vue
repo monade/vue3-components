@@ -107,10 +107,11 @@ export default class VPaginator extends Vue {
     }
   }
 
-  @Watch('meta', { immediate: true, deep: true })
+  @Watch('meta', { deep: true })
   onMetaChange() {
-    this.page = this.meta.currentPage;
-    this.ready = true;
+    if (this.meta.currentPage) {
+      this.page = this.meta.currentPage;
+    }
   }
 
   created() {
