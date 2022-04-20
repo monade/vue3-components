@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import {Component, Vue, Prop, Watch} from 'vue-property-decorator';
 
 export interface PaginationMeta {
   lastPage: number;
@@ -105,6 +105,12 @@ export default class VPaginator extends Vue {
       default:
         return null;
     }
+  }
+
+  @Watch('meta', { immediate: true, deep: true })
+  onMetaChange() {
+    this.page = this.meta.currentPage;
+    this.ready = true;
   }
 
   created() {
