@@ -1,9 +1,9 @@
 <template>
-  <input :id="id" autocomplete="new-password" class="borderless" :value="value" :placeholder="placeholder" :disabled="disabled"  />
+  <input :id="id" autocomplete="new-password" class="borderless" :value="modelValue" :placeholder="placeholder" :disabled="disabled"  />
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch } from 'vue-facing-decorator';
 
 interface Autocomplete {
   addListener(key: string, callback: () => void): void;
@@ -19,7 +19,9 @@ declare global {
   }
 }
 
-@Component
+@Component({
+  emits: ['selected']
+})
 export default class VPlacesAutocomplete extends Vue {
   @Prop({ required: true }) readonly apiKey!: string;
   @Prop({
@@ -32,7 +34,7 @@ export default class VPlacesAutocomplete extends Vue {
 
   @Prop({ default: false }) readonly disabled?: boolean;
 
-  @Prop() readonly value!: string;
+  @Prop() readonly modelValue!: string;
 
   get id() {
     return `autocomplete_${(this as any)._uid}`;
@@ -42,7 +44,7 @@ export default class VPlacesAutocomplete extends Vue {
     return this.disabled ? '-' : 'Inserisci una posizione';
   }
 
-  private autocomplete: any = null;
+  autocomplete: any = null;
 
   initialized() {
     this.autocomplete = new window.google.maps.places.Autocomplete(
@@ -54,7 +56,7 @@ export default class VPlacesAutocomplete extends Vue {
     });
   }
 
-  @Watch('value')
+  @Watch("modelValue")
   onValueChange(newValue: string, oldValue: string) {
     console.warn('Changing value in runtime is not supported.', newValue, oldValue);
   }

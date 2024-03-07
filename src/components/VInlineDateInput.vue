@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch, Ref } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch, Ref } from 'vue-facing-decorator';
 import { ARROW_RIGHT, ARROW_LEFT, ENTER } from '@/utils/KeyboardHelper';
 import VDatePicker from '@/components/VDatePicker.vue';
 import Throttler from '@/utils/Throttler';
@@ -51,31 +51,34 @@ const MAX_MONTH = 12;
 const MAX_DAY = 31;
 const MIN_VALUE = 1;
 
-@Component({ components: { VDatePicker } })
+@Component({
+  components: { VDatePicker },
+  emits: ['update:modelValue', 'blur']
+})
 export default class VInlineDateInput extends Vue {
-  @Prop() readonly value!: number ;
+  @Prop() readonly modelValue!: number ;
   @Prop() readonly inputClasses!: string;
   @Ref('airbnbDatePicker') readonly datePicker: any;
 
-  private throttler: Throttler = new Throttler();
+  throttler: Throttler = new Throttler();
 
-  private day: string|null = null;
-  private month: string|null = null;
-  private year: string|null = null;
-  private error = false;
-  private selected = 'day';
+  day: string|null = null;
+  month: string|null = null;
+  year: string|null = null;
+  error = false;
+  selected = 'day';
 
   subscription: any = null;
 
   created() {
     this.day = `${
-      this.value ? new Date(this.value).getDate() : new Date().getDate()
+      this.modelValue ? new Date(this.modelValue).getDate() : new Date().getDate()
     }`;
     this.month = `${
-      this.value ? new Date(this.value).getMonth() + 1 : new Date().getMonth()
+      this.modelValue ? new Date(this.modelValue).getMonth() + 1 : new Date().getMonth()
     }`;
     this.year = `${
-      this.value ? new Date(this.value).getFullYear() : new Date().getFullYear()
+      this.modelValue ? new Date(this.modelValue).getFullYear() : new Date().getFullYear()
     }`;
   }
 
@@ -85,22 +88,22 @@ export default class VInlineDateInput extends Vue {
     this.updateMonth();
   }
 
-  @Watch('value')
+  @Watch("modelValue")
   onDateChanged(data: string) {
     this.updateValues(data);
   }
 
   updateValues(data: string) {
     this.day = `${
-      this.value ? new Date(this.value).getDate() : new Date().getDate()
+      this.modelValue ? new Date(this.modelValue).getDate() : new Date().getDate()
     }`;
 
     this.month = `${
-      this.value ? new Date(this.value).getMonth() + 1 : new Date().getMonth()
+      this.modelValue ? new Date(this.modelValue).getMonth() + 1 : new Date().getMonth()
     }`;
 
     this.year = `${
-      this.value ? new Date(this.value).getFullYear() : new Date().getFullYear()
+      this.modelValue ? new Date(this.modelValue).getFullYear() : new Date().getFullYear()
     }`;
   }
 
@@ -194,7 +197,7 @@ export default class VInlineDateInput extends Vue {
       return;
     }
     if (!this.error && date.toString() !== 'Invalid Date') {
-      this.$emit('input', timestamp);
+      this.$emit("update:modelValue", timestamp);
     }
   }
 

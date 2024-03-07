@@ -23,7 +23,7 @@
         :disabled="disabled"
       />
     </div>
-    <input class="v-select__value" :required="required" v-model="value" />
+    <input class="v-select__value" :required="required" v-model="modelValue" />
 
     <div
       class="v-select__dropdown"
@@ -105,7 +105,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "vue-property-decorator";
+import { Component, Prop, Watch, Vue } from "vue-facing-decorator";
 import VIcon from "../components/VIcon.vue";
 import ClickOutside from "../directives/ClickOutside";
 
@@ -116,9 +116,13 @@ export interface VSelectOption {
   new?: boolean;
 }
 
-@Component({ directives: { ClickOutside }, components: { VIcon } })
+@Component({
+  directives: { ClickOutside },
+  components: { VIcon },
+  emits: ["update:modelValue", "added", "edited"]
+})
 export default class VSelect extends Vue {
-  @Prop() readonly value!: string | null;
+  @Prop() readonly modelValue!: string | null;
   @Prop({ default: "Select an option" }) readonly placeholder?: string;
   @Prop() readonly options!: VSelectOption[];
   @Prop({ required: false }) readonly required!: boolean;
@@ -174,11 +178,11 @@ export default class VSelect extends Vue {
   }
 
   updateSelected() {
-    if (this.value == null) {
+    if (this.modelValue == null) {
       this.selected = null;
     } else {
       this.selected =
-        this.selectableOptions.find(element => element.id === this.value) ||
+        this.selectableOptions.find(element => element.id === this.modelValue) ||
         null;
     }
   }
@@ -194,7 +198,7 @@ export default class VSelect extends Vue {
   select(option: VSelectOption) {
     this.selected = option;
     this.closeDropdown();
-    this.$emit("input", this.selected.id);
+    this.$emit("update:modelValue", this.selected.id);
   }
 
   add() {

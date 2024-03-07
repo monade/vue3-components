@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { Ref, Prop, Component, Vue } from 'vue-property-decorator';
+import { Ref, Prop, Component, Vue } from 'vue-facing-decorator';
 
 const EVENT_PLAYING = 'playing';
 const EVENT_TIMEDOUT = 'timedout';
@@ -16,7 +16,9 @@ const EVENT_TIME_UPDATED = 'timeupdate';
 const TIMEOUT_MESSAGE = 'timed out';
 const CAN_PLAY_MESSAGE = 'can play';
 
-@Component({ })
+@Component({
+  emits: [EVENT_PLAYING, EVENT_TIMEDOUT, EVENT_PAUSED, EVENT_ERROR, EVENT_TIME_UPDATED]
+})
 export default class AudioElementWrapper extends Vue {
   @Prop({ default: false }) readonly canPause!: boolean;
   @Prop({ default: 1000 }) readonly timeOut!: number;
@@ -24,9 +26,9 @@ export default class AudioElementWrapper extends Vue {
 
   @Ref('audio-ctrl') audio!: HTMLAudioElement;
 
-  private playing = false;
+  playing = false;
 
-  private _canPlayThrough!: Promise<string>;
+  _canPlayThrough!: Promise<string>;
 
   mounted() {
     this.setErrorHandler();
@@ -38,7 +40,7 @@ export default class AudioElementWrapper extends Vue {
     return this.audio?.getAttribute('loaded');
   }
 
-  private setErrorHandler() {
+  setErrorHandler() {
     this.audio.addEventListener('error', () => {
       if (this.playing) {
         this.emitNotification(EVENT_ERROR);
@@ -46,7 +48,7 @@ export default class AudioElementWrapper extends Vue {
     }, true);
   }
 
-  private setCanPlayThroughHandler() {
+  setCanPlayThroughHandler() {
     this._canPlayThrough = new Promise((resolve) => {
       this.audio.addEventListener('canplaythrough', () => {
         this.$nextTick().then(() => {
@@ -57,7 +59,7 @@ export default class AudioElementWrapper extends Vue {
     });
   }
 
-  private startTimeOut(): Promise<string> {
+  startTimeOut(): Promise<string> {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(TIMEOUT_MESSAGE);
@@ -65,13 +67,13 @@ export default class AudioElementWrapper extends Vue {
     });
   }
 
-  private stopByGivenCondition(shouldPause: boolean) {
+  stopByGivenCondition(shouldPause: boolean) {
     if (shouldPause) {
       this.stop();
     }
   }
 
-  private setProgressionNotification() {
+  setProgressionNotification() {
     this.audio.addEventListener('timeupdate', () => {
       const progression = this.audio.currentTime / this.audio.duration * 100;
       this.emitNotification(EVENT_TIME_UPDATED, { progression });
@@ -79,7 +81,7 @@ export default class AudioElementWrapper extends Vue {
     });
   };
 
-  private emitNotification<T>(which: string, what: T|null = null) {
+  emitNotification<T>(which: string, what: T|null = null) {
     if (what) {
       this.$emit(which, what);
     } else {
@@ -100,21 +102,21 @@ export default class AudioElementWrapper extends Vue {
     }
   }
 
-  private async playOrTimeoutStartRace() {
+  async playOrTimeoutStartRace() {
     return await Promise.race([this._canPlayThrough, this.startTimeOut()]);
   }
 
-  private playAndNotify() {
+  playAndNotify() {
     this.playing = true;
     this.emitNotification(EVENT_PLAYING);
     this.audio.play();
   }
 
-  private checkIfVideoCanBePlayedAnyway() {
+  checkIfVideoCanBePlayedAnyway() {
     return this.audio.readyState > 2;
   }
 
-  private async loadAndPlayIfItDoesNotTimeOutFirst() {
+  async loadAndPlayIfItDoesNotTimeOutFirst() {
     this.load();
     if (await this.playOrTimeoutStartRace() === CAN_PLAY_MESSAGE) {
       this.playAndNotify();
@@ -127,7 +129,7 @@ export default class AudioElementWrapper extends Vue {
     }
   }
 
-  private timeOutHandler() {
+  timeOutHandler() {
     this.playing = false;
     this.emitNotification(EVENT_TIMEDOUT);
     this.unload();
@@ -147,7 +149,7 @@ export default class AudioElementWrapper extends Vue {
     this.reset();
   }
 
-  private load() {
+  load() {
     const sourcesFound = this.audio.querySelectorAll('source');
     if (sourcesFound) {
       sourcesFound.forEach((source: HTMLSourceElement) => {
@@ -159,7 +161,7 @@ export default class AudioElementWrapper extends Vue {
     }
   }
 
-  private unload() {
+  unload() {
     const sourcesFound = this.audio.querySelectorAll('source');
     if (sourcesFound) {
       sourcesFound.forEach((source: HTMLSourceElement) => {

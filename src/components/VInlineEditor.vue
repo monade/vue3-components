@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch } from 'vue-facing-decorator';
 import { NestedDictionary } from '../models/NestedDictionary';
 import { renderNestedParams } from '../utils/renderNestedParams';
 
@@ -53,10 +53,11 @@ class NullDataFormatter implements DataFormatter {
 @Component({
   directives: {
     ClickOutside
-  }
+  },
+  emits: ['change'],
 })
 export default class VInlineEditor extends Vue {
-  @Prop() readonly value!: string | NestedDictionary;
+  @Prop() readonly modelValue!: string | NestedDictionary;
   @Prop({ default: '' }) readonly suffix!: string;
   @Prop({ default: 'text' }) readonly type!: 'number' | 'text' | 'password' | 'email';
   @Prop() readonly placeholder!: string;
@@ -70,7 +71,7 @@ export default class VInlineEditor extends Vue {
   @Prop() readonly regExp?: RegExp;
   @Prop({ default: () => new NullDataFormatter() }) readonly formatter!: DataFormatter;
 
-  data = this.value || null;
+  data: any = this.modelValue || null;
   editing = false;
   changed = false;
   matchesRegExp = true;
@@ -91,7 +92,7 @@ export default class VInlineEditor extends Vue {
     return [this.inputClasses, this.matchesRegExp ? '' : 'text-danger', !this.disabled ? '' : 'input-disabled'];
   }
 
-  @Watch('value')
+  @Watch("modelValue")
   onValueChanged(value: any, oldValue: any) {
     if (this.uppercase && value) value.toUpperCase();
     this.data = value;
@@ -118,11 +119,11 @@ export default class VInlineEditor extends Vue {
     return renderNestedParams(this.dataKeys, this.data);
   }
 
-  private enableEditing() {
+  enableEditing() {
     this.editing = true;
   }
 
-  private disableEditing() {
+  disableEditing() {
     this.editing = false;
   }
 

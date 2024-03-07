@@ -1,21 +1,39 @@
 <template>
-  <span class="icon" :class="{ 'spin': spin }" v-html="getSvg()"></span>
+  <span @click="$emit('click', $event)" class="icon" :class="{ 'spin': spin }" v-html="svgIcon"></span>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-facing-decorator';
 
-@Component
+@Component({
+  emits: ['click']
+})
 export default class VIcon extends Vue {
   @Prop({ default: false }) readonly spin!: boolean;
+  svgIcon: string | null = null
+
+  async mounted() {
+    this.svgIcon = await this.getSvg()
+  }
 
   getIcon() {
-    return this.$slots.default && this.$slots.default.length ? this.$slots.default[0].text : null;
+    const slotChild = this.$slots.default?.()?.[0]?.children
+    if (!slotChild) {
+      return null
+    }
+
+    return typeof slotChild === 'string' ? slotChild.trim() : null
   }
 
+
   getSvg() {
-    return this.getIcon() ? require(`!svg-inline-loader!../assets/icons/${this.getIcon()}.svg`) : null;
+    const name = this.getIcon()
+    if (!name) {
+      return null
+    }
+    return import(`../assets/icons/${name}.svg?raw&inline`).then((e) => e.default)
   }
+
 }
 </script>
 

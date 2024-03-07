@@ -2,7 +2,7 @@
   <div class="btn-group btn-group-toggle" data-toggle="buttons" :class="btnGroupClass">
     <label v-for="item of items" :key="item.id" :class="{'btn': true, 'active': item.id == selected, 'disabled': item.disabled}" :for="'switcher-' + item.id" @click="activate(item)">
       <input :id="'switcher-' + item.id" type="radio" :value="false"  name="multi-switcher" :checked="item.id == selected">
-      <template v-if="$scopedSlots.item">
+      <template v-if="$slots.item">
         <slot name="item" :value="item"></slot>
       </template>
       <template v-else>
@@ -13,21 +13,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue } from 'vue-facing-decorator';
 import SelectOption from '../models/SelectOption';
 
-@Component
+@Component({
+  emits: ['update:modelValue']
+})
 export default class VMultiSwitcher extends Vue {
-  @Prop() readonly value!: string|number;
+  @Prop() readonly modelValue!: string|number;
   @Prop() readonly items!: Readonly<Array<SelectOption>>;
   @Prop() readonly size? : string;
 
-  @Watch('value')
+  @Watch("modelValue")
   onValueChange(value: string|number) {
     this.selected = value;
   }
 
-  protected selected: string|number = this.value;
+  selected: string|number = this.modelValue;
 
   get btnGroupClass() {
     return {
@@ -41,7 +43,7 @@ export default class VMultiSwitcher extends Vue {
     }
 
     this.selected = item.id;
-    this.$emit('input', this.selected);
+    this.$emit("update:modelValue", this.selected);
   }
 }
 </script>

@@ -40,13 +40,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-facing-decorator';
 import { MultiLevelObject } from './VMultiLevelSelect.vue';
 import VIcon from './VIcon.vue';
 
 @Component({
   name: 'v-multi-level-dropdown',
-  components: { VIcon }
+  components: { VIcon },
+  emits: ['selected', 'leave']
 })
 export default class VMultiLevelDropdown extends Vue {
   @Prop() readonly options!: Array<MultiLevelObject>;
@@ -98,13 +99,13 @@ export default class VMultiLevelDropdown extends Vue {
     }
     if (this.multiple) {
       if (option.partial) {
-        this.$set(option, 'selected', true);
-        this.$set(option, 'partial', false);
+        option.selected = true;
+        option.partial = false;
       } else {
         if (option.selected === undefined || option.selected === false) {
-          this.$set(option, 'selected', true);
+          option.selected = true;
         } else {
-          this.$set(option, 'selected', false);
+          option.selected = false;
         }
       }
 
@@ -120,10 +121,10 @@ export default class VMultiLevelDropdown extends Vue {
     }
 
     option.children.forEach(child => {
-      this.$set(child, 'selected', option.selected);
+      child.selected = option.selected;
 
       if (option.selected) {
-        this.$set(child, 'partial', false);
+        child.partial = false;
       }
 
       this.updateChildren(child);
@@ -136,16 +137,16 @@ export default class VMultiLevelDropdown extends Vue {
         const selected = option.children.filter(child => child.selected === true);
 
         if (selected.length === 0) {
-          this.$set(option, 'selected', false);
+          option.selected = false;
 
           const partials = option.children.filter(child => child.partial === true);
-          this.$set(option, 'partial', partials.length > 0);
+          option.partial = partials.length > 0;
         } else if (selected.length < option.children.length) {
-          this.$set(option, 'selected', false);
-          this.$set(option, 'partial', true);
+          option.selected = false;
+          option.partial = true;
         } else {
-          this.$set(option, 'selected', true);
-          this.$set(option, 'partial', false);
+          option.selected = true;
+          option.partial = false;
         }
       }
     });

@@ -16,21 +16,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-facing-decorator';
 import moment from 'moment';
 
-@Component
+@Component({
+  emits: ['update:modelValue']
+})
 export default class VSplitDateSelect extends Vue {
-  @Prop() value!: string | undefined;
+  @Prop() readonly modelValue!: string | undefined;
   @Prop({ default: () => 'YYYY-MM-DD' }) dateFormat!: string;
   @Prop({ default: () => moment('1900-01-01').toDate() }) minDate!: Date;
   @Prop({ default: () => new Date() }) maxDate!: Date;
   @Prop({ default: false }) required!: boolean;
-  private currentDate = this.value ? moment(this.value) : null;
+  currentDate = this.modelValue ? moment(this.modelValue) : null;
 
-  private day: number | null = this.currentDate?.date() ?? null;
-  private month: number | null = this.currentDate?.month() ?? null;
-  private year: number | null = this.currentDate?.year() ?? null;
+  day: number | null = this.currentDate?.date() ?? null;
+  month: number | null = this.currentDate?.month() ?? null;
+  year: number | null = this.currentDate?.year() ?? null;
 
   get years() {
     const maxDate = moment(this.maxDate);
@@ -78,9 +80,9 @@ export default class VSplitDateSelect extends Vue {
     return days;
   }
 
-  @Watch('value')
+  @Watch("modelValue")
   onValueChanged() {
-    this.currentDate = this.value ? moment(this.value) : null;
+    this.currentDate = this.modelValue ? moment(this.modelValue) : null;
 
     this.day = this.currentDate?.date() ?? null;
     this.month = this.currentDate?.month() ?? null;
@@ -122,13 +124,13 @@ export default class VSplitDateSelect extends Vue {
     }
     if (this.day === null) {
       if (this.currentDate) {
-        this.$emit('input', null)
+        this.$emit("update:modelValue", null);
       }
       return;
     }
     this.currentDate = moment({ day: this.day, month: this.month, year: this.year });
 
-    this.$emit('input', this.currentDate.format(this.dateFormat))
+    this.$emit("update:modelValue", this.currentDate.format(this.dateFormat))
   }
 }
 

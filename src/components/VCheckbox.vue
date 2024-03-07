@@ -19,21 +19,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "vue-property-decorator";
+import { Component, Prop, Watch, Vue } from "vue-facing-decorator";
 
-@Component
+@Component({
+  emits: ["update:modelValue"]
+})
 export default class VCheckbox extends Vue {
-  @Prop() readonly value!: boolean;
+  @Prop() readonly modelValue!: boolean;
   @Prop() readonly label!: string;
   @Prop() readonly inputValue?: string | null;
   @Prop({ default: false }) readonly disabled?: boolean;
 
-  @Watch("value")
+  @Watch("modelValue")
   onValueChange(value: boolean) {
     this.selected = value;
   }
 
-  protected selected: boolean = this.value || !!null;
+  selected: boolean = this.modelValue || !!null;
 
   get id() {
     return "checkbox-" + this.randomValue();
@@ -50,7 +52,7 @@ export default class VCheckbox extends Vue {
   }
 
   onChange() {
-    this.$emit("input", this.selected);
+    this.$emit("update:modelValue", this.selected);
   }
 }
 </script>

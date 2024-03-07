@@ -25,9 +25,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue } from 'vue-facing-decorator';
 import VTimePicker, { TIME_FORMAT } from './VTimePicker.vue';
 import ClickOutside from '../directives/ClickOutside';
+import moment from 'moment';
 
 export interface SlotObject {
   from: string;
@@ -40,10 +41,11 @@ export interface SlotObject {
   },
   directives: {
     ClickOutside
-  }
+  },
+  emits: ['update:modelValue']
 })
 export default class TimeSlotPicker extends Vue {
-  @Prop({ required: true }) readonly value!: Array<SlotObject>;
+  @Prop({ required: true }) readonly modelValue!: Array<SlotObject>;
   @Prop({ default: 'left' }) readonly dropdownAlign!: string;
 
   from = '';
@@ -55,8 +57,8 @@ export default class TimeSlotPicker extends Vue {
 
   @Watch('from')
   onFromChange(value: string) {
-    const from = this.$moment(value, TIME_FORMAT);
-    const to = this.$moment(this.to, TIME_FORMAT);
+    const from = moment(value, TIME_FORMAT);
+    const to = moment(this.to, TIME_FORMAT);
 
     if (from.isAfter(to) || !this.to) {
       this.to = from.add(1, 'hour').format(TIME_FORMAT);
@@ -78,7 +80,7 @@ export default class TimeSlotPicker extends Vue {
   }
 
   created() {
-    this.slots = this.value;
+    this.slots = this.modelValue;
     this.initializeTime();
   }
 
@@ -86,7 +88,7 @@ export default class TimeSlotPicker extends Vue {
     if (this.slots.length) {
       const slot = this.slots[this.slots.length - 1];
       this.from = slot.to;
-      this.to = this.$moment(this.to, TIME_FORMAT).add(1, 'hour').format(TIME_FORMAT);
+      this.to = moment(this.to, TIME_FORMAT).add(1, 'hour').format(TIME_FORMAT);
     } else {
       this.from = '00:00';
       this.to = '01:00';
@@ -117,13 +119,13 @@ export default class TimeSlotPicker extends Vue {
       to: this.to
     });
 
-    this.$emit('input', this.slots);
+    this.$emit("update:modelValue", this.slots);
     this.initializeTime();
   }
 
   deleteSlot(index: number) {
     this.slots.splice(index, 1);
-    this.$emit('input', this.slots);
+    this.$emit("update:modelValue", this.slots);
   }
 }
 </script>

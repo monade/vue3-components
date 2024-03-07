@@ -1,24 +1,25 @@
 <template>
-  <vue-numeric
+  <div>FIXME</div>
+  <!-- <vue-numeric
     ref="edit"
     :decimal-separator="decimalSeparator"
     :thousand-separator="thousandSeparator"
     :currency="currency"
     :precision="precision"
     :read-only="readOnly"
-    :value="inserted"
+    :modelValue="inserted"
     :currency-symbol-position="symbolPosition"
     :min="min"
     :max="max"
     :minus="hasNegative"
-    @input="onValueChanged"
+    @update:modelValue="onValueChanged"
     @blur="$emit('blur')"
     class="form-control"
-  ></vue-numeric>
+  ></vue-numeric> -->
 </template>
 <script lang="ts">
-import VueNumeric from "vue-numeric";
-import { Component, Prop, Vue, Ref } from "vue-property-decorator";
+// import VueNumeric from "@robin-rossow/vue-input-number";
+import { Component, Prop, Vue, Ref } from "vue-facing-decorator";
 
 export enum VNumericInputApplication {
   BASE,
@@ -26,7 +27,10 @@ export enum VNumericInputApplication {
   CURRENCY,
 }
 
-@Component({ components: { VueNumeric } })
+@Component({
+  components: { /*VueNumeric*/ },
+  emits: ["update:modelValue", "formatted-input", "blur"],
+})
 export default class VNumericInput extends Vue {
   @Prop({
     default: () => {
@@ -42,7 +46,7 @@ export default class VNumericInput extends Vue {
   @Prop({ default: 2 }) readonly precision!: number;
   @Prop({ default: false }) readonly hasNegative!: boolean;
   @Prop({ default: false }) readonly readOnly!: boolean;
-  @Prop({ default: 0 }) readonly value!: number;
+  @Prop({ default: 0 }) readonly modelValue!: number;
 
   @Prop({ default: Number.MIN_SAFE_INTEGER }) min!: number;
   @Prop({ default: Number.MAX_SAFE_INTEGER }) max!: number;
@@ -52,7 +56,7 @@ export default class VNumericInput extends Vue {
   inserted = 0;
 
   mounted() {
-    this.inserted = this.value;
+    this.inserted = this.modelValue;
   }
 
   get currency() {
@@ -76,8 +80,8 @@ export default class VNumericInput extends Vue {
     this.notifyNewValue(value);
   }
 
-  private notifyNewValue(value: number) {
-    this.notifyEvent("input", value);
+  notifyNewValue(value: number) {
+    this.notifyEvent("update:modelValue", value);
     const formattedNumericValue = value.toFixed(this.precision);
     const formattedString = this.isSuffix
       ? `${value.toFixed(this.precision)} ${this.currencySign} `
@@ -89,7 +93,7 @@ export default class VNumericInput extends Vue {
     return this.symbolPosition === "suffix";
   }
 
-  private notifyEvent<T>(name: string, value: T | null = null) {
+  notifyEvent<T>(name: string, value: T | null = null) {
     if (value !== null) {
       this.$emit(name, value);
     } else {

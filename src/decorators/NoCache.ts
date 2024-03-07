@@ -1,4 +1,4 @@
-import { createDecorator } from 'vue-class-component';
+import { createDecorator } from 'vue-facing-decorator';
 
 export default createDecorator((options, key) => {
   // component options should be passed to the callback

@@ -24,13 +24,10 @@ import VLetterIcon from './components/VLetterIcon.vue'
 import VTimePicker from './components/VTimePicker.vue'
 import VDatePicker from './components/VDatePicker.vue'
 import VEntryListGroup from './components/VEntryListGroup.vue'
-import VComparisonGroupEditor from './components/VComparisonGroupEditor.vue'
-import VComparisonGroupSelect from './components/VComparisonGroupSelect.vue'
 
 export {
   VCheckbox, VColorPicker, VDataTable, VModal, VPaginator, VPlacesAutocomplete,
   VBaseMultiSelect, VMultiSelect, VSwitch, VInlineEditor, VInlineMultiSelect, VInlinePlacesAutocomplete,
   VListGroup, VIcon, Styleguide, VContentLoading, VEntryList, VEntrySearch, VSelect, VSwitchButton,
   VMultiSwitcher, VNumberPicker, VLetterIcon, VTimePicker, VDatePicker, VEntryListGroup,
-  VComparisonGroupEditor, VComparisonGroupSelect
 }

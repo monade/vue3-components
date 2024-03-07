@@ -57,7 +57,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-facing-decorator';
 
 interface ColumnData {
   sortable: boolean;
@@ -68,7 +68,9 @@ interface ColumnData {
   label: string;
 }
 
-@Component
+@Component({
+  emits: ['selected', 'sorted']
+})
 export default class VDataTable extends Vue {
   @Prop({ required: true }) readonly columns!: ColumnData[];
   @Prop({ default: 'table-sm table-hover' }) readonly tableClasses!: string;
@@ -77,7 +79,7 @@ export default class VDataTable extends Vue {
   @Prop({ default: true }) readonly sortable!: boolean;
   @Prop({ default: true }) readonly loading!: boolean;
 
-  private _sort: Map<string, string> = new Map();
+  _sort: Map<string, string> = new Map();
 
   get columnsTotal() {
     let total = this.columns.length;
@@ -167,7 +169,7 @@ export default class VDataTable extends Vue {
   }
 
   hasActions() {
-    return this.$scopedSlots.actions != null;
+    return this.$slots.actions != null;
   }
 
   getSlotName(column: ColumnData) {
@@ -176,7 +178,7 @@ export default class VDataTable extends Vue {
 
   hasSlot(column: ColumnData) {
     const slotName = this.getSlotName(column);
-    return this.$scopedSlots[slotName] != null;
+    return this.$slots[slotName] != null;
   }
 }
 </script>

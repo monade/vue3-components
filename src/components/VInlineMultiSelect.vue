@@ -1,7 +1,7 @@
 <template>
   <v-multi-select
-    :value="selected"
-    @input="onChanged"
+    :modelValue="selected"
+    @update:modelValue="onChanged"
     :placeholder="disabled ? '-' : placeholder"
     :options="options"
     :disabled="disabled"
@@ -12,13 +12,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-facing-decorator';
 import VMultiSelect, { MultiSelectOption } from './VMultiSelect.vue';
 import { renderNestedParams } from '../utils/renderNestedParams';
 
-@Component({ components: { VMultiSelect } })
+@Component({
+  components: { VMultiSelect },
+  emits: ['change']
+})
 export default class VInlineMultiSelect extends Vue {
-  @Prop({ default: () => [] }) readonly value!: any[] | null;
+  @Prop({ default: () => [] }) readonly modelValue!: any[] | null;
   @Prop({ default: 'Seleziona un valore' }) readonly placeholder!: string;
   @Prop({ default: 'name' }) readonly label!: string;
   @Prop({ default: false }) readonly disabled!: boolean;
@@ -27,17 +30,17 @@ export default class VInlineMultiSelect extends Vue {
   @Prop() readonly dataKeys?: string[];
   @Prop({ required: true }) readonly options!: MultiSelectOption[];
 
-  private selected: any[] | null = null;
-  private preventUpdate = false;
+  selected: any[] | null = null;
+  preventUpdate = false;
 
   created() {
-    if (!this.value) {
+    if (!this.modelValue) {
       return;
     }
-    this.selected = this.options.filter(e => this.value?.includes(e) || this.value?.find(s => s === e?.id));
+    this.selected = this.options.filter(e => this.modelValue?.includes(e) || this.modelValue?.find(s => s === e?.id));
   }
 
-  @Watch('value')
+  @Watch("modelValue")
   onValueChanged(value: any[], oldVal: any[]) {
     if (!value || value === oldVal) {
       // this.preventUpdate = true;

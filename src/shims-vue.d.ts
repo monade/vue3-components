@@ -1,23 +1,17 @@
-import * as moment from 'moment';
+/// <reference types="vite/client" />
 
-declare module 'vue/types/vue' {
-  interface Vue {
-    $moment: any
+declare module "@vue/runtime-core" {
+  interface ComponentCustomProperties {
+    $filters: {
+      currency: (...args) => string;
+      dateTime: (...args) => string;
+      percent: (...args) => string;
+      moment: (...args) => string;
+    };
   }
 }
 
-declare module '*.vue' {
-  import Vue from 'vue'
-  // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-  // Vue.component('fa-icon', FontAwesomeIcon);
-
-  // Vue.use(VueMoment, {
-  //   moment
-  // });
-  Vue.prototype.$moment = moment;
-  export default Vue
-}
+export { };
 
 declare module '*.scss' {
   const variables: any;
@@ -25,4 +19,4 @@ declare module '*.scss' {
 }
 
 declare module 'uuid';
-declare module 'vue-numeric';
+declare module '@robin-rossow/vue-input-number';

@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Ref, Vue } from 'vue-property-decorator';
+import { Component, Prop, Ref, Vue } from 'vue-facing-decorator';
 
 @Component({ })
 export default class VVideo extends Vue {

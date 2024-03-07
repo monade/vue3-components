@@ -5,8 +5,8 @@
       <template v-if="open">
         <div v-if="isNumeric">
           <v-numeric-input
-            @input="onNumericValueChanged"
-            :value="data"
+            @update:modelValue="onNumericValueChanged"
+            :modelValue="data"
             @blur="onBlur"
             currency-sign="€"
             :usage="numericType"
@@ -21,7 +21,7 @@
           <v-inline-editor
             :ref="textEditorRef"
             :textArea="isTextArea"
-            :value="data"
+            :modelValue="data"
             :inputClasses="['form-control', inputClass, fontSize]"
             @blur="onBlur"
             @change="onTextValueChanged"
@@ -30,7 +30,7 @@
         <div v-else-if="isDate">
           <v-inline-date-picker
             @blur="onBlur"
-            @input="onDateValueChanged"
+            @update:modelValue="onDateValueChanged"
             :date="dateInput"
           ></v-inline-date-picker>
         </div>
@@ -49,7 +49,7 @@
             class="mb-0 input-value"
             :class="[labelClass, labelWeightClass]"
           >
-            {{ data | currency("EUR") }}
+            {{ $filters.currency(data, "EUR") }}
           </p>
 
           <p
@@ -87,7 +87,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Ref } from 'vue-property-decorator';
+import { Vue, Component, Prop, Ref } from 'vue-facing-decorator';
 import VInlineEditor from '../components/VInlineEditor.vue';
 import VNumericInput, { VNumericInputApplication } from '../components/VNumericInput.vue';
 import VInlineDatePicker from '@/components/VInlineDatePicker.vue';
@@ -111,7 +111,8 @@ const FONT_SIZE_TO_LINE_HEIGHT_MULTIPLIER = 1.3;
     VInlineEditor,
     VInlineDatePicker,
     VDatePicker
-  }
+  },
+  emits: ['update:modelValue']
 })
 export default class VBaseInlineInput extends Vue {
   @Prop({ default: 'text' }) readonly type!:
@@ -124,7 +125,7 @@ export default class VBaseInlineInput extends Vue {
 
   @Prop({ required: false }) readonly label!: string;
   @Prop({ default: 'Aggiungi' }) readonly placeholder!: string;
-  @Prop({ default: '' }) readonly value!: number | string | null;
+  @Prop({ default: '' }) readonly modelValue!: number | string | null;
   @Prop({ default: '' }) readonly labelClass!: string;
   @Prop({ default: '' }) readonly inputClass!: string;
   @Prop({ default: 'base' }) readonly fontSize!: Typography;
@@ -132,19 +133,19 @@ export default class VBaseInlineInput extends Vue {
   @Prop({ default: false }) readonly fullWidthEditor!: boolean;
   @Ref('textLabel') readonly textInput: any;
 
-  private open = false;
-  private data: string | number | null = null;
-  private linesCount: number | null = null;
-  private readMoreActivated = false;
-  private subscription: any = null;
+  open = false;
+  data: string | number | null = null;
+  linesCount = 0;
+  readMoreActivated = false;
+  subscription: any = null;
 
   created() {
     if (this.isDate) {
-      this.data = moment(this.value, UK_DATE_FORMAT_DASHED).toDate().getTime();
+      this.data = moment(this.modelValue, UK_DATE_FORMAT_DASHED).toDate().getTime();
     } else if (this.isNumeric) {
-      this.data = (this.value || 0).toString();
+      this.data = (this.modelValue || 0).toString();
     } else {
-      this.data = (this.value || 0).toString();
+      this.data = (this.modelValue || 0).toString();
     }
   }
 
@@ -292,7 +293,7 @@ export default class VBaseInlineInput extends Vue {
     if (this.isDate) {
       value = moment(value).format(UK_DATE_FORMAT_DASHED);
     }
-    this.$emit('input', value);
+    this.$emit("update:modelValue", value);
   }
 
   get numericType() {

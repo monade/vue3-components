@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-facing-decorator';
 
 export interface PaginationMeta {
   lastPage: number;
@@ -46,15 +46,17 @@ export interface PaginationMeta {
   nextPage: number | null;
 }
 
-@Component
+@Component({
+  emits: ['change'],
+})
 export default class VPaginator extends Vue {
   @Prop({ required: true }) readonly meta!: PaginationMeta;
   @Prop({ default: 5 }) readonly range!: number;
   @Prop({ default: false }) readonly loading!: boolean;
   @Prop({ default: null }) readonly align!: 'center' | 'right' | 'left' | null;
 
-  private page = 1;
-  private ready = false;
+  page = 1;
+  ready = false;
 
   get previousDisabled() {
     return this.meta.previousPage == null;

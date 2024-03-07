@@ -6,18 +6,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue } from 'vue-facing-decorator';
 
-@Component
+@Component({
+  emits: ['update:modelValue']
+})
 export default class VSwitchButton extends Vue {
-  @Prop({ default: false }) readonly value!: boolean;
+  @Prop({ default: false }) readonly modelValue!: boolean;
 
-  @Watch('value')
+  @Watch("modelValue")
   onValueChange(value: boolean) {
     this.selected = value;
   }
 
-  selected = this.value;
+  selected = this.modelValue;
 
   get buttonClass() {
     return {
@@ -27,7 +29,7 @@ export default class VSwitchButton extends Vue {
 
   toggle() {
     this.selected = !this.selected;
-    this.$emit('input', this.selected);
+    this.$emit("update:modelValue", this.selected);
   }
 }
 </script>

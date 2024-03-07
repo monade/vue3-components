@@ -30,4 +30,4 @@ declare module 'vue-airbnb-style-datepicker' {
   export default AirbnbStyleDatepicker;
 }
 
-declare module 'vue-numeric';
+declare module '@robin-rossow/vue-input-number';

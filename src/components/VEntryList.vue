@@ -25,10 +25,13 @@
 
 <script lang="ts">
 import VIcon from './VIcon.vue';
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-facing-decorator';
 import VEntryInterface from '../models/Entry';
 
-@Component({ components: { VIcon } })
+@Component({
+  components: { VIcon },
+  emits: ['add', 'remove', 'selected']
+})
 export default class VEntryList extends Vue {
   @Prop() readonly title?: string;
   @Prop({ default: 'small' }) readonly size?: string;

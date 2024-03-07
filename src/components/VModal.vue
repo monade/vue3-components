@@ -26,11 +26,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-facing-decorator';
 import ClickOutside from '../directives/ClickOutside';
 
 @Component({
-  directives: { ClickOutside }
+  directives: { ClickOutside },
+  emits: ['shown', 'hidden']
 })
 export default class VModal extends Vue {
   @Prop({ default: '', required: false })
@@ -53,7 +54,7 @@ export default class VModal extends Vue {
 
   visible = false;
 
-  private hideable = false;
+  hideable = false;
 
   eventListener(e: KeyboardEvent) {
     if (e.keyCode === 27 && this.hidesOnClickOut) {

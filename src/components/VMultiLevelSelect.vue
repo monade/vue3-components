@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-facing-decorator';
 import SelectOption from '../models/SelectOption';
 import VMultiLevelDropdown from './VMultiLevelDropdown.vue';
 import ClickOutside from '../directives/ClickOutside';
@@ -37,16 +37,17 @@ export interface MultiLevelMultipleObject {
   },
   directives: {
     ClickOutside
-  }
+  },
+  emits: ['update:modelValue', 'selected']
 })
 export default class VMultiLevelSelect extends Vue {
-  @Prop() readonly value!: string|Array<string[]>|null;
+  @Prop() readonly modelValue!: string|Array<string[]>|null;
   @Prop({ default: DEFAULT_PLACEHOLDER }) readonly placeholder!: string;
   @Prop({ default: () => { return []; } }) readonly headers? : Array<string>;
   @Prop({ default: () => { return []; } }) readonly options!: Array<MultiLevelObject>;
   @Prop({ default: false }) readonly multiple!: boolean;
 
-  @Watch('value')
+  @Watch("modelValue")
   onValueChange(value: string|Array<string[]>|null) {
     this.updateSelected(value);
   }
@@ -56,7 +57,7 @@ export default class VMultiLevelSelect extends Vue {
   }
 
   mounted() {
-    this.updateSelected(this.value);
+    this.updateSelected(this.modelValue);
   }
 
   visible = false;
@@ -129,14 +130,14 @@ export default class VMultiLevelSelect extends Vue {
 
   updateSelectedMultiple(options: MultiLevelObject[], level: number, parent: MultiLevelObject|null = null) {
     options.map((option) => {
-      if (this.value && this.value[level]) {
-        option.selected = this.value[level].indexOf(option.id) >= 0;
+      if (this.modelValue && this.modelValue[level]) {
+        option.selected = this.modelValue[level].indexOf(option.id) >= 0;
 
         if (option.selected) {
           this.selectedMultiple[level].push(option);
 
           if (parent && parent.selected === false) {
-            this.$set(parent, 'partial', true);
+            parent.partial = true;
           }
         } else if (parent && parent.selected) {
           option.selected = true;
@@ -168,7 +169,7 @@ export default class VMultiLevelSelect extends Vue {
   }
 
   emitMultipleValue() {
-    const length = (this.value as Array<string[]>).length;
+    const length = (this.modelValue as Array<string[]>).length;
     const empty: string[] = [];
     const value = Array(length).map(() => empty);
 
@@ -182,7 +183,7 @@ export default class VMultiLevelSelect extends Vue {
       }
     }
 
-    this.$emit('input', value);
+    this.$emit("update:modelValue", value);
   }
 
   onSelected(option: MultiLevelObject, level: number) {
@@ -195,7 +196,7 @@ export default class VMultiLevelSelect extends Vue {
     } else {
       this.closeDropdown();
       this.selected = option;
-      this.$emit('input', option.id);
+      this.$emit("update:modelValue", option.id);
     }
 
     this.$emit('selected', option, level);

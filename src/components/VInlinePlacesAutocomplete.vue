@@ -1,12 +1,15 @@
 <template>
-  <places-autocomplete :api-key="apiKey" :options="options" :value="value" @selected="onPlaceSelected" :disabled="disabled" />
+  <places-autocomplete :api-key="apiKey" :options="options" :modelValue="modelValue" @selected="onPlaceSelected" :disabled="disabled" />
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-facing-decorator';
 import VPlacesAutocomplete from './VPlacesAutocomplete.vue';
 
-@Component({ components: { VPlacesAutocomplete } })
+@Component({
+  components: { VPlacesAutocomplete },
+  emits: ['selected']
+})
 export default class VInlinePlacesAutocomplete extends Vue {
   @Prop({
     required: false,
@@ -17,7 +20,7 @@ export default class VInlinePlacesAutocomplete extends Vue {
 
   @Prop({ required: true }) readonly apiKey!: string;
   @Prop() readonly dataKeys?: string[];
-  @Prop() readonly value!: string;
+  @Prop() readonly modelValue!: string;
   @Prop({ default: false }) readonly disabled?: boolean;
 
   onPlaceSelected(place: any) {

@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { Ref, Prop, Component, Vue } from 'vue-property-decorator';
+import { Ref, Prop, Component, Vue } from 'vue-facing-decorator';
 import VAudioElementWrapper from './VAudioElementWrapper.vue';
 import VIcon from './VIcon.vue'
 
@@ -46,28 +46,29 @@ export default class VAudio extends Vue {
   @Prop({ default: () => '#9FABBC' }) readonly playingColor!: string;
   @Prop({ default: () => 'white' }) readonly contrastColor!: string;
 
-  private loading = false;
-  private playing = false;
-  private error = false;
-  private loaded = 0;
+  loading = false;
+  playing = false;
+  error = false;
+
+  loaded = 0;
   @Ref('audio-wrapper') readonly audio!: VAudioElementWrapper;
 
-  private timeupdateHandler(event: { progression: number}) {
+  timeupdateHandler(event: { progression: number}) {
     if (event) {
       this.loaded = event.progression;
     }
   }
 
-  private errorHandler() {
+  errorHandler() {
     this.playing = false;
     this.error = true;
   }
 
-  private timedOutHandler() {
+  timedOutHandler() {
     this.playing = false;
   }
 
-  private pausedHandler() {
+  pausedHandler() {
     this.playing = false;
   }
 
@@ -94,11 +95,11 @@ export default class VAudio extends Vue {
     return this.playing ? 'playing' : ''
   }
 
-  protected hasSources(): boolean {
+  hasSources(): boolean {
     return this.sources.length > 0;
   }
 
-  protected getAudioElementFromDom(): HTMLAudioElement | null{
+  getAudioElementFromDom(): HTMLAudioElement | null{
     return this.getAudioElementFromDom();
   }
 

@@ -1,10 +1,10 @@
 const DEFAULT_TIME = 200;
 
 export default class Throttler {
-  private time: number;
-  private action?: () => void;
+  time: number;
+  action?: () => void;
 
-  private timeout = 0;
+  timeout = 0;
 
   constructor(time = DEFAULT_TIME) {
     this.time = time;
@@ -17,7 +17,7 @@ export default class Throttler {
     this.timeout = window.setTimeout(this.runAction.bind(this), this.time);
   }
 
-  private runAction() {
+  runAction() {
     (this as any).action();
   }
 }

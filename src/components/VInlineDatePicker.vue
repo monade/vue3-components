@@ -3,8 +3,8 @@
     <div class="d-flex justify-content-between form-control">
       <v-inline-date-input
         :ref="inlineDateInputRef"
-        @input="onInlineDateChanged"
-        :value="inlineDate"
+        @update:modelValue="onInlineDateChanged"
+        :modelValue="inlineDate"
       />
       <div class="position-relative my-auto">
         <v-icon
@@ -57,7 +57,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue } from 'vue-facing-decorator';
 import VCheckButton from '@/components/VCheckButton.vue';
 import ClickOutside from '../directives/ClickOutside';
 import VInlineDateInput from '@/components/VInlineDateInput.vue';
@@ -83,16 +83,17 @@ export interface DatePickerData {
   },
   directives: {
     ClickOutside
-  }
+  },
+  emits: ['update:modelValue', 'selected', 'date-selected', 'blur']
 })
 export default class VInlineDatePicker extends Vue {
   @Prop({ default: null }) readonly date?: number | null;
   @Prop({ default: null }) readonly placeholder?: string | null;
   @Prop({ default: false }) readonly disabled?: boolean;
   @Prop({ default: 'left' }) readonly dropdownAlign?: string;
-  @Prop({}) readonly value!: string;
+  @Prop({}) readonly modelValue!: string;
 
-  private mode = 'single';
+  mode = 'single';
   @Watch('date')
   onDateChange(value: number | null) {
     if (this.date !== value) {
@@ -101,14 +102,14 @@ export default class VInlineDatePicker extends Vue {
   }
 
   dateOne: number | null = null;
-  protected datepicker: any = null;
+  datepicker: any = null;
   visible = false;
   firstOpen = true;
 
   subscription: any = null;
 
-  private opened = false;
-  private lastKey = `airbnb-date-picker-${this.dateOne}`;
+  opened = false;
+  lastKey = `airbnb-date-picker-${this.dateOne}`;
 
   subscribe() {
     this.subscription = (e: KeyboardEvent) => {
@@ -156,7 +157,7 @@ export default class VInlineDatePicker extends Vue {
   @Watch('dateOne')
   onDateOneChanged(data: number | null) {
     if (data) {
-      this.$emit('input', data);
+      this.$emit("update:modelValue", data);
     }
   }
 

@@ -8,12 +8,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue } from 'vue-facing-decorator';
 import VIcon from './VIcon.vue';
 
 @Component({ components: { VIcon } })
 export default class VCheckButton extends Vue {
-  @Prop() readonly value!: boolean;
+  @Prop() readonly modelValue!: boolean;
   @Prop({ default: false }) readonly disableUncheck? : boolean;
 
   @Watch('value', { deep: true })
@@ -21,7 +21,7 @@ export default class VCheckButton extends Vue {
     this.checked = value;
   }
 
-  checked = this.value;
+  checked = this.modelValue;
 
   get buttonClass() {
     return {
@@ -38,7 +38,7 @@ export default class VCheckButton extends Vue {
       this.checked = !this.checked;
     }
 
-    this.$emit('input', this.checked);
+    this.$emit("update:modelValue", this.checked);
   }
 }
 </script>

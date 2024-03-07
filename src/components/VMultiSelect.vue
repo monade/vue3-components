@@ -17,11 +17,11 @@
     @toggle-visible="onToggleVisible"
   >
 
-    <template slot="result-icon">
+    <template #result-icon>
       <slot name="custom-icon"></slot>
     </template>
 
-    <template slot="dropdown-header">
+    <template #dropdown-header>
       <span class="multiselect-dropdown-header d-flex align-items-center" v-if="actions">
         <span class="multiselect-dropdown-custom-actions">
           <ul class="list-inline list-actions">
@@ -78,7 +78,7 @@
 import VBaseMultiSelect from './VBaseMultiSelect.vue';
 import VCheckbox from './VCheckbox.vue';
 import ClickOutside from '../directives/ClickOutside';
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-facing-decorator';
 
 export interface MultiSelectOption {
   id?: string;
@@ -96,9 +96,13 @@ export interface MultiSelectAction {
   filter?: () => boolean;
 }
 
-@Component({ components: { VBaseMultiSelect, VCheckbox }, directives: { ClickOutside } })
+@Component({
+  components: { VBaseMultiSelect, VCheckbox },
+  directives: { ClickOutside },
+  emits: ['update:modelValue']
+})
 export default class MultiSelect extends Vue {
-  @Prop({ default: () => [], required: true }) readonly value!: any[];
+  @Prop({ default: () => [], required: true }) readonly modelValue!: any[];
   @Prop({ required: true }) readonly options!: MultiSelectOption[];
   @Prop() readonly actions!: MultiSelectAction[] | null;
   @Prop() readonly groups!: MultiSelectGroup[] | null;
@@ -110,13 +114,13 @@ export default class MultiSelect extends Vue {
   @Prop({ default: false }) readonly showDropdown!: boolean;
   @Prop({ default: false }) readonly searchEnabled!: boolean;
 
-  private selected = this.value;
-  private maxElements = 50;
-  private offset = 0;
-  private search: string | null = null;
-  private dropdownVisible = false;
+  selected = this.modelValue;
+  maxElements = 50;
+  offset = 0;
+  search: string | null = null;
+  dropdownVisible = false;
 
-  @Watch('value')
+  @Watch("modelValue")
   onValueChanged(value: any[]) {
     this.selected = value;
   }
@@ -135,7 +139,7 @@ export default class MultiSelect extends Vue {
   @Watch('selected')
   onSelectedChanged(value: any[]) {
     if (!this.confirmSelection) {
-      this.$emit('input', value);
+      this.$emit("update:modelValue", value);
     }
   }
 
@@ -228,12 +232,12 @@ export default class MultiSelect extends Vue {
 
   onApply() {
     this.dropdownVisible = false;
-    this.$emit('input', this.selected);
+    this.$emit("update:modelValue", this.selected);
   }
 
   onCleared() {
     if (this.confirmSelection) {
-      this.$emit('input', this.selected);
+      this.$emit("update:modelValue", this.selected);
     }
   }
 

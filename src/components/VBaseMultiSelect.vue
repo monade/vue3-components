@@ -40,11 +40,14 @@
 <script lang="ts">
 import ClickOutside from '../directives/ClickOutside';
 
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-facing-decorator';
 
-@Component({ directives: { ClickOutside } })
+@Component({
+  directives: { ClickOutside },
+  emits: ['update:modelValue', 'search', 'scroll', 'toggle-visible', 'cleared', 'reset', 'apply', 'select-all']
+})
 export default class VBaseMultiSelect extends Vue {
-  @Prop({ default: () => [] }) readonly value!: any[] | null;
+  @Prop({ default: () => [] }) readonly modelValue!: any[] | null;
   @Prop({ default: 'Seleziona un valore' }) readonly placeholder!: string;
   @Prop({ default: 'name' }) readonly label!: string;
   @Prop({ default: false }) readonly disabled!: boolean;
@@ -52,11 +55,11 @@ export default class VBaseMultiSelect extends Vue {
   @Prop({ default: false }) readonly showDropdown!: boolean;
   @Prop({ default: false }) readonly searchEnabled!: boolean;
 
-  private dropdownVisible = this.showDropdown;
-  private selected = this.value;
-  private search: string | null = null;
+  dropdownVisible = this.showDropdown;
+  selected = this.modelValue;
+  search: string | null = null;
 
-  @Watch('value')
+  @Watch("modelValue")
   onValueChanged(value: any[] | null) {
     this.selected = value;
   }
@@ -127,7 +130,7 @@ export default class VBaseMultiSelect extends Vue {
     }
 
     this.selected = [];
-    this.$emit('input', this.selected);
+    this.$emit("update:modelValue", this.selected);
     this.$emit('cleared');
   }
 
@@ -137,7 +140,7 @@ export default class VBaseMultiSelect extends Vue {
 
   reset() {
     this.selected = [];
-    this.$emit('input', this.selected);
+    this.$emit("update:modelValue", this.selected);
     this.$emit('reset');
   }
 

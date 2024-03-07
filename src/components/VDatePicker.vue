@@ -45,12 +45,12 @@
           <span>Confronta con:</span>
           <ul class="list-unstyled">
             <li>
-              <v-check-button :value="compared.type == 'year'" @input="compared.type = 'year'">Anno precedente
+              <v-check-button :modelValue="compared.type == 'year'" @update:modelValue="compared.type = 'year'">Anno precedente
                 <span v-if="rangeSelected">({{ compareYearRange }})</span>
               </v-check-button>
             </li>
             <li>
-              <v-check-button :value="compared.type == 'period'" @input="compared.type = 'period'">Periodo precedente
+              <v-check-button :modelValue="compared.type == 'period'" @update:modelValue="compared.type = 'period'">Periodo precedente
                 <span v-if="rangeSelected">({{ comparePeriodRange }})</span>
               </v-check-button>
             </li>
@@ -67,9 +67,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue } from 'vue-facing-decorator';
 import VCheckButton from './VCheckButton.vue';
 import ClickOutside from '../directives/ClickOutside';
+import moment from 'moment';
 
 export const DATE_FORMAT = 'YYYY-MM-DD';
 
@@ -91,7 +92,8 @@ export interface DatePickerData {
   },
   directives: {
     ClickOutside
-  }
+  },
+  emits: ['selected', 'date-selected', 'date-to-selected']
 })
 export default class VDatePicker extends Vue {
   @Prop({ default: undefined }) readonly date? : Date|string|undefined;
@@ -99,7 +101,7 @@ export default class VDatePicker extends Vue {
   @Prop({ default: null }) readonly endDate? : Date|string|null;
   @Prop({ default: 'DD/MM/YYYY' }) readonly format? : string;
   @Prop({ default: 'range' }) readonly mode? : string;
-  @Prop({ default: null }) readonly placeholder? : string|null;
+  @Prop() readonly placeholder? : string;
   @Prop({ default: false }) readonly disabled? : boolean;
   @Prop({ default: 'left' }) readonly dropdownAlign? : string;
   @Prop({ default: false }) readonly compare? : boolean;
@@ -116,7 +118,7 @@ export default class VDatePicker extends Vue {
 
   dateOne: Date|string|undefined = '';
   dateTwo: Date|string|undefined = '';
-  protected datepicker: any|null = null;
+  datepicker: any|null = null;
   visible = false;
   selected: string|null = null;
   firstOpen = true;
@@ -162,11 +164,11 @@ export default class VDatePicker extends Vue {
   }
 
   get dateOneChanged() {
-    return this.dateOne !== this.$moment(this.date).format(DATE_FORMAT);
+    return this.dateOne !== moment(this.date).format(DATE_FORMAT);
   }
 
   get dateTwoChanged() {
-    return this.dateTwo !== this.$moment(this.dateTo).format(DATE_FORMAT);
+    return this.dateTwo !== moment(this.dateTo).format(DATE_FORMAT);
   }
 
   get compareYearRange() {
@@ -174,7 +176,7 @@ export default class VDatePicker extends Vue {
       return null
     } else {
       const range = this.getCompareRange('year');
-      return this.$moment(range.from).format(this.format) + ' - ' + this.$moment(range.to).format(this.format);
+      return moment(range.from).format(this.format) + ' - ' + moment(range.to).format(this.format);
     }
   }
 
@@ -183,7 +185,7 @@ export default class VDatePicker extends Vue {
       return null
     } else {
       const range = this.getCompareRange('period');
-      return this.$moment(range.from).format(this.format) + ' - ' + this.$moment(range.to).format(this.format);
+      return moment(range.from).format(this.format) + ' - ' + moment(range.to).format(this.format);
     }
   }
 
@@ -197,7 +199,7 @@ export default class VDatePicker extends Vue {
     if (this.visible && this.firstOpen && this.endDate) {
       this.$nextTick(() => {
         if (this.datepicker) {
-          this.datepicker.startingDate = this.$moment(this.endDate).subtract(2, 'months').startOf('month');
+          this.datepicker.startingDate = moment(this.endDate).subtract(2, 'months').startOf('month');
           this.datepicker.generateMonths();
           this.firstOpen = false;
         }
@@ -224,10 +226,10 @@ export default class VDatePicker extends Vue {
     let value = '';
 
     if (this.dateOne) {
-      value = this.$moment(this.dateOne).format(this.format);
+      value = moment(this.dateOne).format(this.format);
     }
     if (this.dateTwo) {
-      value += ' - ' + this.$moment(this.dateTwo).format(this.format);
+      value += ' - ' + moment(this.dateTwo).format(this.format);
     }
 
     return value;
@@ -235,8 +237,8 @@ export default class VDatePicker extends Vue {
 
   selectLastDays(days: number) {
     if (this.datepicker) {
-      const start = this.$moment(this.endDate).subtract(days - 1, 'days');
-      const end = this.$moment(this.endDate);
+      const start = moment(this.endDate).subtract(days - 1, 'days');
+      const end = moment(this.endDate);
       this.datepicker.selectedDate1 = start.format(DATE_FORMAT);
       this.datepicker.selectedDate2 = end.format(DATE_FORMAT);
     }
@@ -244,7 +246,7 @@ export default class VDatePicker extends Vue {
 
   selectStartOfToToday(startOf: moment.unitOfTime.StartOf) {
     if (this.datepicker) {
-      const end = this.$moment(this.endDate);
+      const end = moment(this.endDate);
       const start = end.clone().startOf(startOf);
 
       this.datepicker.selectedDate1 = start.format(DATE_FORMAT);
@@ -288,14 +290,14 @@ export default class VDatePicker extends Vue {
       }
     }
 
-    const dateOne = this.$moment(this.dateOne);
-    const dateTwo = this.$moment(this.dateTwo);
+    const dateOne = moment(this.dateOne);
+    const dateTwo = moment(this.dateTwo);
 
     let from, to;
 
     if (type === 'year') {
-      from = this.$moment(this.dateOne).subtract('1', 'years');
-      to = this.$moment(this.dateTwo).subtract('1', 'years');
+      from = moment(this.dateOne).subtract('1', 'years');
+      to = moment(this.dateTwo).subtract('1', 'years');
     } else {
       const startOfMonth = dateOne.clone().startOf('month');
       const endOfMonth = dateTwo.clone().endOf('month');
@@ -308,7 +310,7 @@ export default class VDatePicker extends Vue {
       } else {
         const diff = dateTwo.diff(dateOne, 'days');
         from = dateOne.subtract(diff + 1, 'days');
-        to = this.$moment(this.dateOne).subtract('1', 'days');
+        to = moment(this.dateOne).subtract('1', 'days');
       }
     }
 

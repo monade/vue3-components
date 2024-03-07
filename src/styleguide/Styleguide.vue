@@ -24,13 +24,13 @@
             <div id="VSwitch">
               <h4 class="pb-1">VSwitch</h4>
               <div class="mb-3">
-                <v-switch :value="vswitchVariable" />
+                <v-switch :modelValue="vswitchVariable" />
               </div>
               <pre><code>&lt;v-switch :value="variable" /&gt;</code></pre>
 
               <h5 class="pb-1">Disabled VSwitch</h5>
               <div class="mb-3">
-                <v-switch :value="vswitchVariable" :disabled="true" />
+                <v-switch :modelValue="vswitchVariable" :disabled="true" />
               </div>
               <pre><code>&lt;v-switch :value="variable" :disabled="true" /&gt;</code></pre>
 
@@ -80,7 +80,7 @@
               <h4 class="pb-1">VCheckbox</h4>
               <div class="mb-3">
                 <v-checkbox
-                  :value="vcheckboxVariable"
+                  :modelValue="vcheckboxVariable"
                   label="Checkbox"
                 ></v-checkbox>
               </div>
@@ -176,7 +176,7 @@
               <h4 class="pb-1">VInlineEditor</h4>
               <div class="mb-3">
                 <v-inline-editor
-                  :value="IVvalue"
+                  :modelValue="IVvalue"
                   :placeholder="IVplaceholder"
                   max-length="10"
                   :uppercase="false"
@@ -187,7 +187,7 @@
               <h5 class="pb-1">VInlineEditor with uppercase</h5>
               <div class="mb-3">
                 <v-inline-editor
-                  :value="IVvalue"
+                  :modelValue="IVvalue"
                   :placeholder="IVplaceholder"
                   max-length="10"
                   :uppercase="true"
@@ -224,7 +224,7 @@
               <h4 class="pb-1">VInlineMultiSelect</h4>
               <div class="mb-3">
                 <v-inline-multi-select
-                  :value="IMSvalues"
+                  :modelValue="IMSvalues"
                   :options="IMSoptions"
                 ></v-inline-multi-select>
               </div>
@@ -232,7 +232,7 @@
               <h5 class="pb-1">VInlineMultiSelect with search</h5>
               <div class="mb-3">
                 <v-inline-multi-select
-                  :value="IMSvalues"
+                  :modelValue="IMSvalues"
                   :options="IMSoptions"
                   :search-enabled="true"
                 ></v-inline-multi-select>
@@ -241,7 +241,7 @@
               <h5 class="pb-1">VInlineMultiSelect with dropdown</h5>
               <div class="mb-3">
                 <v-inline-multi-select
-                  :value="IMSvalues"
+                  :modelValue="IMSvalues"
                   :options="IMSoptions"
                   :show-dropdown="true"
                 ></v-inline-multi-select>
@@ -320,7 +320,7 @@
               <h4 class="pb-1">VMultiSelect</h4>
               <div class="mb-3">
                 <v-multi-select
-                  :value="IMSvalues"
+                  :modelValue="IMSvalues"
                   :options="IMSoptions"
                 ></v-multi-select>
               </div>
@@ -328,7 +328,7 @@
               <h5 class="pb-1">VMultiSelect with search</h5>
               <div class="mb-3">
                 <v-multi-select
-                  :value="IMSvalues"
+                  :modelValue="IMSvalues"
                   :options="IMSoptions"
                   :search-enabled="true"
                 ></v-multi-select>
@@ -338,7 +338,7 @@
               <h5 class="pb-1">VMultiSelect with dropdown</h5>
               <div class="mb-3">
                 <v-multi-select
-                  :value="IMSvalues"
+                  :modelValue="IMSvalues"
                   :options="IMSoptions"
                   :show-dropdown="true"
                 ></v-multi-select>
@@ -436,7 +436,7 @@
               <h4 class="pb-1">VSelect</h4>
               <div class="mb-3">
                 <v-select
-                  :value="null"
+                  :modelValue="null"
                   :options="VselectItems"
                   :loading="false"
                 ></v-select>
@@ -446,7 +446,7 @@
               <h5 class="pb-1">VSelect addable</h5>
               <div class="mb-3">
                 <v-select
-                  :value="null"
+                  :modelValue="null"
                   :options="VselectItems"
                   :loading="false"
                   :addable="true"
@@ -457,7 +457,7 @@
               <h5 class="pb-1">VSelect scrollable</h5>
               <div class="mb-3">
                 <v-select
-                  :value="null"
+                  :modelValue="null"
                   :options="VselectItems"
                   :loading="false"
                   :scrollable="true"
@@ -469,7 +469,7 @@
             <div id="VSwitchButton">
               <h4 class="pb-1">VSwitchButton</h4>
               <div class="mb-3">
-                <v-switch-button :value="false">VSwitchButton</v-switch-button>
+                <v-switch-button :modelValue="false">VSwitchButton</v-switch-button>
               </div>
               <pre><code>&lt;v-switch-button value="..."&gt;LABEL&lt;/v-switch-button&gt;</code></pre>
               <hr />
@@ -488,20 +488,20 @@
             <div id="VNumberPicker">
               <h4 class="pb-1">VNumberPicker</h4>
               <div class="mb-3">
-                <v-number-picker :value="0"></v-number-picker>
+                <v-number-picker :modelValue="0"></v-number-picker>
               </div>
               <pre><code>&lt;v-number-picker :value="0"&gt;&lt;/v-number-picker&gt;</code></pre>
 
               <h5 class="pb-1">VNumberPicker 2 digits</h5>
               <div class="mb-3">
-                <v-number-picker :value="0" :digits="2"></v-number-picker>
+                <v-number-picker :modelValue="0" :digits="2"></v-number-picker>
               </div>
               <pre><code>&lt;v-number-picker :value="..." :digits="..."&gt;&lt;/v-number-picker&gt;</code></pre>
 
               <h5 class="pb-1">VNumberPicker Max and Min</h5>
               <div class="mb-3">
                 <v-number-picker
-                  :value="0"
+                  :modelValue="0"
                   :max="2"
                   :min="-2"
                 ></v-number-picker>
@@ -511,7 +511,7 @@
               <h5 class="pb-1">VNumberPicker Max, Min in loop mode</h5>
               <div class="mb-3">
                 <v-number-picker
-                  :value="0"
+                  :modelValue="0"
                   :max="2"
                   :min="-2"
                   :loop="true"
@@ -521,7 +521,7 @@
 
               <h5 class="pb-1">VNumberPicker custom step</h5>
               <div class="mb-3">
-                <v-number-picker :value="0" :step="3"></v-number-picker>
+                <v-number-picker :modelValue="0" :step="3"></v-number-picker>
               </div>
               <pre><code>&lt;v-number-picker :value="..." :step="..."&gt;&lt;/v-number-picker&gt;</code></pre>
               <hr />
@@ -562,7 +562,7 @@
             <div id="VTimeSlotPicker">
               <h4 class="pb-1">VTimeSlotPicker</h4>
               <div class="mb-3">
-                <v-time-slot-picker :value="[]"></v-time-slot-picker>
+                <v-time-slot-picker :modelValue="[]"></v-time-slot-picker>
               </div>
               <pre><code>&lt;v-time-slot-picker :value="[...]"&gt;&lt;/v-time-slot-picker&gt;</code></pre>
               <hr />
@@ -604,20 +604,6 @@
                 ></v-multi-level-select>
               </div>
               <pre><code>&lt;v-multi-level-select&gt;&lt;/v-multi-level-select&gt;</code></pre>
-              <hr />
-            </div>
-            <div id="VComparisonGroupSelect">
-              <h4 class="pb-1">VComparisonGroupSelect</h4>
-              <div class="mb-3">
-                <v-comparison-group-select
-                  :payload="null"
-                  :load-groups="loadGroups"
-                  :create-group="createGroup"
-                  :add-entry-to-group="addEntryToGroup"
-                  :remove-entry-from-group="removeEntryFromGroup"
-                ></v-comparison-group-select>
-              </div>
-              <pre><code>&lt;v-comparison-group-select :payload="null" :load-groups="loadGroups" :create-group="createGroup" :add-entry-to-group="addEntryToGroup" :remove-entry-from-group="removeEntryFromGroup"&gt;&lt;/v-comparison-group-select&gt;</code></pre>
               <hr />
             </div>
             <div id="VAudio">
@@ -880,13 +866,12 @@ import VDatePicker from '../components/VDatePicker.vue';
 import VMultiLevelSelect from '../components/VMultiLevelSelect.vue';
 import Entry from '../models/Entry';
 import EntryGroupItem from '../models/EntryGroupItem';
-import VComparisonGroupSelect from '../components/VComparisonGroupSelect.vue';
 import VAudio from '../components/VAudio.vue';
 import VVideo from '../components/VVideo.vue';
 import VModalVideo from '../components/VModalVideo.vue';
 import VSplitDateSelect from '@/components/VSplitDateSelect.vue';
 
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-facing-decorator';
 
 @Component({
   components: {
@@ -914,7 +899,6 @@ import { Component, Vue } from 'vue-property-decorator';
     VTimeSlotPicker,
     VDatePicker,
     VMultiLevelSelect,
-    VComparisonGroupSelect,
     VSplitDateSelect,
     VAudio,
     VVideo,
@@ -1094,7 +1078,7 @@ export default class Styleguide extends Vue {
   };
 
   gItems: EntryGroupItem[] = [];
-  private listGroupSelectedItem = { id: null, label: null };
+  listGroupSelectedItem = { id: null, label: null };
 
   public loadGroups(payload: any): Promise<EntryGroupItem[]> {
     return Promise.resolve(this.gItems);

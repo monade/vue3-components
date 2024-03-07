@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-facing-decorator";
 
 export interface ContentLoadingConfig {
   notch: {

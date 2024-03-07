@@ -20,27 +20,31 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-facing-decorator';
 
-@Component
+@Component({
+  emits: ['update:modelValue']
+})
 export default class VToggleSwitch extends Vue {
   @Prop({ required: true })
-  readonly value!: boolean;
+  readonly modelValue!: boolean;
 
   @Prop({ required: false, default: false })
   readonly disabled!: boolean;
 
+  uniqueId = Math.random().toString(36).substring(7);
+
   get toggleName() {
-    return `toggle_${(this as any)._uid}`;
+    return `toggle_${this.uniqueId}`;
   }
 
-  private checked: boolean = this.value;
+  checked: boolean = this.modelValue;
   activate() {
     if (this.disabled) {
       return;
     }
     this.checked = !this.checked;
-    this.$emit('input', this.checked);
+    this.$emit("update:modelValue", this.checked);
   }
 }
 </script>

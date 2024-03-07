@@ -10,13 +10,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-facing-decorator';
 
 export interface VListGroupItem {
   [key: string]: string|number|null|undefined;
 }
 
-@Component
+@Component({
+  emits: ['selected', 'over']
+})
 export default class VListGroup extends Vue {
   @Prop() readonly items!: Array<VListGroupItem>;
   @Prop({ default: false }) readonly ordered? : boolean;

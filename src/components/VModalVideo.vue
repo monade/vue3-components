@@ -1,6 +1,6 @@
 <template>
   <v-modal :size="size" class="modal-video" ref="modal" @hidden="onHidden" @shown="onShow">
-    <template slot="header">
+    <template #header>
       <h3 class="font-weight-bold">{{ title }}</h3>
     </template>
 
@@ -9,11 +9,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Ref, Vue } from 'vue-property-decorator';
+import { Component, Prop, Ref, Vue } from 'vue-facing-decorator';
 import VModal from '@/components/VModal.vue';
 import VVideo from '@/components/VVideo.vue';
 
-@Component({ components: { VModal, VVideo } })
+@Component({
+  components: { VModal, VVideo },
+  emits: ['hidden']
+})
 export default class VModalVideo extends Vue {
   @Prop({ default: () => [] }) readonly sources!: string[];
   @Prop({ default: () => '' }) readonly title!: string;

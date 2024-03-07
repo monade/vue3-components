@@ -8,7 +8,7 @@
       :placeholder="placeholder"
       @keyup="onKeyUp"
     />
-    <v-icon v-if="done" @click.native="cancel" class="clickable">white-close</v-icon>
+    <v-icon v-if="done" @click="cancel" class="clickable">white-close</v-icon>
     <v-icon class="text-muted" :spin="searching" v-if="!done">{{ searching ? 'spinner' : withIcon ? 'search': '' }}</v-icon>
     <div class="entry-search__dropdown" v-if="dropdownVisible">
       <div class="entry-search__dropdown__results" v-if="results.total">
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-facing-decorator';
 import VEntryList from './VEntryList.vue';
 import VEntryInterface from '../models/Entry';
 import ClickOutside from '../directives/ClickOutside';
@@ -37,7 +37,11 @@ export interface VEntrySearchResult {
   total: number;
 }
 
-@Component({ components: { VEntryList, VIcon }, directives: { ClickOutside } })
+@Component({
+  components: { VEntryList, VIcon },
+  directives: { ClickOutside },
+  emits: ['searched', 'selected', 'cancel']
+})
 export default class VEntrySearch extends Vue {
   @Prop({ default: DEFAULT_PLACEHOLDER }) readonly placeholder!: string;
   @Prop({ default: DEFAULT_MIN }) readonly min!: number;
@@ -116,15 +120,15 @@ export default class VEntrySearch extends Vue {
     this.$emit('cancel');
   }
 
-  protected showDropdown() {
+  showDropdown() {
     this.dropdownVisible = true;
   }
 
-  protected closeDropdown() {
+  closeDropdown() {
     this.dropdownVisible = false;
   }
 
-  protected onKeyUp() {
+  onKeyUp() {
     this.done = false;
     if (this.min && (this.term.length >= this.min)) {
       this.clearTimeout();
@@ -145,7 +149,7 @@ export default class VEntrySearch extends Vue {
     }
   }
 
-  protected onSelected(value: VEntryInterface) {
+  onSelected(value: VEntryInterface) {
     this.term = value.name;
     this.done = true;
     this.$emit('selected', { ...value });

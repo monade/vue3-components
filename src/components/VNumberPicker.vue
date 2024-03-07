@@ -3,7 +3,7 @@
     <span class="v-number-picker__button" @click="up">
       <v-icon>chevron-up</v-icon>
     </span>
-    <div class="v-number-picker__value">{{ number|number(0, digits) }}</div>
+    <div class="v-number-picker__value">{{ formatNumber(number, 0, digits!) }}</div>
     <span class="v-number-picker__button v-number-picker__button--down" @click="down">
       <v-icon>chevron-up</v-icon>
     </span>
@@ -11,13 +11,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue } from 'vue-facing-decorator';
 import VIcon from './VIcon.vue';
-import Number from '../filters/Number';
+import NumberFormatter from '@/services/NumberFormatter';
 
-@Component({ components: { VIcon }, filters: { Number } })
+@Component({
+  components: { VIcon },
+  emits: ['update:modelValue']
+})
 export default class VNumberPicker extends Vue {
-  @Prop() readonly value!: number;
+  @Prop() readonly modelValue!: number;
   @Prop({ default: 1 }) readonly step!: number;
   @Prop({ default: 0 }) readonly min!: number;
   @Prop({ default: null }) readonly max!: number|null;
@@ -26,13 +29,17 @@ export default class VNumberPicker extends Vue {
 
   number = 0;
 
-  @Watch('value')
+  @Watch("modelValue")
   onValueChange(value: number) {
     this.number = value;
   }
 
   created() {
-    this.number = this.value;
+    this.number = this.modelValue;
+  }
+
+  formatNumber(value: number, decimals = 0, digits = 1, locale = 'it') {
+    return NumberFormatter.format(value, decimals, digits, locale);
   }
 
   up() {
@@ -45,7 +52,7 @@ export default class VNumberPicker extends Vue {
         this.number = this.min;
       }
 
-      this.$emit('input', this.number);
+      this.$emit("update:modelValue", this.number);
     }
   }
 
@@ -55,7 +62,7 @@ export default class VNumberPicker extends Vue {
 
       if ((this.min != null && this.min <= number) || this.min === null) {
         this.number = number;
-        this.$emit('input', this.number);
+        this.$emit("update:modelValue", this.number);
       } else if (this.max != null && this.loop) {
         this.number = this.max;
       }

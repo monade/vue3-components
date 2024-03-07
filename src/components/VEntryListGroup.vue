@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-facing-decorator';
 import VEntryList from './VEntryList.vue';
 import Entry from '../models/Entry';
 import EntryGroupItem from '../models/EntryGroupItem';
@@ -24,7 +24,8 @@ import EntryGroupItem from '../models/EntryGroupItem';
 @Component({
   components: {
     VEntryList
-  }
+  },
+  emits: ['add', 'remove', 'selected']
 })
 export default class VEntryListGroup extends Vue {
   @Prop() readonly items!: Array<EntryGroupItem>;

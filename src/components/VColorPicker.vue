@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-facing-decorator';
 import { chunkArrayInGroups } from '../utils/chunkArrayInGroups';
 import ClickOutside from '../directives/ClickOutside';
 import VIcon from './VIcon.vue';
@@ -33,7 +33,8 @@ import VIcon from './VIcon.vue';
   },
   components: {
     VIcon
-  }
+  },
+  emits: ['change']
 })
 export default class VColorPicker extends Vue {
   @Prop({ default: [] }) readonly colors!: string[];

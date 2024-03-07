@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-facing-decorator';
 
 import VPaginator, { PaginationMeta } from './VPaginator.vue';
 
@@ -37,7 +37,8 @@ export interface GraphQLPaginationMeta {
 @Component({
   components: {
     VPaginator
-  }
+  },
+  emits: ['change']
 })
 export default class VPaginatorGraphql extends Vue {
   @Prop({ required: true }) readonly meta!: GraphQLPaginationMeta;
@@ -65,7 +66,7 @@ export default class VPaginatorGraphql extends Vue {
     return this.meta ? true : false;
   }
 
-  private onPageChange(page: number) {
+  onPageChange(page: number) {
     this.$emit('change', page);
   }
 }
