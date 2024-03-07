@@ -1,6 +1,6 @@
 import { Directive } from "vue";
 
-type ClickEventHandler = (this: HTMLElement, ev: MouseEvent) => void;
+type ClickEventHandler = (this: HTMLElement, ev: MouseEvent | TouchEvent) => void;
 type HTMLEventWithClickOutside = HTMLElement & { clickOutsideEvent?: ClickEventHandler };
 
 const clickOutside: Directive<HTMLElement, Function> = {
@@ -14,11 +14,13 @@ const clickOutside: Directive<HTMLElement, Function> = {
       }
     };
     document.body.addEventListener('click', el.clickOutsideEvent);
+    document.body.addEventListener('touchstart', el.clickOutsideEvent);
   },
   unmounted(el: HTMLEventWithClickOutside) {
     if (el.clickOutsideEvent) {
       document.body.removeEventListener('click', el.clickOutsideEvent);
-      delete el.clickOutsideEvent;
+      document.body.removeEventListener('touchstart', el.clickOutsideEvent);
+    delete el.clickOutsideEvent;
     }
   }
 };

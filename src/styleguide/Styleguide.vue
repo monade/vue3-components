@@ -660,7 +660,7 @@
               >
                 <v-video
                   :sources="[
-                    'http://techslides.com/demos/sample-videos/small.mp4',
+                    'https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4',
                   ]"
                   width="400px"
                 ></v-video>
@@ -685,7 +685,7 @@
                   title="Video"
                   ref="modalVideo"
                   :sources="[
-                    'http://techslides.com/demos/sample-videos/small.mp4',
+                    'https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4',
                   ]"
                 ></v-modal-video>
               </div>
@@ -706,7 +706,7 @@
                   title="Video"
                   ref="modalVideo2"
                   :sources="[
-                    'http://techslides.com/demos/sample-videos/small.mp4',
+                    'https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4',
                   ]"
                   :autostart="true"
                 ></v-modal-video>
@@ -728,7 +728,7 @@
                   title="Video"
                   ref="modalVideo2"
                   :sources="[
-                    'http://techslides.com/demos/sample-videos/small.mp4',
+                    'https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4',
                   ]"
                   size="xl"
                 ></v-modal-video>

@@ -163,7 +163,7 @@ export default class VBaseInlineInput extends Vue {
     window.addEventListener('keydown', this.subscription);
   }
 
-  destroyed() {
+  unmounted() {
     this.unsuscribe();
   }
 

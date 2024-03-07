@@ -12,7 +12,7 @@ export default (eventName: string) => {
       }
     };
 
-    const destroyed = function(this: App<any>) {
+    const unmounted = function(this: App<any>) {
       window.removeEventListener(eventName, bindings[eventName]);
     };
 
@@ -26,14 +26,14 @@ export default (eventName: string) => {
       options.beforeCreate = beforeCreate;
     }
 
-    if (options.destroyed) {
-      const olddestroyed = options.destroyed;
-      options.destroyed = function(this: App<any>) {
-        olddestroyed.bind(this)();
-        destroyed.bind(this)();
+    if (options.unmounted) {
+      const oldunmounted = options.unmounted;
+      options.unmounted = function(this: App<any>) {
+        oldunmounted.bind(this)();
+        unmounted.bind(this)();
       };
     } else {
-      options.destroyed = destroyed;
+      options.unmounted = unmounted;
     }
   });
 };

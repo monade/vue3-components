@@ -9,7 +9,7 @@
       <div class="position-relative my-auto">
         <v-icon
           class="text-primary clickable"
-          @click.native="toggleDropdown"
+          @click="toggleDropdown"
           :id="triggerId"
           size="sm"
           >calendar</v-icon
@@ -123,7 +123,7 @@ export default class VInlineDatePicker extends Vue {
     window.addEventListener('keydown', this.subscription);
   }
 
-  destroyed() {
+  unmounted() {
     this.unsuscribe();
   }
 
