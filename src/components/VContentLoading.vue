@@ -7,7 +7,7 @@
   >
     <v-icon
       class="m-auto"
-      :class="notchClass"
+      :class="[notchClass, sizeClass]"
       :spin="true"
       :style="notchStyle"
     >spinner</v-icon>
@@ -19,9 +19,9 @@ import { Vue, Component, Prop } from "vue-facing-decorator";
 import VIcon from "./VIcon.vue";
 
 const SIZES = {
-  "3x": "3em",
-  "2x": "2em",
-  "1x": "1em"
+  "3x": "icon-3x",
+  "2x": "icon-2x",
+  "1x": "icon-1x"
 };
 
 export interface ContentLoadingConfig {
@@ -54,8 +54,6 @@ export default class VContentLoading extends Vue {
   get notchStyle() {
     return {
       color: this.config?.notch?.color || this.defaultConfig?.notch?.color,
-      width: SIZES[this.size ?? '3x'],
-      height: SIZES[this.size ?? '3x'],
     };
   }
 
@@ -79,6 +77,10 @@ export default class VContentLoading extends Vue {
     return this.config?.overlay?.show ?? this.defaultConfig?.overlay?.show;
   }
 
+  get sizeClass() {
+    return SIZES[this.size] ?? SIZES["3x"];
+  }
+
   get defaultConfig(): ContentLoadingConfig {
     return {
       notch: { size: "3x", color: "red", class: "" },
@@ -95,5 +97,17 @@ export default class VContentLoading extends Vue {
 
 <style lang="scss">
 @import "../css/vue";
+
+.icon-3x {
+  font-size: 3em;
+}
+
+.icon-2x {
+  font-size: 2em;
+}
+
+.icon-1x {
+  font-size: 1em;
+}
 
 </style>
