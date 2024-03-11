@@ -39,6 +39,7 @@ export default class VToggleSwitch extends Vue {
   }
 
   checked: boolean = this.modelValue;
+
   activate() {
     if (this.disabled) {
       return;

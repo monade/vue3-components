@@ -24,6 +24,8 @@ import { unformat, formatMoney, toFixed } from 'accounting-js'
 export default defineComponent({
   name: 'VueNumeric',
 
+  emits: ['update:modelValue', 'change', 'blur', 'focus'],
+
   props: {
     /**
      * Allow clear.
