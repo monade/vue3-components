@@ -5,19 +5,24 @@
     :class="{overlay: hasOverlay}"
     :style="overlayStyle"
   >
-    <fa-icon
-      icon="circle-notch"
-      :size="notchSize"
+    <v-icon
       class="m-auto"
       :class="notchClass"
+      :spin="true"
       :style="notchStyle"
-      spin
-    ></fa-icon>
+    >spinner</v-icon>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-facing-decorator";
+import VIcon from "./VIcon.vue";
+
+const SIZES = {
+  "3x": "3em",
+  "2x": "2em",
+  "1x": "1em"
+};
 
 export interface ContentLoadingConfig {
   notch: {
@@ -32,20 +37,26 @@ export interface ContentLoadingConfig {
     class: string;
   };
 }
-@Component({})
+@Component({
+  components: { VIcon }
+})
 export default class VContentLoading extends Vue {
   @Prop()
   readonly config?: ContentLoadingConfig;
 
   @Prop({ default: "3x" })
-  readonly notchSize!: string;
+  readonly size!: '3x' | '2x' | '1x';
 
   get configuration(): ContentLoadingConfig {
     return this.config || this.defaultConfig;
   }
 
   get notchStyle() {
-    return { color: this.config?.notch?.color || this.defaultConfig?.notch?.color };
+    return {
+      color: this.config?.notch?.color || this.defaultConfig?.notch?.color,
+      width: SIZES[this.size],
+      height: SIZES[this.size],
+    };
   }
 
   get overlayStyle() {

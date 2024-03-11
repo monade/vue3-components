@@ -32,7 +32,7 @@
               @click="onAction(action)"
             >
               {{ action.name }}
-              <icon name="close-white" v-if="action.active" size="7px" class="ml-1 icon-white"></icon>
+              <v-icon v-if="action.active" size="7px" class="ml-1 icon-white">close</v-icon>
             </li>
           </ul>
         </span>
@@ -77,6 +77,7 @@
 <script lang="ts">
 import VBaseMultiSelect from './VBaseMultiSelect.vue';
 import VCheckbox from './VCheckbox.vue';
+import VIcon from './VIcon.vue';
 import ClickOutside from '../directives/ClickOutside';
 import { Component, Vue, Prop, Watch } from 'vue-facing-decorator';
 
@@ -92,12 +93,13 @@ export interface MultiSelectGroup {
 }
 
 export interface MultiSelectAction {
+  name: string;
   active: boolean;
   filter?: () => boolean;
 }
 
 @Component({
-  components: { VBaseMultiSelect, VCheckbox },
+  components: { VBaseMultiSelect, VCheckbox, VIcon },
   directives: { ClickOutside },
   emits: ['update:modelValue']
 })

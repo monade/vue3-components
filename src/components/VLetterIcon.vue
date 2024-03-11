@@ -20,12 +20,15 @@ export default class VLetterIcon extends Vue {
   }
 
   letter(): string {
-    const value = this.$slots.default && this.$slots.default.length ? this.$slots.default[0].text : '';
+    const value =
+      this.$slots.default?.() && this.$slots.default().length
+        ? this.$slots.default()[0].children
+        : ''
 
     if (value) {
-      return value.charAt(0).toUpperCase();
+      return (value as string).charAt(0).toUpperCase()
     } else {
-      return '';
+      return ''
     }
   }
 

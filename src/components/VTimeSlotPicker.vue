@@ -27,6 +27,7 @@
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-facing-decorator';
 import VTimePicker, { TIME_FORMAT } from './VTimePicker.vue';
+import VIcon from './VIcon.vue';
 import ClickOutside from '../directives/ClickOutside';
 import moment from 'moment';
 
@@ -37,7 +38,7 @@ export interface SlotObject {
 
 @Component({
   components: {
-    VTimePicker
+    VTimePicker, VIcon
   },
   directives: {
     ClickOutside

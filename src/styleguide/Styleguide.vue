@@ -291,7 +291,7 @@
               <div class="mb-3">
                 <v-list-group
                   :items="Vitems"
-                  :is-highlighted="(item) => item.id == 1"
+                  :is-highlighted="(item: any) => item.id == 1"
                 >
                   <template #item="slotProps">
                     <span>{{ slotProps.value.label }}</span>
@@ -304,7 +304,7 @@
 
               <h5 class="pb-1">VListGroup with over</h5>
               <div class="mb-3">
-                <v-list-group :items="Vitems" :is-over="(item) => item.id == 1">
+                <v-list-group :items="Vitems" :is-over="(item: any) => item.id == 1">
                   <template #item="slotProps">
                     <span>{{ slotProps.value.label }}</span>
                   </template>

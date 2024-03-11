@@ -237,8 +237,8 @@ export default class VDatePicker extends Vue {
 
   selectLastDays(days: number) {
     if (this.datepicker) {
-      const start = moment(this.endDate).subtract(days - 1, 'days');
-      const end = moment(this.endDate);
+      const start = moment(this.endDate ?? undefined).subtract(days - 1, 'days');
+      const end = moment(this.endDate ?? undefined);
       this.datepicker.selectedDate1 = start.format(DATE_FORMAT);
       this.datepicker.selectedDate2 = end.format(DATE_FORMAT);
     }
@@ -246,7 +246,7 @@ export default class VDatePicker extends Vue {
 
   selectStartOfToToday(startOf: moment.unitOfTime.StartOf) {
     if (this.datepicker) {
-      const end = moment(this.endDate);
+      const end = moment(this.endDate ?? undefined);
       const start = end.clone().startOf(startOf);
 
       this.datepicker.selectedDate1 = start.format(DATE_FORMAT);
