@@ -54,8 +54,8 @@ export default class VContentLoading extends Vue {
   get notchStyle() {
     return {
       color: this.config?.notch?.color || this.defaultConfig?.notch?.color,
-      width: SIZES[this.size],
-      height: SIZES[this.size],
+      width: SIZES[this.size ?? '3x'],
+      height: SIZES[this.size ?? '3x'],
     };
   }
 
