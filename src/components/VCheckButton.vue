@@ -3,7 +3,7 @@
     <span class="v-check-button" :class="buttonClass">
       <v-icon v-show="checked">check</v-icon>
     </span>
-    <span class="v-check-button__label" v-if="$slots.default"><slot></slot></span>
+    <span class="v-check-button__label" v-if="$slots.default?.()"><slot></slot></span>
   </span>
 </template>
 
@@ -16,7 +16,7 @@ export default class VCheckButton extends Vue {
   @Prop() readonly modelValue!: boolean;
   @Prop({ default: false }) readonly disableUncheck? : boolean;
 
-  @Watch('value', { deep: true })
+  @Watch('modelValue', { deep: true })
   onValueChange(value: boolean) {
     this.checked = value;
   }

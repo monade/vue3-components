@@ -31,3 +31,8 @@ declare module 'vue-airbnb-style-datepicker' {
 }
 
 declare module '@robin-rossow/vue-input-number';
+
+declare module 'accounting-js' {
+  import '@types/accounting';
+  export = accounting;
+}

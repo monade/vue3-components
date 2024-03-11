@@ -609,6 +609,11 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node20/-/node20-20.1.2.tgz#b93128c411d38e9507035255195bc8a6718541e3"
   integrity sha512-madaWq2k+LYMEhmcp0fs+OGaLFk0OenpHa4gmI4VEmCKX4PJntQ6fnnGADVFrVkBj0wIdAlQnK/MrlYTHsa1gQ==
 
+"@types/accounting@^0.4.5":
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/@types/accounting/-/accounting-0.4.5.tgz#8a0bfe460721494e25eae451a4771ffdbe53011e"
+  integrity sha512-rf3MKoFZ3REGY2aQTqGwo79aJKom1xgHiJVBy0RguTqpxny1nDT4iYeLx2EgDEkXAhgbwnuLUoxlg4RKHIB7fQ==
+
 "@types/estree@1.0.5":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.5.tgz#a6ce3e556e00fd9895dd872dd172ad0d4bd687f4"

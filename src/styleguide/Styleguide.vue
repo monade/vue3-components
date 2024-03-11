@@ -26,13 +26,13 @@
               <div class="mb-3">
                 <v-switch :modelValue="vswitchVariable" />
               </div>
-              <pre><code>&lt;v-switch :value="variable" /&gt;</code></pre>
+              <pre><code>&lt;v-switch :modelValue="variable" /&gt;</code></pre>
 
               <h5 class="pb-1">Disabled VSwitch</h5>
               <div class="mb-3">
                 <v-switch :modelValue="vswitchVariable" :disabled="true" />
               </div>
-              <pre><code>&lt;v-switch :value="variable" :disabled="true" /&gt;</code></pre>
+              <pre><code>&lt;v-switch :modelValue="variable" :disabled="true" /&gt;</code></pre>
 
               <hr />
             </div>
@@ -84,7 +84,7 @@
                   label="Checkbox"
                 ></v-checkbox>
               </div>
-              <pre><code>&lt;v-checkbox :value="variable" label="Checkbox" /&gt;</code></pre>
+              <pre><code>&lt;v-checkbox :modelValue="variable" label="Checkbox" /&gt;</code></pre>
               <hr />
             </div>
 
@@ -182,7 +182,7 @@
                   :uppercase="false"
                 />
               </div>
-              <pre><code>&lt;v-inline-editor :value="value" :placeholder="..." max-length="10" uppercase="false" /&gt;</code></pre>
+              <pre><code>&lt;v-inline-editor :modelValue="value" :placeholder="..." max-length="10" uppercase="false" /&gt;</code></pre>
 
               <h5 class="pb-1">VInlineEditor with uppercase</h5>
               <div class="mb-3">
@@ -193,7 +193,7 @@
                   :uppercase="true"
                 />
               </div>
-              <pre><code>&lt;v-inline-editor :value="value" :placeholder="..." max-length="10" uppercase="<b>true</b>" /&gt;</code></pre>
+              <pre><code>&lt;v-inline-editor :modelValue="value" :placeholder="..." max-length="10" uppercase="<b>true</b>" /&gt;</code></pre>
 
               <hr />
             </div>
@@ -204,21 +204,21 @@
                 <v-base-inline-input
                   label="Data"
                   placeholder="Aggiungi data"
-                  value="02/01/1993"
+                  modelValue="02/01/1993"
                   type="date"
                 ></v-base-inline-input>
               </div>
-              <pre><code>&lt;v-base-inline-input :value="value" :placeholder="..." type="date" /&gt;</code></pre>
+              <pre><code>&lt;v-base-inline-input :modelValue="value" :placeholder="..." type="date" /&gt;</code></pre>
               <h4 class="pb-1">VBaseInlineInput - Currency</h4>
               <div class="mb-3">
                 <v-base-inline-input
                   label="Data"
                   placeholder="Aggiungi data"
-                  value="5"
+                  modelValue="5"
                   type="currency"
                 ></v-base-inline-input>
               </div>
-              <pre><code>&lt;v-base-inline-input :value="value" :placeholder="..." type="currency" /&gt;</code></pre>
+              <pre><code>&lt;v-base-inline-input :modelValue="value" :placeholder="..." type="currency" /&gt;</code></pre>
             </div>
             <div id="VInlineMultiSelect">
               <h4 class="pb-1">VInlineMultiSelect</h4>
@@ -228,7 +228,7 @@
                   :options="IMSoptions"
                 ></v-inline-multi-select>
               </div>
-              <pre><code>&lt;v-inline-multi-select :value="..." :options="..." /&gt;</code></pre>
+              <pre><code>&lt;v-inline-multi-select :modelValue="..." :options="..." /&gt;</code></pre>
               <h5 class="pb-1">VInlineMultiSelect with search</h5>
               <div class="mb-3">
                 <v-inline-multi-select
@@ -237,7 +237,7 @@
                   :search-enabled="true"
                 ></v-inline-multi-select>
               </div>
-              <pre><code>&lt;v-inline-multi-select :value="..." :options="..." <b>:search-enabled="true"</b>/&gt;</code></pre>
+              <pre><code>&lt;v-inline-multi-select :modelValue="..." :options="..." <b>:search-enabled="true"</b>/&gt;</code></pre>
               <h5 class="pb-1">VInlineMultiSelect with dropdown</h5>
               <div class="mb-3">
                 <v-inline-multi-select
@@ -246,7 +246,7 @@
                   :show-dropdown="true"
                 ></v-inline-multi-select>
               </div>
-              <pre><code>&lt;v-inline-multi-select :value="..." :options="..." <b>:show-dropdown="true"</b>/&gt;</code></pre>
+              <pre><code>&lt;v-inline-multi-select :modelValue="..." :options="..." <b>:show-dropdown="true"</b>/&gt;</code></pre>
               <hr />
             </div>
 
@@ -324,7 +324,7 @@
                   :options="IMSoptions"
                 ></v-multi-select>
               </div>
-              <pre><code>&lt;v-multi-select :value="..." :options="..." /&gt;</code></pre>
+              <pre><code>&lt;v-multi-select :modelValue="..." :options="..." /&gt;</code></pre>
               <h5 class="pb-1">VMultiSelect with search</h5>
               <div class="mb-3">
                 <v-multi-select
@@ -333,7 +333,7 @@
                   :search-enabled="true"
                 ></v-multi-select>
               </div>
-              <pre><code>&lt;v-multi-select :value="..." :options="..." <b>:search-enabled="true"</b>/&gt;</code></pre>
+              <pre><code>&lt;v-multi-select :modelValue="..." :options="..." <b>:search-enabled="true"</b>/&gt;</code></pre>
 
               <h5 class="pb-1">VMultiSelect with dropdown</h5>
               <div class="mb-3">
@@ -343,7 +343,7 @@
                   :show-dropdown="true"
                 ></v-multi-select>
               </div>
-              <pre><code>&lt;v-multi-select :value="..." :options="..." <b>:show-dropdown="true"</b>/&gt;</code></pre>
+              <pre><code>&lt;v-multi-select :modelValue="..." :options="..." <b>:show-dropdown="true"</b>/&gt;</code></pre>
               <hr />
             </div>
 
@@ -441,7 +441,7 @@
                   :loading="false"
                 ></v-select>
               </div>
-              <pre><code>&lt;v-select value="..." :options="..."  :loading="false"/&gt;</code></pre>
+              <pre><code>&lt;v-select modelValue="..." :options="..."  :loading="false"/&gt;</code></pre>
 
               <h5 class="pb-1">VSelect addable</h5>
               <div class="mb-3">
@@ -452,7 +452,7 @@
                   :addable="true"
                 ></v-select>
               </div>
-              <pre><code>&lt;v-select value="..." :options="..."  :loading="false" :loading="false" :addable="true"/&gt;</code></pre>
+              <pre><code>&lt;v-select modelValue="..." :options="..."  :loading="false" :loading="false" :addable="true"/&gt;</code></pre>
 
               <h5 class="pb-1">VSelect scrollable</h5>
               <div class="mb-3">
@@ -463,7 +463,7 @@
                   :scrollable="true"
                 ></v-select>
               </div>
-              <pre><code>&lt;v-select value="..." :options="..."  :loading="false" :loading="false" :addable="true"/&gt;</code></pre>
+              <pre><code>&lt;v-select modelValue="..." :options="..."  :loading="false" :loading="false" :addable="true"/&gt;</code></pre>
               <hr />
             </div>
             <div id="VSwitchButton">
@@ -471,18 +471,18 @@
               <div class="mb-3">
                 <v-switch-button :modelValue="false">VSwitchButton</v-switch-button>
               </div>
-              <pre><code>&lt;v-switch-button value="..."&gt;LABEL&lt;/v-switch-button&gt;</code></pre>
+              <pre><code>&lt;v-switch-button modelValue="..."&gt;LABEL&lt;/v-switch-button&gt;</code></pre>
               <hr />
             </div>
             <div id="VMultiSwitcher">
               <h4 class="pb-1">VMultiSwitcher</h4>
               <div class="mb-3">
                 <v-multi-switcher
-                  value=""
+                  modelValue=""
                   :items="msoptions"
                 ></v-multi-switcher>
               </div>
-              <pre><code>&lt;v-multi-switcher value="" :items="..."&gt;&lt;/v-multi-switcher&gt;</code></pre>
+              <pre><code>&lt;v-multi-switcher modelValue="" :items="..."&gt;&lt;/v-multi-switcher&gt;</code></pre>
               <hr />
             </div>
             <div id="VNumberPicker">
@@ -490,13 +490,13 @@
               <div class="mb-3">
                 <v-number-picker :modelValue="0"></v-number-picker>
               </div>
-              <pre><code>&lt;v-number-picker :value="0"&gt;&lt;/v-number-picker&gt;</code></pre>
+              <pre><code>&lt;v-number-picker :modelValue="0"&gt;&lt;/v-number-picker&gt;</code></pre>
 
               <h5 class="pb-1">VNumberPicker 2 digits</h5>
               <div class="mb-3">
                 <v-number-picker :modelValue="0" :digits="2"></v-number-picker>
               </div>
-              <pre><code>&lt;v-number-picker :value="..." :digits="..."&gt;&lt;/v-number-picker&gt;</code></pre>
+              <pre><code>&lt;v-number-picker :modelValue="..." :digits="..."&gt;&lt;/v-number-picker&gt;</code></pre>
 
               <h5 class="pb-1">VNumberPicker Max and Min</h5>
               <div class="mb-3">
@@ -506,7 +506,7 @@
                   :min="-2"
                 ></v-number-picker>
               </div>
-              <pre><code>&lt;v-number-picker :value="..." :max="..." :min="..."&gt;&lt;/v-number-picker&gt;</code></pre>
+              <pre><code>&lt;v-number-picker :modelValue="..." :max="..." :min="..."&gt;&lt;/v-number-picker&gt;</code></pre>
 
               <h5 class="pb-1">VNumberPicker Max, Min in loop mode</h5>
               <div class="mb-3">
@@ -517,13 +517,13 @@
                   :loop="true"
                 ></v-number-picker>
               </div>
-              <pre><code>&lt;v-number-picker :value="..." :max="..." :min="..." :loop="true"&gt;&lt;/v-number-picker&gt;</code></pre>
+              <pre><code>&lt;v-number-picker :modelValue="..." :max="..." :min="..." :loop="true"&gt;&lt;/v-number-picker&gt;</code></pre>
 
               <h5 class="pb-1">VNumberPicker custom step</h5>
               <div class="mb-3">
                 <v-number-picker :modelValue="0" :step="3"></v-number-picker>
               </div>
-              <pre><code>&lt;v-number-picker :value="..." :step="..."&gt;&lt;/v-number-picker&gt;</code></pre>
+              <pre><code>&lt;v-number-picker :modelValue="..." :step="..."&gt;&lt;/v-number-picker&gt;</code></pre>
               <hr />
             </div>
             <div id="VLetterIcon">
@@ -554,9 +554,9 @@
             <div id="VTimePicker">
               <h4 class="pb-1">VTimePicker</h4>
               <div class="mb-3">
-                <v-time-picker value="12:30"></v-time-picker>
+                <v-time-picker modelValue="12:30"></v-time-picker>
               </div>
-              <pre><code>&lt;v-time-picker value="..."&gt;&lt;/v-time-picker&gt;</code></pre>
+              <pre><code>&lt;v-time-picker modelValue="..."&gt;&lt;/v-time-picker&gt;</code></pre>
               <hr />
             </div>
             <div id="VTimeSlotPicker">
@@ -564,7 +564,7 @@
               <div class="mb-3">
                 <v-time-slot-picker :modelValue="[]"></v-time-slot-picker>
               </div>
-              <pre><code>&lt;v-time-slot-picker :value="[...]"&gt;&lt;/v-time-slot-picker&gt;</code></pre>
+              <pre><code>&lt;v-time-slot-picker :modelValue="[...]"&gt;&lt;/v-time-slot-picker&gt;</code></pre>
               <hr />
             </div>
             <div id="VDatePicker">

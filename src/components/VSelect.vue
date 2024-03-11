@@ -136,7 +136,7 @@ export default class VSelect extends Vue {
   @Prop({ default: true }) readonly loading!: boolean;
   @Prop({ default: true }) readonly inputClass!: boolean;
 
-  @Watch("value", { immediate: true })
+  @Watch("modelValue", { immediate: true })
   onValueChange() {
     this.updateSelected();
   }

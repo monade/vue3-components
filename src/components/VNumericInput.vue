@@ -1,6 +1,5 @@
 <template>
-  <div>FIXME</div>
-  <!-- <vue-numeric
+  <vue-numeric
     ref="edit"
     :decimal-separator="decimalSeparator"
     :thousand-separator="thousandSeparator"
@@ -15,10 +14,10 @@
     @update:modelValue="onValueChanged"
     @blur="$emit('blur')"
     class="form-control"
-  ></vue-numeric> -->
+  ></vue-numeric>
 </template>
 <script lang="ts">
-// import VueNumeric from "@robin-rossow/vue-input-number";
+import VueNumeric from "./VueNumeric.vue";
 import { Component, Prop, Vue, Ref } from "vue-facing-decorator";
 
 export enum VNumericInputApplication {
@@ -28,7 +27,7 @@ export enum VNumericInputApplication {
 }
 
 @Component({
-  components: { /*VueNumeric*/ },
+  components: { VueNumeric },
   emits: ["update:modelValue", "formatted-input", "blur"],
 })
 export default class VNumericInput extends Vue {
@@ -82,7 +81,11 @@ export default class VNumericInput extends Vue {
 
   notifyNewValue(value: number) {
     this.notifyEvent("update:modelValue", value);
-    const formattedNumericValue = value.toFixed(this.precision);
+
+    if (typeof value !== "number" || isNaN(value)) {
+      this.notifyEvent("formatted-input", "");
+      return;
+    }
     const formattedString = this.isSuffix
       ? `${value.toFixed(this.precision)} ${this.currencySign} `
       : `${this.currencySign} ${value.toFixed(this.precision)}`;

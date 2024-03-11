@@ -67,7 +67,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-facing-decorator';
+import { Component, Prop, Watch, Vue, Ref } from 'vue-facing-decorator';
 import VCheckButton from './VCheckButton.vue';
 import ClickOutside from '../directives/ClickOutside';
 import moment from 'moment';
@@ -118,7 +118,7 @@ export default class VDatePicker extends Vue {
 
   dateOne: Date|string|undefined = '';
   dateTwo: Date|string|undefined = '';
-  datepicker: any|null = null;
+  @Ref() datepicker: any | null = null;
   visible = false;
   selected: string|null = null;
   firstOpen = true;
@@ -139,7 +139,6 @@ export default class VDatePicker extends Vue {
   }
 
   mounted() {
-    this.datepicker = this.$refs.datepicker as any;
     this.datepicker.width = 220;
   }
 
@@ -199,7 +198,7 @@ export default class VDatePicker extends Vue {
     if (this.visible && this.firstOpen && this.endDate) {
       this.$nextTick(() => {
         if (this.datepicker) {
-          this.datepicker.startingDate = moment(this.endDate).subtract(2, 'months').startOf('month');
+          this.datepicker.startingDate = moment(this.endDate).subtract(2, 'months').startOf('month').format(DATE_FORMAT);
           this.datepicker.generateMonths();
           this.firstOpen = false;
         }

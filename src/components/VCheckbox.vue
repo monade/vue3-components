@@ -9,7 +9,7 @@
       @change="onChange"
       :disabled="disabled"
     />
-    <label class="custom-control-label" :for="id" v-if="$slots.default"
+    <label class="custom-control-label" :for="id" v-if="$slots.default?.()"
       ><slot></slot>
     </label>
      <label class="custom-control-label" :for="id" v-else
@@ -42,7 +42,7 @@ export default class VCheckbox extends Vue {
   }
 
   get checkboxValue() {
-    return this.inputValue ? this.inputValue : this.$slots.default;
+    return this.inputValue ? this.inputValue : this.$slots.default?.();
   }
 
   randomValue() {

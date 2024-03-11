@@ -1,7 +1,7 @@
 <template>
   <span class="v-switch-button-wrapper" @click="toggle">
     <span class="v-switch-button" :class="buttonClass"></span>
-    <span class="v-switch-button__label" v-if="$slots.default"><slot></slot></span>
+    <span class="v-switch-button__label" v-if="$slots.default?.()"><slot></slot></span>
   </span>
 </template>
 
