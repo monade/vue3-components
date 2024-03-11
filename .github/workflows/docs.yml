@@ -18,7 +18,11 @@ jobs:
           node-version: '20'
           cache: yarn
       - run: yarn install
-      - run: yarn build
+      - run: BASE_PATH=/vue3-components yarn build
+      - run: mkdir -p ./_site
+      - run: cp -r dist/* ./_site
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
 
   # Deploy job
   deploy:
